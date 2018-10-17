@@ -1,0 +1,74 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+
+    - title: What is Open CAS?
+      url: /index.html
+      output: web
+      type: homepage
+
+    - title: Getting started
+      url: /opencas_getting_started.html
+      output: web
+
+    - title: Supported features
+      url: /opencas_supported_features.html
+      output: web
+
+    - title: Source code
+      url: /opencas_source_code.html
+      output: web
+
+    - title: Contributing
+      url: /opencas_contributing.html
+      output: web
+
+    - title: Support
+      url: /opencas_support.html
+      output: web
+
+  - title: Documentation
+    output: web
+    folderitems:
+
+    - title: Introduction
+      url: /ocf_introduction.html
+      output: web
+
+    - title: Achitecture overview (Operating model)
+      url: /ocf_operating_model.html
+      output: web
+
+    - title: Environment definitions
+      url: /ocf_environment_definitions.html
+      output: web
+
+    - title: Writing data object adapter
+      url: /ocf_writing_data_object_adapter.html
+      output: web
+
+    - title: Cache management API
+      url: /ocf_cache_management_api.html
+      output: web
+
+    - title: Submitting IO to core
+      url: /ocf_submitting_io_to_core.html
+      output: web
+
+    - title: Advanced cache configuration
+      url: /ocf_advanced_cache_configuration.html
+      output: web
+
+  - title: Release Notes
+    output: web
+    folderitems:
+
+    - title: 1.0 Release notes
+      url: /ocf_release_notes_1.0.html
+      output: web
