@@ -3,11 +3,13 @@
 topnav:
 - title: Topnav
   items:
-    - title: GitHub
-      external_url: https://github.com/open-cas/ocf
     - title: Start Here
       url: /index.html
-    - title: News
-      url: /news
+    - title: GitHub
+      external_url: https://github.com/open-cas/ocf
     - title: Documentation
       url: /ocf_introduction.html
+    - title: News
+      url: /news
+    - title: Trello
+      url: /trello.html

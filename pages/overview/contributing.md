@@ -1,11 +1,7 @@
 ---
 title: Contributing
-keywords:
 last_updated: January 3, 2019
-tags:
-sidebar: opencas_sidebar
-permalink: opencas_contributing.html
-folder: opencas
+permalink: contributing.html
 ---
 
 ## License
@@ -101,8 +97,8 @@ pull request on the github.
 git push my_changes origin
 ~~~
 
-## Open CAS Maintainers team
-Open CAS Maintainers Team primary responsibility is to provide technical
-guidance on contributions, perform code review and oversight of project
-direction. The primary contact:
-* [Robert Baldyga](mailto:robert.baldyga@intel.com)
+## Maintainers
+Maintainers primary responsibility is to provide technical guidance on
+contributions, perform code review and oversight of project direction.
+The primary contact:
+* [Robert Bałdyga](mailto:robert.baldyga@intel.com)
