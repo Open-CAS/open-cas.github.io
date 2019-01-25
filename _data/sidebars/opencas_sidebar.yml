@@ -8,37 +8,21 @@ entries:
     output: web
     folderitems:
 
-    - title: What is Open CAS?
+    - title: Start here
       url: /index.html
       output: web
       type: homepage
 
-    - title: Getting started
-      url: /opencas_getting_started.html
-      output: web
-
-    - title: Supported features
-      url: /opencas_supported_features.html
-      output: web
-
-    - title: Source code
-      url: /opencas_source_code.html
-      output: web
-
     - title: Contributing
-      url: /opencas_contributing.html
-      output: web
-
-    - title: Support
-      url: /opencas_support.html
+      url: /contributing.html
       output: web
 
   - title: Documentation
     output: web
     folderitems:
 
-    - title: Introduction
-      url: /ocf_introduction.html
+    - title: Basic concepts
+      url: /basic_concepts.html
       output: web
 
     - title: Achitecture overview (Operating model)
@@ -69,6 +53,6 @@ entries:
     output: web
     folderitems:
 
-    - title: 1.0 Release notes
-      url: /ocf_release_notes_1.0.html
+    - title: v18.12
+      url: /release_v18.12.html
       output: web
