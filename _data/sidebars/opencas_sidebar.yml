@@ -17,36 +17,28 @@ entries:
       url: /contributing.html
       output: web
 
-  - title: Documentation
+  - title: Basic concepts
     output: web
     folderitems:
 
-    - title: Basic concepts
-      url: /basic_concepts.html
+    - title: What is cache?
+      url: /cache.html
       output: web
 
-    - title: Achitecture overview (Operating model)
-      url: /ocf_operating_model.html
+    - title: Cache operations
+      url: /cache_operations.html
       output: web
 
-    - title: Environment definitions
-      url: /ocf_environment_definitions.html
+    - title: What is core?
+      url: /core.html
       output: web
 
-    - title: Writing data object adapter
-      url: /ocf_writing_data_object_adapter.html
+    - title: What is data object?
+      url: /data_object.html
       output: web
 
-    - title: Cache management API
-      url: /ocf_cache_management_api.html
-      output: web
-
-    - title: Submitting IO to core
-      url: /ocf_submitting_io_to_core.html
-      output: web
-
-    - title: Advanced cache configuration
-      url: /ocf_advanced_cache_configuration.html
+    - title: What is cache line?
+      url: /cache_line.html
       output: web
 
   - title: Release Notes
