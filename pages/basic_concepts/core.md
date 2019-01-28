@@ -5,3 +5,4 @@ toc: false
 permalink: core.html
 ---
 
+<small>[[TODO](/authoring.html)] Add core description</small>

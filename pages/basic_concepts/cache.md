@@ -1,9 +1,18 @@
 ---
 title: What is cache?
-last_updated: January 25, 2019
+last_updated: January 28, 2019
 toc: false
 permalink: cache.html
 ---
+
+The following section explains the idea of caching and briefly describes
+role of the **cache** abstraction in OCF. You can learn more about how
+the **cache** works reading [Cache operations](/cache_operations.html)
+page. If you want to learn more about the **cache** configuration
+parameters, like **cache mode** and **cache line size**, read the
+[Cache configuration](/cache_configuration.html) page.
+
+## Caching concept
 
 In general a **cache (1)** is a component that mediates data exchange
 between an application and a **backend storage (2)**, selectively storing
