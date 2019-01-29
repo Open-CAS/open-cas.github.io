@@ -17,6 +17,10 @@ entries:
       url: /contributing.html
       output: web
 
+    - title: Authoring
+      url: /authoring.html
+      output: web
+
   - title: Basic concepts
     output: web
     folderitems:
