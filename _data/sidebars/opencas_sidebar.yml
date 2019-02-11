@@ -41,8 +41,8 @@ entries:
       url: /core.html
       output: web
 
-    - title: What is data object?
-      url: /data_object.html
+    - title: What is volume?
+      url: /volume.html
       output: web
 
     - title: What is cache line?
