@@ -51,8 +51,8 @@ In OCF a **cache** object provides an interface for interacting with
 the cache state machine. Its API allows for attaching **cache storage**,
 adding and removing [**cores**](/core.html), modifying various configuration
 parameters and getting statistics. Every cache operates on a single **cache
-storage** (represented by the cache [**data object**](/data_object.html))
-where it stores data and metadata.
+storage** (represented by the cache [**volume**](/volume.html)) where
+it stores data and metadata.
 
 Single **cache** can handle data from many [**cores**](/core.html). It's
 called a *multi-core configuration*. The **core** object can become
