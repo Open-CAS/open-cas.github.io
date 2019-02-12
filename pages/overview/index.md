@@ -24,9 +24,8 @@ all kinds of multilevel configurations.
 Open CAS Framework is heart of two established caching products:
 - Intel &reg; Cache Acceleration Software for Linux
 - Intel &reg; Cache Acceleration Software for QEMU
-
-We are proudly becoming part of [Storage Performance Development Kit](https://spdk.io/).  
-Caching functionality will be available in SPDK from next (19.1) release.
+- [Storage Performance Development Kit](https://spdk.io/) (starting from
+  version 19.3)
 
 ## Who contributes to OCF?
 Our open source community is still forming and we are very positive about
