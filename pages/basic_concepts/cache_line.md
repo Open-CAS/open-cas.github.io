@@ -45,6 +45,10 @@ few situations in which a **cache line** can return to *invalid* state:
 - When the entire **cache** is being **purged**.
 - During *discard* operation being performed on the corresponding **core
   line**.
+- During I/O request when
+  [**cache mode**](/cache_configuration.html#cache-mode) which may perform
+  an *invalidation* is selected. Currently these **cache modes** are
+  *Write-Invalidate* and *Pass-Through*.
 
 The *dirty* bit determines if the **cache line** data stored in the
 **cache** is in sync with the corresponding data on the **backend storage**.
