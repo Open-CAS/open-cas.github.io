@@ -49,10 +49,79 @@ entries:
       url: /cache_line.html
       output: web
 
+  - title: Getting Started
+    output: web
+    folderitems:
+
+    - title: OCF Quick Setup
+      url: /getting_started_ocf.html
+      output: web
+
+    - title: Open CAS Linux Quick Setup
+      url: /getting_started_open_cas_linux.html
+      output: web
+
+    - title: SPDK Quick Setup
+      url: /getting_started_spdk.html
+      output: web
+
+
+  - title: Open CAS Linux Admin Guide
+    output: web
+    folderitems:
+
+    - title: Introduction
+      url: /guide_introduction.html
+      output: web
+
+    - title: Product Specifications and System Requirements
+      url: /guide_product_specs_requirements.html
+      output: web
+
+    - title: Installing CAS
+      url: /guide_installing.html
+      output: web
+
+    - title: Configuring CAS
+      url: /guide_configuring.html
+      output: web
+
+    - title: Running CAS
+      url: /guide_running.html
+      output: web
+
+    - title: IO Classification
+      url: /guide_io_classification.html
+      output: web
+
+    - title: Advanced Options
+      url: /guide_advanced_options.html
+      output: web
+
+    - title: Monitoring CAS
+      url: /guide_monitoring.html
+      output: web
+
+    - title: Configuration Tool Details
+      url: /guide_tool_details.html
+      output: web
+
+    - title: Terminology
+      url: /guide_terminology.html
+      output: web
+
+    - title: Frequenly Asked Questions
+      url: /guide_faq.html
+      output: web
+
   - title: Release Notes
     output: web
     folderitems:
 
-    - title: v18.12
-      url: /release_v18.12.html
+    - title: OCF
+      url: /ocf_release_notes.html
+      output: web
+
+    - title: Open CAS Linux
+      url: /open_cas_linux_release_notes.html
       output: web
