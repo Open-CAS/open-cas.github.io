@@ -8,7 +8,7 @@ topnav:
     - title: GitHub
       external_url: https://github.com/open-cas/ocf
     - title: Documentation
-      url: /ocf_introduction.html
+      external_url: /doxygen/ocf/index.html
     - title: News
       url: /news
     - title: Trello
