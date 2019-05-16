@@ -15,9 +15,9 @@ Initial configuration of Cache instances
 ----------------------------------------
 
 Once Open CAS Linux is installed, but no cache instances are yet configured and
-running, the user can easily configure and start cache instances. Refer to
-guidance in section 4.1 for *utils/opencas.conf* configuration, then as
-follows:
+running, the user can easily configure and start cache instances. Refer to the
+guidance in [**Configuring CAS**](/guide_configuring.html) for configuring the file *utils/opencas.conf*, then
+follow these steps:
 
 1. Edit and configure caches and cores as desired via the
 *opencas.conf* file.
@@ -37,7 +37,7 @@ to initialize. Be aware that the --force option will destroy any data or
 formatting on the device. Caches will be started regardless of existing data
 or partitions. Execute the following:
 
->   \# intelcas init --force
+>   \# casctl init --force
 
  This command yields the same results as: casadm -S -d /dev/sdX --force for a
  single cache instance.
@@ -48,9 +48,9 @@ Startup of Cache instances
 In order to start all previously initialized cache instances configured in the
 *opencas.conf* file, the user should execute the following:
 
->   \# intelcas start
+>   \# casctl start
 
-Use of the intelcas start command assumes that the configured cache instances
+Use of the casctl start command assumes that the configured cache instances
 were previously running.
 
 Rebooting, Power Cycling, and Open CAS Linux Autostart
@@ -89,12 +89,12 @@ always of paramount consideration.
 In order to stop all cache instances which are configured via the
 *opencas.conf* file, the user should execute the following:
 
->   \# intelcas stop
+>   \# casctl stop
 
 If the operating Open CAS Linux mode is write-back mode and dirty data may exist
 within the caching environment, Open CAS Linux must be stopped using:
 
->   \# intelcas stop --flush
+>   \# casctl stop --flush
 
 The most common reason for corrupt data or other data irregularities within an
 Open CAS Linux environment is improper accounting for dirty data as part of a system
@@ -113,7 +113,7 @@ Disabling Open CAS Linux
 In order to disable Open CAS Linux on one or more devices, the user should perform
 either of the following operations:
 
-1.  Stop caching via intelcas stop (--flush as appropriate). Remove or comment
+1.  Stop caching via casctl stop (--flush as appropriate). Remove or comment
     devices from the *opencas.conf* file. Perform system restart.
 
 2.  Stop caching or remove cores using casadm -T or casadm -R commands. Remove
@@ -197,7 +197,7 @@ Cases where Open CAS Linux will *return data* and *continue processing IO* inclu
     operation
 
 Cases where Open CAS Linux will *return an error* to the calling application and
-*stop processing IO* for any exported devices (e.g. intelcas1-1) served by the
+*stop processing IO* for any exported devices (e.g. cas1-1) served by the
 cache SSD on which the IO error occurred include *cache device IO* errors when
 attempting to:
 

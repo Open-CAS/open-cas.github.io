@@ -53,7 +53,7 @@ Before you begin installation, log on as an administrator or verify that you
 have the requisite privileges to install software. You must have “root”
 privileges or login as “root” in order to proceed.
 
-1.  Download or copy the Open CAS Linux installer file to a directory on the target
+1.  Download or clone the Open CAS Linux source files to a directory on the target
     system. The installation instructions use the example of \~ or \~/
     (equivalent of \$HOME) on the server file system. Optionally, Open CAS Linux can
     be cloned with:
@@ -61,7 +61,6 @@ privileges or login as “root” in order to proceed.
 
 2. Change current directory to project folder and update submodules
 > cd open-cas-linux   
-> git submodule update --init
 
 3. Compile Open CAS Linux
 > make  

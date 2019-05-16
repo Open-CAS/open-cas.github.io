@@ -24,7 +24,7 @@ improvement compared to traditional LRU eviction).
 The IO classification is configured using an IO classification file. The table
 below summarizes the configurable fields in this IO classification file.
 
-Table 5: IO Class Configuration File Fields
+**IO Class Configuration File Fields**
 
 | **Field**         | **Description**                                                                                                                                                                                                                                       |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -37,14 +37,14 @@ IO class names can consist of user-specified rules to satisfy. Multiple
 conditions can be combined using logical operators and can be fine-tuned using
 arithmetic operators. The available operators and names are specified below.
 
-Table 6: IO Class Configuration File Logical Operators
+**IO Class Configuration File Logical Operators**
 
 | **Operator** | **Description** |
 |--------------|-----------------|
 | &            | Logical and     |
 | \|           | Logical or      |
 
-Table 7: IO Class Configuration File Arithmetic Operators
+**IO Class Configuration File Arithmetic Operators**
 
 | **Operator** | **Description**          |
 |--------------|--------------------------|
@@ -55,7 +55,7 @@ Table 7: IO Class Configuration File Arithmetic Operators
 | le           | Less than or equal to    |
 | ge           | Greater than or equal to |
 
-Table 8: Available IO Class Names and Conditions
+**Available IO Class Names and Conditions**
 
 | **IO Class Name** | **Description**                                                                                                                         |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -71,7 +71,7 @@ shows IO class 0 is unclassified and has a high eviction priority of 22 to
 ensure unclassified data is evicted last. The allocation of 1 specifies this
 data type is cachable.
 
-Table 9: IO Class Configuration File Structure
+**IO Class Configuration File Structure**
 
 | **IO Class** | **IO Class Name** | **Eviction Priority** | **Allocation** |
 |--------------|-------------------|-----------------------|----------------|
@@ -175,13 +175,17 @@ form a new classification rule:
 
 IO class name length limit is 1024 characters. If exceeded, IO class
 configuration will fail. The valid IO class id range is 0-32. Please note that
-multiple classification rules must be combined using the same logical operator
-(for example, metadata\|file_size:lt:4096\|io_class:3 only uses the “\|”
-operator. Or in another example, file_size:gt:4096&file_size:lt:40960&io_class:3
-only uses the “&” operator). Rules with more than one logical operator will lead
-to an unmatched evaluation (for example, metadata\|file_size:lt:4096&io_class:3
-will lead to an undefined condition evaluation due to the use of both “&” and
-“\|” operators). The keyword “*&done*” can always be added at the end of any
+multiple classification rules must be combined using the same logical operator.
+For example, *metadata\|file_size:lt:4096\|io_class:3* only uses the "**\|**"
+operator. Or in another example, *file_size:gt:4096&file_size:lt:40960&io_class:3*
+only uses the "**&**" operator.  
+
+Rules with more than one logical operator will lead
+to an unmatched evaluation (for example, *metadata\|file_size:lt:4096&io_class:3*
+will lead to an undefined condition evaluation due to the use of both "**&**" and
+"**\|**" operators).  
+
+The keyword **&done** can always be added at the end of any
 valid combined rule. Note that the classifier is unable to further categorize IO
 when it is in direct mode, therefore, IO classified as direct cannot jointly
 classify other conditions such as file_size or directory.

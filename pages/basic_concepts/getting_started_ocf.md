@@ -29,9 +29,8 @@ OCF is hosted in this [**GitHub repository**](https://github.com/Open-CAS/ocf).
 1. First clone the OCF project
    > ```git clone https://github.com/Open-CAS/ocf```
 
-2. Change the current directory to the project folder and update submodules
+2. Change the current directory to the project folder
    > ```cd ocf```   
-   > ```git submodule update --init```
 
 3. Change directories to example application and compile it
    > ```cd example/simple```  

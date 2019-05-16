@@ -41,7 +41,7 @@ invalid).
 
 **Required Parameters:**
 
-*[-d, --cache-device \<DEVICE\>] :* Caching device to be used. This is an SSD or
+**[-d, --cache-device \<DEVICE\>] :** Caching device to be used. This is an SSD or
 any NVM block device or RAM disk shown in the */dev* directory. \<device\> needs
 to be the complete path describing the caching device to be used, for example
 /dev/sdc.
@@ -51,14 +51,14 @@ to be the complete path describing the caching device to be used, for example
 **[-i, --cache-id \<ID\>]:** Cache ID to create; \<1 to 16384\>. The ID may be
 specified or by default the command will use the lowest available number first.
 
-*[-l, --load]:* Load existing cache metadata from caching device. If the cache
+**[-l, --load]:** Load existing cache metadata from caching device. If the cache
 device has been used previously and then disabled (like in a reboot) and it is
 determined that the data in the core device has not changed since the cache
 device was used, this option will allow continuing the use of the data in the
 cache device without the need to re-warm the cache with data.
 
 - *Caution:* You must ensure that the last shutdown followed the instructions
-in Stopping Cache Instances on page 24 of this document. If there was any
+in section [**Stopping Cache Instances**](/guide_running.html#stopping-cache-instances). If there was any
 change in the core data prior to enabling the cache, data would be not
 synced correctly and will be corrupted.
 
@@ -69,7 +69,7 @@ utilized as a cache device.
  - *Caution:* This will delete the file system and any existing data on the
  cache device.
 
-*[-c, --cache-mode \<NAME\>]:* Sets the cache mode for a cache instance the
+**[-c, --cache-mode \<NAME\>]:** Sets the cache mode for a cache instance the
 first time it is started or created. The mode can be one of the following:
 
  *wt:* (default mode) Turns write-through mode on. When using this parameter,
@@ -94,9 +94,9 @@ first time it is started or created. The mode can be one of the following:
  this mode. This allows the user to associate all their desired core devices
  to be cached prior to actually enabling caching. Once the core devices are
  associated, the user would dynamically switch to their desired caching mode
- (see ‘-Q \| --set-cache-mode’ on page 41 for details).
+ (see ‘-Q \| --set-cache-mode’ for details).
 
-*[-x, --cache-line-size \<SIZE\>]:* Set cache line size {4 (default), 8, 16, 32,
+**[-x, --cache-line-size \<SIZE\>]:** Set cache line size {4 (default), 8, 16, 32,
 64}. The cache line size can only be set when starting the cache and cannot be
 changed after cache is started.
 
@@ -120,7 +120,7 @@ or
 
 **Optional parameters:**
 
-*[-n, --no-data-flush]:* Do not flush dirty data on exit (UNSAFE). This
+**[-n, --no-data-flush]:** Do not flush dirty data on exit (UNSAFE). This
 parameter will not allow the flushing of dirty data from the cache device to the
 core device upon the stopping of the cache. This will significantly reduce the
 time needed to stop the cache to allow for activities such as a fast reboot. The
@@ -170,7 +170,7 @@ is running.
 
 **[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
 
-**[-f, --flush-cache]: (required only when switching from write-back mode)**
+**[-f, --flush-cache]:** (required only when switching from write-back mode)
 
 *Caution:* You should carefully consider the following choices.
 
@@ -218,7 +218,7 @@ You must use the complete device path in the /dev directory, for example
 
 **Optional Parameters:**
 
-*[-j, --core-id \<ID\>]:* Unique identifier for core \<0 to 4095\>.
+**[-j, --core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.
 
 \-R \| --remove-core
 --------------------
@@ -258,7 +258,7 @@ casadm -L command.
 
 **Optional parameters:**
 
-*[-f, --force]:* Do not flush dirty data while removing the core device.
+**[-f, --force]:** Do not flush dirty data while removing the core device.
 
 \--remove-detached
 ------------------
@@ -279,7 +279,7 @@ NVMe drive). This command does not currently have a short form.
 
 **Required Parameters:**
 
-*-d \| --device \<DEV_NAME\>*
+**-d \| --device \<DEV_NAME\>**
 
 Where DEV_NAME is a device name from the core pool
 
@@ -340,7 +340,7 @@ or
 >   \# casadm -P -i 1
 
 **Description:** Prints performance and status counters for a specific cache
-instance. Section 8.1 Viewing Cache Statistics shows the detailed output.
+instance. The section [**Viewing Cache Statistics**](/guide_monitoring.html#viewing-cache-statistics) shows the detailed output.
 
 **Required Parameters:**
 
@@ -348,17 +348,17 @@ instance. Section 8.1 Viewing Cache Statistics shows the detailed output.
 
 **Optional Parameters:**
 
-*[-j, --core-id \<ID\>]*: Unique identifier for core \<0 to 4095\>. Display
+**[-j, --core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. Display
 statistics for a specific core device.
 
-*[-d, --io-class-id \<ID\>]*: Unique identifier for io class \<0 to 23\>.
+**[-d, --io-class-id \<ID\>]**: Unique identifier for io class \<0 to 23\>.
 Display statistics for a specific IO class.
 
 -  \<ID\> is optional. When the --io-class-id parameter is specified without
     specifying an \<ID\>, statistics will be displayed for each individual IO
     class.
 
-*[-f, --filter \<filter-spec\>]*: Comma separated list of filters (e.g.,
+**[-f, --filter \<filter-spec\>]**: Comma separated list of filters (e.g.,
 --filter conf, req). Filter statistics output to only the requested statistics.
 
 -   *all:* (default mode) Displays all available cache statistics.
@@ -374,7 +374,7 @@ Display statistics for a specific IO class.
 
 -   *err:* Displays IO error statistics.
 
-*[-o, --output-format \<format\>]*: Sets desired output format for statistics.
+**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -460,7 +460,7 @@ Status                    Incomplete
 +--------------------+-------+-----+----------+
 | Total errors       |     0 | 0.0 | Requests |
 +====================+=======+=====+==========+
-</pre>
+
 
 \-Z \| --reset-counters
 -----------------------
@@ -577,7 +577,7 @@ version numbers.
 
 **Optional parameters:**
 
-*[-o, --output-format \<format\>]*: Sets desired output format of the IO class
+**[-o, --output-format \<format\>]**: Sets desired output format of the IO class
 configuration.
 
 -   *table:* (default mode) Displays a table of the IO class configuration.
@@ -608,7 +608,7 @@ configuration.
 
 **[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-*[-f,--file]:* Specifies the IO class configuration csv file to load.
+**[-f,--file]:** Specifies the IO class configuration csv file to load.
 
 ###  -L \| --list
 
@@ -630,7 +630,7 @@ specified cache ID.
 
 **Optional parameters:**
 
-*[-o, --output-format \<format\>]*: Sets desired output format of the IO class
+**[-o, --output-format \<format\>]**: Sets desired output format of the IO class
 configuration.
 
 -   *table:* (default mode) Displays a table of the IO class configuration.
@@ -656,18 +656,18 @@ of Intel(R) SSDs.
 
 **Required parameters:**
 
-*[-F, --format, \<atomic \| normal\>]:* Sets the formatting to “atomic” to use
+**[-F, --format, \<atomic \| normal\>]:** Sets the formatting to “atomic” to use
 for atomic writes, or normal which does not use this feature. After formatting,
 a reboot is required.
 
-*[-d, --device \<DEVICE\>] :* Caching device to be used. This is an NVMe block
+**[-d, --device \<DEVICE\>] :** Caching device to be used. This is an NVMe block
 device listed in the */dev* directory. \<device\> needs to be the complete path
 describing the caching device to be used, for example /dev/sdg. Formatting of
 non-NVMe devices is not supported.
 
 **Optional parameters:**
 
-*[-f, --force]*: Forces the SSD format to proceed, for example if the device has
+**[-f, --force]**: Forces the SSD format to proceed, for example if the device has
 an existing file system, outdated Open CAS Linux metadata, or partition table.
 
 \-X \| --set-param
@@ -699,7 +699,7 @@ reads or writes.
 
 **[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-*[-p, --policy \<POLICY\>]:* Sequential cutoff policy to be implemented.
+**[-p, --policy \<POLICY\>]:** Sequential cutoff policy to be implemented.
 
 *Seq-cutoff policies:*
 
@@ -712,12 +712,12 @@ reads or writes.
 -   *never* - sequential cutoff is disabled and will not be triggered;
     sequential data is handled using current cache policy.
 
-*[-t, --threshold \<THRESHOLD\>]:* a value from range 1-4194181 (inclusive).
+**[-t, --threshold \<THRESHOLD\>]:** a value from range 1-4194181 (inclusive).
 Threshold is expressed in KiB.
 
 **Optional parameters:**
 
-*[-j, --core-id \<ID\>]*: Unique identifier for core \<0 to 4095\>. If not
+**[-j, --core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. If not
 specified, core parameter is set to all cores in a given cache.
 
 ###  cleaning
@@ -744,7 +744,7 @@ data.
 
 **[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-*[-p, --policy \<POLICY\>]:* Flushing policy to be used.
+**[-p, --policy \<POLICY\>]:** Flushing policy to be used.
 
 *Cleaning policies:*
 
@@ -780,10 +780,10 @@ flushing policy to be used for the applicable cache instance.
 
 **NOTE:** -w and -b parameters aren't both required. At least one is required.
 
-*[-w, --wake-up \<NUM\>]:* Period of time between awakenings of flushing thread
+**[-w, --wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
 in milliseconds. MIN: 0, MAX: 10000 (inclusive), DEFAULT: 10.
 
-*[-b, --flush-max-buffers \<NUM*\>]: Number of dirty cache blocks to be flushed
+**[-b, --flush-max-buffers \<NUM\>]:** Number of dirty cache blocks to be flushed
 in one cleaning cycle. MIN: 1, MAX: 10000 (inclusive), DEFAULT: 128.
 
 ###  cleaning-alru
@@ -808,17 +808,17 @@ alru flushing policy to be used for the applicable cache instance.
 **NOTE:** -w, -s, -b, and -t parameters aren't all required. At least one is
 required.
 
-*[-w, --wake-up \<NUM\>]:* Period of time between awakenings of flushing thread
+**[-w, --wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
 in seconds. MIN: 1, MAX: 3600, DEFAULT: 20.
 
-*[-s, --staleness-time \<NUM\>]:* Time that has to pass from the last write
+**[-s, --staleness-time \<NUM\>]:** Time that has to pass from the last write
 operation before a dirty cache block can be scheduled to be flushed in seconds.
 MIN: 1, MAX: 3600, DEFAULT: 120.
 
-*[-b, --flush-max-buffers \<NUM\>]:* Number of dirty cache blocks to be flushed
+**[-b, --flush-max-buffers \<NUM\>]:** Number of dirty cache blocks to be flushed
 in one cleaning cycle. MIN: 1, MAX: 10000, DEFAULT: 100.
 
-*[-t, --activity-threshold \<NUM\>]:* Cache idle time before flushing thread can
+**[-t, --activity-threshold \<NUM\>]:** Cache idle time before flushing thread can
 start in milliseconds. MIN: 500, MAX: 1000000, DEFAULT: 10000.
 
 \-G \| --get-param
@@ -850,11 +850,11 @@ returned: Sequential Cutoff Threshold and Sequential Cutoff Policy.
 
 **Optional Parameters:**
 
-*[-j, --core-id \<ID\>]*: Unique identifier for core \<0 to 4095\>. Display
+**[-j, --core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. Display
 statistics for a specific core device. If not specified, core parameter is set
 to all cores in a given cache.
 
-*[-o, --output-format \<format\>]*: Sets desired output format for statistics.
+**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -883,7 +883,7 @@ returned: Cleaning Policy Type.
 
 **Optional Parameters:**
 
-*[-o, --output-format \<format\>]*: Sets desired output format for statistics.
+**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -912,7 +912,7 @@ Time and Flush Max Buffers.
 
 **Optional Parameters:**
 
-*[-o, --output-format \<format\>]*: Sets desired output format for statistics.
+**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -941,7 +941,7 @@ Time, Flush Max Buffers, Stale Buffer Time, and Activity Threshold.
 
 **Optional Parameters:**
 
-*[-o, --output-format \<format\>]*: Sets desired output format for statistics.
+**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 

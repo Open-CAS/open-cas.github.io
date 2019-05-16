@@ -22,12 +22,11 @@ Open CAS Linux uses a small amount of system memory for metadata, which tells us
 which data is in the SSD, which is in the HDD. The amount of memory needed is
 proportional to the size of the cache space. This is true for any caching
 software solution. However with Open CAS Linux this memory footprint can be decreased
-using the variable cache line parameter (--cache-line-size) which may be useful
-and more cost effective in high density servers with many large HDDs.
+using a larger cache line size set by the parameter *--cache-line-size* which may be useful in high density servers with many large HDDs.
 
 **Does Open CAS Linux work with non-Intel® SSDs?**
 
-Yes, however we validate only on Intel SSDs. In addition Open CAS Linux utilizes the
+Yes, however we validate only on Intel(R) SSDs. In addition Open CAS Linux utilizes the
 features of Intel SSD to provide improved performance and functionality that may
 not be available with third party products. Open CAS Linux is also favorably priced
 when purchased with Intel SSDs.
@@ -61,14 +60,12 @@ as its cache. As such, there is no way to look at the files it has cached.
 
 **How do I delete all the Open CAS Linux installation files?**
 
-Stop the Open CAS Linux software as described in Stopping Cache Instances on page 24,
-then uninstall the software as described in Section 3.6 Uninstalling the
-Software.
+Stop the Open CAS Linux software as described in the section [**Stopping Cache Instances**](/guide_running.html#stopping-cache-instances),
+then unload any CAS kernel modules and remove the source files.
 
 **Does Open CAS Linux support write-back caching?**
 
-Yes. Open CAS Linux v2.6 and newer supports write-back caching. See Manual
-Configuration for Write-back Mode on page 20 for details.
+Yes. Open CAS Linux v2.6 and newer supports write-back caching. See the section [**Manual Configuration for Write-Back Mode**](/guide_configuring.html#manual-configuration-for-write-back-mode) for details.
 
 **Must I stop caching before adding a new pair of cache/core devices?**
 

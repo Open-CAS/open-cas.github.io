@@ -42,7 +42,7 @@ used.
 
 The following tables list the statistics (counters) that Open CAS Linux records:
 
-Table 8: Usage Statistics
+**Usage Statistics**
 
 | **Statistic** | **Description**                                                            |
 |---------------|----------------------------------------------------------------------------|
@@ -51,8 +51,8 @@ Table 8: Usage Statistics
 | Clean         | Number of clean blocks (cache data matches core data)                      |
 | Dirty         | Number of dirty blocks (block written to cache but not yet synced to core) |
 
-Table 9: Inactive Usage Statistics (printed only in special cases, such as when
-a core is detached from cache)
+**Inactive Usage Statistics (printed only in special cases, such as when
+a core is detached from cache)**
 
 | **Statistic**                    | **Description**                                                                     |
 |----------------------------------|-------------------------------------------------------------------------------------|
@@ -60,7 +60,7 @@ a core is detached from cache)
 | Inactive Clean [4KiB Blocks]     | Number of inactive clean blocks (cache data matches core data)                      |
 | Inactive Dirty [4KiB Blocks]     | Number of inactive dirty blocks (block written to cache but not yet synced to core) |
 
-Table 10: Request Statistics
+**Request Statistics**
 
 | **Statistic**        | **Description**                                                                                                                                                                                                                  |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,7 +80,7 @@ Table 10: Request Statistics
 Percentages are calculated as percentage of total requests. (e.g. Read Hits % =
 100\*(\# read hits / total requests)).
 
-Table 11: Block Statistics
+**Block Statistics**
 
 | **Statistic**                    | **Description**                                                   |
 |----------------------------------|-------------------------------------------------------------------|
@@ -90,11 +90,11 @@ Table 11: Block Statistics
 | Reads from cache                 | Number of blocks read from cache device                           |
 | Writes to cache                  | Number of blocks written to cache device                          |
 | Total to/from cache              | Total number of blocks read from or written to cache device       |
-| Reads from exported object(s)    | Number of blocks read from exported object(s) (eg. intelcas1-1)   |
+| Reads from exported object(s)    | Number of blocks read from exported object(s) (eg. cas1-1)   |
 | Writes to exported object(s)     | Number of blocks written to exported object(s)                    |
 | Total to/from exported object(s) | Total number of blocks read from or written to exported object(s) |
 
-Table 12: Error Statistics
+**Error Statistics**
 
 | **Statistic**      | **Description**                                                   |
 |--------------------|-------------------------------------------------------------------|
@@ -106,7 +106,7 @@ Table 12: Error Statistics
 | Core total errors  | Total number of read or write errors to the core device(s)        |
 | Total errors       | Total number of read or write errors to the cache or core devices |
 
-Viewing Cache Statistics
+**Viewing Cache Statistics**
 ------------------------
 
 Usage example for cache-level statistics:
@@ -188,7 +188,7 @@ Status                    Running
 ╟────────────────────┼───────┼─────┼──────────╢
 ║ Total errors       │     0 │ 0.0 │ Requests ║
 ╚════════════════════╧═══════╧═════╧══════════╝
-</pre>
+
 
 Usage example for core-level statistics:
 
@@ -198,7 +198,7 @@ Returned output:
 >  <pre>
 Core Id         		1
 Core Device     		/dev/sdd1
-Exported Object 		/dev/intelcas1-1
+Exported Object 		/dev/cas1-1
 Status             	Active
 Seq cutoff threshold 	1024 [KiB]
 Seq cutoff policy    	full
@@ -259,7 +259,7 @@ Dirty for       		0 [s] / Cache clean
 ╟────────────────────┼───────┼─────┼──────────╢
 ║ Total errors       │     0 │ 0.0 │ Requests ║
 ╚════════════════════╧═══════╧═════╧══════════╝
-</pre>
+
 
 Usage example for IO class-level statistics:
 
@@ -305,7 +305,7 @@ Selective allocation Yes
 ╟──────────────────┼─────────┼─────┼─────────────╢
 ║ Blocks writes    │ 9007260 │ 7.6 │ 4KiB blocks ║
 ╚══════════════════╧═════════╧═════╧═════════════╝
-</pre>
+
 
   This command will output the above format for each defined IO class.
 

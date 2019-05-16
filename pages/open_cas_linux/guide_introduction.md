@@ -25,7 +25,7 @@ nature of the integration provides a cache solution that is transparent to
 users, applications, and your existing storage infrastructure. No storage
 migration or application changes are required.
 
-As shown in Figure 1, initial read data is retrieved from backend storage and
+As shown in the figure below, initial read data is retrieved from backend storage and
 copied to the Open CAS Linux cache. A second read promotes data to system memory.
 Subsequent reads are returned at high-performance RAM or flash speed. In
 Write-through mode, all data is written synchronously to both the backend
@@ -36,19 +36,10 @@ proprietary eviction algorithm.
 
 
 ![alt text](images/guide_figure1.jpg "Figure 1")
-**Figure 1: Block Diagram - Write-through and Write-back modes**  
+**Block Diagram - Write-through and Write-back modes**  
 
 Open CAS Linux, by default, employs a block-based caching architecture that caches
 all of the activity on the selected core device.
-
-New Features in this Release
-----------------------------
-
-The 3.8 release introduces the following new features:
-
--   **Maximum I/O Size Enhancement**. The maximum I/O size exposed on by Open
-    CAS Linux is now inherited from the core device only instead of the smaller value
-    from cache and core devices.
 
 Documentation Conventions
 -------------------------
@@ -72,7 +63,7 @@ Refer to the resources and tools listed in the following table for assistance
 with Open CAS Linux testing and operations, or to learn more about caching and
 application IO performance management.
 
-Table 1: Reference Documents
+Reference Documents
 
 | **Name**                        | **Location**                                                      |
 |---------------------------------|-------------------------------------------------------------------|

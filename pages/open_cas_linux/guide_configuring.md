@@ -57,7 +57,7 @@ file:
   >> \#\# Cache ID Cache device Cache mode Extra fields (optional)
   >>
   >> 1 /dev/disk/by-id/nvme-INTEL_SSD WT
-  >> ioclass_file=/etc/intelcas/ioclass-config.csv
+  >> ioclass_file=/etc/opencas/ioclass-config.csv
   >>
   >> \#\# Core devices configuration
   >>
@@ -85,7 +85,7 @@ Further details are available in the complete default
 >> version=19.03.00  
 >> \# Version tag has to be first line in this file   
 >>
->> \# Intel(R) CAS configuration file - for reference on syntax  
+>> \# Open CAS configuration file - for reference on syntax  
 >> \# of this file please refer to appropriate documentation  
 >>
 >> \# NOTES:  
@@ -110,7 +110,7 @@ Further details are available in the complete default
 >>
 >> \## To specify use of the IO Classification file, place content of the following line in the  
 >> \## Caches configuration section under Extra fields (optional)  
->> \## ioclass_file=/etc/intelcas/ioclass-config.csv  
+>> \## ioclass_file=/etc/opencas/ioclass-config.csv  
 
 
 Field details:
@@ -188,7 +188,7 @@ The following is assumed for the subsequent instructions:
 -   The core device (primary storage) to be cached is */dev/sdb*.
 
 -   The core device may contain a filesystem (with or without data) or may be a
-   raw block device. See System Requirements on page 9 for specific file system
+   raw block device. See system requirements for specific file system
    types and limitations for Open CAS Linux. Ensure that the device is not mounted.
 
 -   If necessary, perform an *ls -l* or *ll* on the */dev/disk/by-uuid* or
@@ -244,7 +244,7 @@ read intensive operations.
 -   The *add-core* command creates a new device in the */dev* directory with the
    following name format:
 
->   intelcas\<cache ID\>-\<core \#\> for example: */dev/cas1-1.*
+>   cas\<cache ID\>-\<core \#\> for example: */dev/cas1-1.*
 
 -   This new device can be treated as a regular block device.
 
@@ -334,8 +334,8 @@ Open CAS Linux will automatically hide the existing core device partitions (ex.
 the exported device (e.g. */dev/cas1-1p1*, */dev/cas1-1p2*, etc.), and
 make the exported device a child of the core device.
 
-Table 6: Comparison of logical device layout before and after Open CAS Linux
-acceleration
+**Comparison of logical device layout before and after Open CAS Linux
+acceleration**
 
 | **Before**      | **After**                 |
 |-----------------|---------------------------|
@@ -381,7 +381,7 @@ exist.
 
 Mount an Open CAS Linux exported device:
 
->   \# mount -t xfs /dev/intelcas1-1p1 /mnt/cache1
+>   \# mount -t xfs /dev/cas1-1p1 /mnt/cache1
 
 1.  Open CAS Linux ensures that no changes are required to the application; it can
     use the same file system mount point (for example, */local/data*) as the
@@ -410,5 +410,5 @@ that exported devices have been configured to agree with the contents of the
 >   \# cat /etc/fstab
 
 >>   ...  
->>   /dev/intelcas1-1p1 /mnt/cache1 xfs defaults 0 0  
->>   /dev/intelcas1-2p1 /mnt/cache2 xfs defaults 0 0
+>>   /dev/cas1-1p1 /mnt/cache1 xfs defaults 0 0  
+>>   /dev/cas1-2p1 /mnt/cache2 xfs defaults 0 0
