@@ -161,8 +161,7 @@ In using casadm, it is important to understand certain restrictions:
 
 If you launch the configuration utility via casadm -H, a list of command line
 options and arguments is returned. For more detailed information on the
-different command line options, see Configuration Tool Details section of this
-document.
+different command line options, see the section [Configuration Tool Details](/guide_tool_details.html#configuration-tool-details).
 
 For Open CAS Linux configuration, note that the term “cache device” refers to the
 SSD/NVMe device or RAM disk that is used for caching data from a slower device,
@@ -174,7 +173,7 @@ Using the Configuration Utility
 While configuration of Open CAS Linux via the *opencas.conf* file is highly
 recommended, the following sections detail how to manually configure Open CAS Linux
 options using casadm. For more details on available commands for the casadm
-utility, see Configuration Tool Details section.
+utility, see the section [Configuration Tool Details](/guide_tool_details.html#configuration-tool-details).
 
 The following is assumed for the subsequent instructions:
 
@@ -363,11 +362,11 @@ device (*casX-Y*) as the process can be very slow.
 
 **Format the core device as ext4**
 
-mkfs.ext4 /dev/sdb1
+> \# mkfs.ext4 /dev/sdb1
 
 **Format the core device as xfs**
 
-mkfs.xfs -f /dev/sdb1
+> \# mkfs.xfs -f /dev/sdb1
 
 Once the cache instance has been started and core devices added, the Open CAS Linux
 exported name can be used for the mount function. The device designation of

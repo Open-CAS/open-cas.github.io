@@ -40,10 +40,10 @@ device. If desired, the user can change the IO schedulers of the virtual block
 device and primary storage device independently after the virtual block device
 is created.
 
-1.  Mounting file systems by label, such as in */etc/fstab*, should not be used
-    in older SysV based operating systems (RHEL 6.x, CentOS 6.x, etc) because it
-    interferes with proper startup of Open CAS Linux. This is due to the file system
-    already being mounted by the operating system when Open CAS Linux tries to start.
+**NOTE:** Mounting file systems by label, such as in */etc/fstab*, should not be used
+in older SysV based operating systems (RHEL 6.x, CentOS 6.x, etc) because it
+interferes with proper startup of Open CAS Linux. This is due to the file system
+already being mounted by the operating system when Open CAS Linux tries to start.
 
 
 Code compilation

@@ -39,7 +39,7 @@ applications and system, including:
 
 -   FIO (<http://freecode.com/projects/fio>)
 
--   dt (<http://www.scsifaq.org/RMiller_Tools/dt.html>) for disk access
+-   dt (<https://github.com/RobinTMiller/dt>) for disk access
     simulations
 
 **Is it possible to experience slower than HDD performance when using caching?**
@@ -142,8 +142,8 @@ Check /var/log/messages and dmesg for standard Linux device IO errors.
 All events are logged in the standard Open CAS Linux system logs. Use the *dmesg*
 command or inspect the */var/log/messages* file.
 
-To log all messages during testing or kernel debugging, use the command echo 8
-\> /proc/sys/kernel/printk.
+To log all messages during testing or kernel debugging, use the command:
+>\# echo 8 \> /proc/sys/kernel/printk.
 
 Typical log sample of successful cache initialization:
 >> Cache line size: 64 KiB  

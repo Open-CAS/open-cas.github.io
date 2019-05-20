@@ -22,7 +22,7 @@ the application server, thus reducing storage latency.
 
 Open CAS Linux installs into the Linux operating system as a kernel module. The
 nature of the integration provides a cache solution that is transparent to
-users, applications, and your existing storage infrastructure. No storage
+users, applications and your existing storage infrastructure. No storage
 migration or application changes are required.
 
 As shown in the figure below, initial read data is retrieved from backend storage and
@@ -67,7 +67,7 @@ Reference Documents
 
 | **Name**                        | **Location**                                                      |
 |---------------------------------|-------------------------------------------------------------------|
-| DT generic data testing program | <http://www.scsifaq.org/RMiller_Tools/dt.html>                    |
+| DT generic data testing program | <https://github.com/RobinTMiller/dt>                    |
 | FIO                             | <https://github.com/axboe/fio>                                    |
 | Vdbench                         | [http://vdbench.sourceforge.net](http://vdbench.sourceforge.net/) |
 
