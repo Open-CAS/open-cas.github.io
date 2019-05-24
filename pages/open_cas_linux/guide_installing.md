@@ -62,20 +62,17 @@ privileges or login as “root” in order to proceed.
 2. Change current directory to project folder and update submodules
 > cd open-cas-linux   
 
-3. Compile Open CAS Linux
-> make  
+3. Configure Open CAS Linux
+> ./configure
 
-4. The main outputs of the compilation will be :
+4. Compile Open CAS Linux and install it
+> make install
+
+5. The main outputs of the compilation will be :
   - cas_disk.ko  - CAS Disk Kernel Module
   - cas_cache.ko - CAS Cache Kernel module
   - casadm       - CAS Administration Tool
+  Note that the kernel modules will be inserted during the installation phase
 
-5. Insert kernel modules
-> insmod modules/cas_disk/cas_disk.ko   
-> insmod modules/cas_cache/cas_cache.ko
-
-6. Verify casadm shows kernel module versions
-> casadm/casadm -V
-
-Optionally, set the kernel modules to autoload and copy executables to a directory in your PATH.  
-See your operating system man pages if additional instructions are needed.
+6. Verify casadm shows the inserted kernel module versions
+> casadm -V

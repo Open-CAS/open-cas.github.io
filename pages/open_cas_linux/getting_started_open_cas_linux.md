@@ -22,25 +22,21 @@ The Open CAS Linux project is hosted in this [**GitHub repository**](https://git
 3. Configure Open CAS Linux
     > ```./configure```
 
-4. Compile Open CAS Linux
-   > ```make```
+4. Compile Open CAS Linux and install it
+   > ```make install```  
 
-5. Insert kernel modules
-   > ```insmod modules/cas_disk/cas_disk.ko```   
-   > ```insmod modules/cas_cache/cas_cache.ko```
+5. Verify the kernel modules were inserted by checking their versions
+   > ```casadm -V```
 
-6. Verify kernel module versions
-   > ```casadm/casadm -V```
+6. CAS should now be ready to start. For example, to use block device /dev/nvme0n1 as a caching device:
+ > ```casadm -S -d /dev/nvme0n1```
 
-7. CAS should now be ready to start. For example, to use block device /dev/nvme0n1 as a caching device:
- > ```casadm/casadm -S -d /dev/nvme0n1```
-
-8. The output should return the cache instance number, use it to add a backend device.
+7. The output should return the cache instance number, use it to add a backend device.
 For example, to use block device /dev/sda1 as a backend device to cache instance 1:
- > ```casadm/casadm -A -d /dev/sda1 -i 1```
+ > ```casadm -A -d /dev/sda1 -i 1```
 
-9. Verify CAS instance is operational with:
-  > ```casadm/casadm -L```
+8. Verify CAS instance is operational with:
+  > ```casadm -L```
 
 The output should state status is *Running*.
 Additionally, a command to list block devices such as ```lsblk``` should show the exported CAS device for example */dev/cas1-1*
