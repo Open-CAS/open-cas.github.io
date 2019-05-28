@@ -47,7 +47,7 @@ naming format:
 -   */dev/cas1-2* will be created associated with *\<cache_id\>=1*, second core device.  
    (For example: */dev/sdb*)
 
-Display cache listing via casadm -L:
+Display cache listing via `casadm -L`:
 
 > \# casadm -L
 > type id disk status write policy device
@@ -65,7 +65,7 @@ Multi-Level Caching
 
 Open CAS Linux supports multi-level caching. For example, this enables the user to
 cache warm data from slow HDD media to faster SSD media, and then cache hot data
-from the SSD to an even faster media such as a RAMdisk. In this case, a fixed
+from the SSD to an even faster media such as a RAMdisk or Intel(R) Optane(TM) SSDs. In this case, a fixed
 portion of DRAM will be allocated for buffering, and the SSD will remain as a
 fully inclusive cache so DRAM cache data will always be available on the SSD.
 
@@ -270,8 +270,6 @@ The command syntax is:
 to Open CAS Linux only. In other words, the SSD cannot be partitioned to be used for
 other purposes such as Ceph journals, etc.
 
-**NOTE:** Atomic writes are only supported in RHEL 7.5 systems.
-
 **NOTE:** Reboot the server after formatting the NVMe\* devices and before any
 further changes are made to the system.
 
@@ -293,17 +291,6 @@ use_io_scheduler.
 
     +   Possible values: 0 - handle unaligned requests using PT mode, or 1 - handle
         unaligned requests using current cache mode (default)
-
-*   **seq_cut_off_mb:** This parameter sets the default seq-cutoff value. Once
-    this value is set, then caching started and core(s) added, cores will by
-    default have their seq-cutoff parameter set to this value. Setting
-    non-default value is done using --set-param -n seq-cutoff. Value is
-    expressed in **megabytes**. Sequential cut off disables caching of
-    sequential IO requests. If Open CAS Linux detects sequential data with size above
-    value controlled by this parameter it stops caching this data.
-
-    +   Possible values: 0 - sequential cut off is disabled, 1 or larger -
-        sequential cut off threshold in megabytes (default is 1)
 
 *   **metadata_layout:** This parameter enables user to specify layout of
     metadata on SSD. This is an advanced parameter for **controlling** Open CAS Linux

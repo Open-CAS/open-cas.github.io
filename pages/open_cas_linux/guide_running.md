@@ -24,7 +24,7 @@ follow these steps:
 
 2. Execute the following:
 
->   \# utils/casctl init
+>   \# casctl init
 
 Open CAS Linux will read contents of the *opencas.conf* file, initialize the
 cache/core pairings, and place caches/core devices into an operational or active
@@ -114,10 +114,10 @@ In order to disable Open CAS Linux on one or more devices, the user should perfo
 either of the following operations:
 
 1.  Stop caching via casctl stop (--flush as appropriate). Remove or comment
-    devices from the *opencas.conf* file. Perform system restart.
+    devices from the *opencas.conf* file.  
 
 2.  Stop caching or remove cores using casadm -T or casadm -R commands. Remove
-    or comment devices from the *opencas.conf* file. Perform system restart.
+    or comment devices from the *opencas.conf* file.  
 
 Handling an Unplanned Shutdown
 ------------------------------

@@ -18,8 +18,8 @@ Post a new issue at the following URL:
 
 **Why does Open CAS Linux use some DRAM space?**
 
-Open CAS Linux uses a small amount of system memory for metadata, which tells us
-which data is in the SSD, which is in the HDD. The amount of memory needed is
+Open CAS Linux uses a portion of system memory for metadata, which tells us
+where data resides. The amount of memory needed is
 proportional to the size of the cache space. This is true for any caching
 software solution. However with Open CAS Linux this memory footprint can be decreased
 using a larger cache line size set by the parameter *--cache-line-size* which may be useful in high density servers with many large HDDs.
@@ -27,9 +27,8 @@ using a larger cache line size set by the parameter *--cache-line-size* which ma
 **Does Open CAS Linux work with non-Intel® SSDs?**
 
 Yes, however we validate only on Intel(R) SSDs. In addition Open CAS Linux utilizes the
-features of Intel SSD to provide improved performance and functionality that may
-not be available with third party products. Open CAS Linux is also favorably priced
-when purchased with Intel SSDs.
+features of Intel(R) SSDs to provide improved performance and functionality that may
+not be available with other products.
 
 **How do I test performance?**
 
@@ -60,12 +59,17 @@ as its cache. As such, there is no way to look at the files it has cached.
 
 **How do I delete all the Open CAS Linux installation files?**
 
-Stop the Open CAS Linux software as described in the section [**Stopping Cache Instances**](/guide_running.html#stopping-cache-instances),
-then unload any CAS kernel modules and remove the source files.
+Stop the Open CAS Linux software as described in the section [**Stopping Cache Instances**](/guide_running.html#stopping-cache-instances).
+If Open CAS Linux was installed via the `make install` command, Open CAS Linux can be uninstalled using the command:
+>   \# make uninstall
+
+Otherwise, if Open CAS Linux was manually installed then manually unload any CAS kernel modules.
+Once uninstalled remove the source files.
+
 
 **Does Open CAS Linux support write-back caching?**
 
-Yes. Open CAS Linux v2.6 and newer supports write-back caching. See the section [**Manual Configuration for Write-Back Mode**](/guide_configuring.html#manual-configuration-for-write-back-mode) for details.
+Yes. See the section [**Manual Configuration for Write-Back Mode**](/guide_configuring.html#manual-configuration-for-write-back-mode) for details.
 
 **Must I stop caching before adding a new pair of cache/core devices?**
 
@@ -73,9 +77,8 @@ No, you can create new cache instances while other instances are running.
 
 **Can I assign more than one core device to a single cache?**
 
-Yes. With Open CAS Linux for Linux v2.5 and newer, many core devices (up to 32 have
-been validated) may be associated with a single cache drive or instance. You can
-add them using the casadm -A command.
+Yes. Many core devices (up to 4096) may be associated with a single cache drive or instance. You can
+add them using the `casadm -A` command.
 
 **Can I add more than one cache to a single core device?**
 
@@ -106,8 +109,7 @@ best performance.
 **Do I need to format the partition or the device configured as the cache
 device?**
 
-No, the cache device has no format requirement. If any formatting is used, it is
-transparent to the caching software.
+No, the cache device has no format requirement. However, note that Open CAS Linux overwrites any data previously stored on the caching device (including any partition formatting).
 
 **What is the logical and physical block size for Open CAS Linux cache volumes (for
 exported objects)?**

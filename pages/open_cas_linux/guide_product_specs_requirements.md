@@ -27,11 +27,10 @@ The following table lists system requirements for Open CAS Linux.
 
 
 **NOTE:** The cache device logical block size must be smaller than or equal to the logical
-block size of the core storage device. 60GB or larger capacity is recommended.  
-
+block size of the core storage device.  
 
 **NOTE:** For best performance, core device file system block size should match
-the core device partition logical block size.
+the core device partition logical block size.  
 
 **NOTE:** For best performance, IO request sizes in multiples 4KiB are
 recommended.  

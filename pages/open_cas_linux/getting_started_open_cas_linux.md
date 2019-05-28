@@ -41,7 +41,7 @@ For example, to use block device /dev/sda1 as a backend device to cache instance
 The output should state status is *Running*.
 Additionally, a command to list block devices such as ```lsblk``` should show the exported CAS device for example */dev/cas1-1*
 
-- To stop the cache device execute a command similar to ```casadm/casadm -T -i 1```.
+- To stop the cache device execute a command similar to ```casadm -T -i 1```.
 
 
 For complete guide to Open CAS Linux please refer to the [**Admin Guide**](/open_cas_linux_admin_guide.html)
