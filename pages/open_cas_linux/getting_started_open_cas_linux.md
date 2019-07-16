@@ -23,6 +23,7 @@ The Open CAS Linux project is hosted in this [**GitHub repository**](https://git
     > ```./configure```
 
 4. Compile Open CAS Linux and install it
+   > ```make```  
    > ```make install```  
 
 5. Verify the kernel modules were inserted by checking their versions

@@ -61,11 +61,13 @@ privileges or login as “root” in order to proceed.
 
 2. Change current directory to project folder and update submodules
 > cd open-cas-linux   
+> git submodule update --init
 
 3. Configure Open CAS Linux
 > ./configure
 
 4. Compile Open CAS Linux and install it
+> make  
 > make install
 
 5. The main outputs of the compilation will be :
