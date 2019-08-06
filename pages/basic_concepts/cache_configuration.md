@@ -17,11 +17,12 @@ also if data stored on **cache** should always be coherent with data
 stored in the **backend storage** (if there is a possibility of
 [**dirty data**](/cache_operations.html)).
 
-Currently there are five **cache modes** supported by OCF:
+Currently there are six **cache modes** supported by OCF:
 - *Write-Through (WT)*,
 - *Write-Back (WB)*,
 - *Write-Around (WA)*,
 - *Write-Invalidate (WI)*,
+- *Write-Only (WO)*.
 - *Pass-Through (PT)*.
 
 ### Write-Through
@@ -30,7 +31,7 @@ storage** and simultaneously writes the same data “through” to the **backend
 storage**. *Write-Through* ensures the data written to the **core** is
 always in sync with data on the **backend storage**. This mode will
 accelerate only read operations, as writes need to be performed on both
-backend and cache storages.
+**backend** and **cache storages**.
 
 ### Write-Back
 In *Write-Back* mode, the **cache engine** writes the data first to the
@@ -64,6 +65,14 @@ intensive operation. It also reduces number of
 [**eviction**](/cache_opeartions.html) operation for workloads where
 written data is not often subsequently read.
 
+### Write-Only
+In *Write-Only* mode, the **cache engine** writes the data exactly like
+in *Write-Back* mode so the data is written to **cache storage** without
+writing it to **backend storage** immediatelly. Read operations do not promote
+data to **cache**. *Write-Only* mode will accelerate only write intensive
+operations, as reads need to be performed only on the **backend storage**.
+There is a risk of data loss if the **cache storage** fails before the data
+is written to the **backend storage**.
 
 ### Pass-Through
 In *Pass-Through* mode, the **cache engine** will bypass the **cache**
