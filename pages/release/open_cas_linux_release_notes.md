@@ -7,3 +7,7 @@ permalink: open_cas_linux_release_notes.html
 v19.03
 =======
 Open CAS Linux initial release
+
+v19.06
+=======
+Added Write-Only mode

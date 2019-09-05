@@ -17,12 +17,13 @@ also if data stored on **cache** should always be coherent with data
 stored in the **backend storage** (if there is a possibility of
 [**dirty data**](/cache_operations.html)).
 
-Currently there are five **cache modes** supported by OCF:
+Currently there are six **cache modes** supported by OCF:
 - *Write-Through (WT)*,
 - *Write-Back (WB)*,
 - *Write-Around (WA)*,
 - *Write-Invalidate (WI)*,
-- *Pass-Through (PT)*.
+- *Pass-Through (PT)*,
+- *Write-Only (WO)*.
 
 ### Write-Through
 In *Write-Through* mode, the **cache engine** writes data to the **cache
@@ -74,6 +75,21 @@ contained a **dirty data** before switching to *Pass-Through* mode, then
 [**read hits**](/cache_operations.html) will be handled by reading data
 from **cache storage** until all the cache lines will be
 [**cleaned**](/cache_operations.html).
+
+
+### Write-Only
+In *Write-Only* mode, the **cache engine** writes the data first to the
+**cache storage** and acknowledges to the application that the write
+is completed before the data is written to the **backend storage**.
+Periodically, those writes are written to the **backend storage**
+opportunistically (depending on [**cleaning policy**](/cleaning.html)).
+This is similar to *Write-Back* mode.
+However, unlike *Write-Back* mode, *Write-Only* mode bypasses caching for new read
+operations.  Read operations can be served from **cache storage** only if the
+data was previously written to **cache storage**.
+Therefore, *Write-Only* mode will improve write-intensive applications primarily.
+Note that there is a risk of data loss if the **cache storage** fails before the
+data is written to the **backend storage**.
 
 ## Cache line size
 

@@ -3,13 +3,13 @@ repository: open-cas/open-cas.github.io
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: Open CAS Framework
+topnav_title: Open CAS
 # this appears on the top navigation bar next to the home button
 
-site_title: Open CAS Framework
+site_title: Open CAS
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-company_name: Open CAS Framweork
+company_name: Open CAS
 # this appears in the footer
 
 github_editme_path:
@@ -35,7 +35,7 @@ exclude:
   - .gitignore
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Open CAS Framework
+feedback_subject_line: Open CAS
 
 feedback_email: robert.baldyga@intel.com
 # used as a contact email for the Feedback link in the top navigation bar
@@ -92,7 +92,7 @@ defaults:
 sidebars:
 - opencas_sidebar
 
-description: "Open CAS Framework Documentation"
+description: "Open CAS Documentation"
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only

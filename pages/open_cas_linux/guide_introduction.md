@@ -54,7 +54,9 @@ The following conventions are used in this manual:
 
 -   **\< \> -** denotes mandatory commands
 
--   **[ ] -** denotes optional commands
+-   **[ ] -** denotes optional commands  
+
+-  `command` - highlights or differentiates a command to execute from other text
 
 References
 ----------
@@ -76,4 +78,5 @@ Revision History
 
 | **Revision Number** | **Description**                                                | **Date**       |
 |---------------------|----------------------------------------------------------------|----------------|
-| 01                  | Initial Release based on CAS v3.8 GA (GM)                      | April 2018     |
+| 01                  | Initial Release                                                | April 2018     |
+| 02                  | Updated Information for Write-only Mode                        | September 2019 |

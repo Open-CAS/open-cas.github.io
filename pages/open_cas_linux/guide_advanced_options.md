@@ -88,20 +88,20 @@ To set up a RAMdisk-based cache level, do the following:
 
 -  Reboot the system and start a fresh Open CAS Linux install, if necessary.
 
--  Create the SSD caching framework, where */dev/sdc* is your SSD cache device:
+-  Create the SSD cache instance, where */dev/sdc* is your SSD cache device:
 
 >   \# casadm -S -d /dev/sdc
 
--  Add a core device (*/dev/sdb*) mapping to the SSD caching framework:
+-  Add a core device (*/dev/sdb*) mapping to the SSD cache instance:
 
 >   \# casadm -A -i 1 -d /dev/sdb
 
--  Create the RAMdisk caching framework:
+-  Create the RAMdisk cache instance:
 
 >   \# casadm -S -d /dev/ram1 -i 2
 
 -  Add the tiered core device (*/dev/cas1-1*) mapping to the RAMdrive
-    caching framework:
+    cache instance:
 
 >   \# casadm -A -i 2 -d /dev/cas1-1
 
@@ -160,7 +160,7 @@ Ensure Open CAS Linux devices are listed as acceptable block device types in
 >>   \# Advanced settings.  
 >>   \# List of pairs of additional acceptable block device types found  
 >>   \# in /proc/devices with maximum (non-zero) number of partitions.  
->>   *types = [ "inteldisk", 16 ]*
+>>   *types = [ "cas_disk", 16 ]*
 
 After the LVM is configured and an Open CAS Linux device has been created (see
 [**Configuring CAS**](/guide_configuring.html) for further details) a physical
@@ -282,7 +282,7 @@ parameters should not be modified without advanced tuning expertise and a
 thorough knowledge of the workload. Please contact the Open CAS community  for further
 details or support.
 
-The parameters are: unaligned_io, seq_cut_off_mb, metadata_layout, and
+The parameters are: unaligned_io, metadata_layout, and
 use_io_scheduler.
 
 *   **unaligned_io:** This parameter enables user to specify how IO requests

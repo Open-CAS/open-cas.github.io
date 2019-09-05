@@ -203,7 +203,7 @@ attempting to:
 
 -   Read dirty data from the cache
 
--   Write data to the cache in write-back mode
+-   Write data to the cache in write-back mode or write-only mode
 
 Cases where Open CAS Linux will *return an error* to the calling application and
 *continue processing IO* include *core device IO errors* when attempting to:
