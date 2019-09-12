@@ -307,7 +307,7 @@ In write-only mode, the caching software writes the data first to the cache and
 acknowledges to the application that the write is completed, before the data is
 written to the core device. Periodically, those writes are written back to the
 core device opportunistically. The caching software bypasses the cache for new read
-operations. Read opeartions can be served from the caching device only if
+operations. Read operations can be served from the caching device only if
 the data was previously written to the cache device.
 Write-only caching will improve write intensive operations
 primarily, however, there is a risk of data loss if the cache device
