@@ -128,7 +128,7 @@ Field details:
     name (eg. /dev/sdb) such as when running casadm commands.
 
 -   Mode determines the cache mode, either write-through, write-back,
-    write-around, or pass-through.
+    write-around, write-only, or pass-through.
 
 -   *Optional:* Extra flags allow extra settings for the cache and core devices
     and are comma separated.
@@ -296,6 +296,27 @@ Pass-through mode is enabled when starting a new cache device with the option
 “*-c pt”*:
 
 >   \# casadm -S -i 1 -d /dev/sdc -c pt
+
+Pairing of a core device is similar to the Manual Configuration for
+Write-through Mode section.
+
+Manual Configuration for Write-only Mode
+------------------------------------------
+
+In write-only mode, the caching software writes the data first to the cache and
+acknowledges to the application that the write is completed, before the data is
+written to the core device. Periodically, those writes are written back to the
+core device opportunistically. The caching software bypasses the cache for new read
+operations. Read operations can be served from the caching device only if
+the data was previously written to the cache device.
+Write-only caching will improve write intensive operations
+primarily, however, there is a risk of data loss if the cache device
+fails before the data is written to the core device.
+
+Write-only mode is enabled when starting a new cache device with the option
+“*-c wo”*:
+
+>   \# casadm -S -i 1 -d /dev/sdc -c wo
 
 Pairing of a core device is similar to the Manual Configuration for
 Write-through Mode section.

@@ -96,6 +96,13 @@ first time it is started or created. The mode can be one of the following:
  associated, the user would dynamically switch to their desired caching mode
  (see ‘-Q \| --set-cache-mode’ for details).
 
+ *wo:* Turns write-only mode on. When using this parameter, the write-only
+ feature is enabled which allows the acceleration of write
+ intensive operations primarily.
+
+ - *Caution:* A failure of the cache device may lead to the loss of data that
+ has not yet been flushed to the core device.
+
 **[-x, --cache-line-size \<SIZE\>]:** Set cache line size {4 (default), 8, 16, 32,
 64}. The cache line size can only be set when starting the cache and cannot be
 changed after cache is started.
@@ -160,6 +167,8 @@ is running.
 -   **wt -** switch from the current cache mode to write-through mode.
 
 -   **wb -** switch from the current cache mode to write-back mode.
+
+-   **wo -** switch from the current cache mode to write-only mode.
 
 -   **wa -** switch from the current cache mode to write-around mode
 
