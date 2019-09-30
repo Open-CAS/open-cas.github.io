@@ -65,6 +65,14 @@ arithmetic operators. The available operators and names are specified below.
 | file_size         | The IO belongs to a file with a specific size in bytes. For example if the file size is less or equal to 4096 bytes: file_size:le:4096  |
 | directory         | The IO belongs to a specific directory path. For example: directory:/data/datab                                                         |
 | io_class          | The IO can be classified by a previously defined io_class ID. For example, to reference IO class with ID 3: io_class:3                  |
+| extension         | The IO belongs to a file with a specific extension. For example: extension:txt                                                          |
+|	lba               | The IO belongs to a specific range of lba’s on core device.  For example: lba:ge:2000&lba:le:5000                                       |
+|	pid               | The IO was triggered by a process with particular pid. For example: pid:eq:7890                                                         |
+|	process_name      | The IO was triggered by a process with particular name. For example: process_name:fio                                                   |
+|	file_offset       | The IO belongs to an offset within a file. For example: file_offset:gt:2000 &file_offset:lt:5000                                        |
+|	request_size      | The IO belongs to a request with particular size. For example: request_size:ge:8192&request_size:le:16384&done                          |
+|	wlth              | The IO uses application/user-space write hints. For example: wlth:eq:0                                                                  |
+
 
 The table below shows the structure of the IO classification file. This table
 shows IO class 0 is unclassified and has a high eviction priority of 22 to
@@ -100,11 +108,11 @@ IO class with the special keyword *“&done”*.
     and saved the file, you must load the configuration for your cache device
     with ID number represented by \<ID\> from file \<FILE\>:
 
->   \# casadm --io-class --load-config --cache-id \<ID\> -f \<FILE\>
+>   \# casadm -\-io-class -\-load-config -\-cache-id \<ID\> -f \<FILE\>
 
 -  Verify that the configuration file was successfully loaded:
 
->   \# casadm --io-class --list --cache-id \<ID\>
+>   \# casadm -\-io-class -\-list -\-cache-id \<ID\>
 
 ### File Size-Based Caching
 

@@ -4,7 +4,7 @@ last_updated: January 24, 2019
 toc: false
 permalink: index.html
 ---
-  
+
 ## Introduction
 Open Cache Acceleration Software (Open CAS) is an open source project encompassing block caching software libraries, adapters, tools and more.  The main goal of this cache acceleration software is to accelerate a backend block device(s) by utilizing a higher performance device(s).  
 
@@ -42,7 +42,8 @@ The picture below depicts the integration of OCF and SPDK.
 ![alt text](images/spdk_software_stack_layers.jpg "OCF and SPDK Software Stack")  
 
 Visit the [Storage Performance Development Kit](https://spdk.io/) and [SPDK Quick Setup](getting_started_spdk.html) pages for more information.
-=======
+
+
 ## What is OCF?
 Open CAS Framework (OCF) is high performance block storage caching
 meta-library written in C. It's entirely platform and system independent,
