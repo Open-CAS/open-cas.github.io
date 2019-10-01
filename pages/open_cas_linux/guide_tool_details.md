@@ -852,15 +852,14 @@ or
 
 -   *always* - Core lines are attemped to be promoted each time they are accessed.
 
--   *nhit* - Core lines are attemped to be promoted after n-th access.
+-   *nhit* - Core lines are attemped to be promoted after the n-th access.
+             This n-th access threshold can be set using one of these commands:
 
-When the policy is *nhit* set the n-th access using one of these available commands:  
+       casadm –set-param –name promotion-nhit -\-cache-id \<CACHE_ID\> [-o, -\-trigger] \<PERCENTAGE\>  
+       **Description:** Percent of cache to be occupied before cache inserts will be filtered by the policy.  
 
-casadm –set-param –name promotion-nhit -\-cache-id \<CACHE_ID\> [-o, -\-trigger] \<PERCENTAGE\>  
-**Description:** Percent of cache to be occupied before cache inserts will be filtered by the policy.  
-
-casadm –set-param –name promotion-nhit -\-cache-id \<CACHE_ID\>  [-t, -\-threshold] \<NUMBER\>  
-**Description:** Number of core line accesses required for it to be inserted into cache. Valid values are from range <2-1000>.
+       casadm –set-param –name promotion-nhit -\-cache-id \<CACHE_ID\>  [-t, -\-threshold] \<NUMBER\>  
+      **Description:** Number of core line accesses required for it to be inserted into cache. Valid values are from range <2-1000>.
 
 
 \-G \| -\-get-param
@@ -1000,7 +999,7 @@ Time, Flush Max Buffers, Stale Buffer Time, and Activity Threshold.
 or
 >   \# casadm –G –n promotion –i 1
 
-**Description:** Retrives the promotion policy
+**Description:** Retrieves the promotion policy
 
 **Required parameters:**  
 
@@ -1018,7 +1017,7 @@ The additional command below can be used to obtain the nhit promotion values for
 or
 >   \# casadm –G –n promotion-nhit –i 1
 
-**Description:** Retrives the nhit promotion policy values
+**Description:** Retrieves the nhit promotion policy values
 
 **Required parameters:**
 

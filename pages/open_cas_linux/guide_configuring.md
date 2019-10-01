@@ -437,6 +437,6 @@ that exported devices have been configured to agree with the contents of the
 >>   /dev/cas1-2p1 /mnt/cache2 xfs defaults 0 0  
 
 
-*NOTE:* In the case when the caching device if formatted with a 4KiB physical block size
+*NOTE:* In the case when the caching device is formatted with a 4KiB physical block size
 and the backend core device is formatted with a 512B physical block size, the caching device should
 be re-formatted with a 512B block size so that a cache volume can be built correctly.
