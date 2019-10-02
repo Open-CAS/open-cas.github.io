@@ -731,10 +731,6 @@ specified, core parameter is set to all cores in a given cache.
 
 ###  cleaning
 
-**NOTE:** Because the -\-name cleaning options provide improved functionality
-over the -D/--flush-parameters command, -D/--flush-parameters is now obsolete
-and will be removed in a future release.
-
 **Usage:** casadm -\-set-param -\-name cleaning -\-cache-id \<CACHE_ID\> -\-policy
 \<POLICY\>
 
@@ -842,7 +838,7 @@ or
 >   \# casadm -X -n promotion -i 1 -p always
 
 
-**Description:** This parameter specifies the desired promotion of core lines  
+**Description:** This parameter specifies the desired promotion policy of core lines  
 
 **Required Parameters:**  
 
@@ -855,10 +851,10 @@ or
 -   *nhit* - Core lines are attemped to be promoted after the n-th access.
              This n-th access threshold can be set using one of these commands:
 
-       casadm –set-param –name promotion-nhit -\-cache-id \<CACHE_ID\> [-o, -\-trigger] \<PERCENTAGE\>  
+       casadm –\-set-param -\-name promotion-nhit -\-cache-id \<CACHE_ID\> [-o, -\-trigger] \<PERCENTAGE\>  
        **Description:** Percent of cache to be occupied before cache inserts will be filtered by the policy.  
 
-       casadm –set-param –name promotion-nhit -\-cache-id \<CACHE_ID\>  [-t, -\-threshold] \<NUMBER\>  
+       casadm –\-set-param –\-name promotion-nhit -\-cache-id \<CACHE_ID\>  [-t, -\-threshold] \<NUMBER\>  
       **Description:** Number of core line accesses required for it to be inserted into cache. Valid values are from range <2-1000>.
 
 
