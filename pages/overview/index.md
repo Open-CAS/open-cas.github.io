@@ -41,7 +41,7 @@ The picture below depicts the integration of OCF and SPDK.
 
 ![alt text](images/spdk_software_stack_layers.jpg "OCF and SPDK Software Stack")  
 
-Visit the [Storage Performance Development Kit](https://spdk.io/) and [SPDK Quick Setup](getting_started_spdk.html) pages for more information.
+Visit the [Storage Performance Development Kit](https://spdk.io/) and [SPDK Quick Setup](getting_started_spdk.html) pages for more information.  
 
 
 ## What is OCF?
