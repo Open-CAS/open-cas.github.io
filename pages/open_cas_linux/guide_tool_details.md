@@ -18,14 +18,14 @@ command:
 
 >   \# man casadm
 
-\-S \| --start-cache
+\-S \| -\-start-cache
 --------------------
 
-**Usage:** casadm --start-cache --cache-device \<DEVICE\> [option...]
+**Usage:** casadm -\-start-cache -\-cache-device \<DEVICE\> [option...]
 
 **Example:**
 
->   \# casadm --start-cache --cache-device /dev/sdc
+>   \# casadm -\-start-cache -\-cache-device /dev/sdc
 
   or
 
@@ -41,17 +41,17 @@ invalid).
 
 **Required Parameters:**
 
-**[-d, --cache-device \<DEVICE\>] :** Caching device to be used. This is an SSD or
+**[-d, -\-cache-device \<DEVICE\>] :** Caching device to be used. This is an SSD or
 any NVM block device or RAM disk shown in the */dev* directory. \<device\> needs
 to be the complete path describing the caching device to be used, for example
 /dev/sdc.
 
 **Optional Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Cache ID to create; \<1 to 16384\>. The ID may be
+**[-i, -\-cache-id \<ID\>]:** Cache ID to create; \<1 to 16384\>. The ID may be
 specified or by default the command will use the lowest available number first.
 
-**[-l, --load]:** Load existing cache metadata from caching device. If the cache
+**[-l, -\-load]:** Load existing cache metadata from caching device. If the cache
 device has been used previously and then disabled (like in a reboot) and it is
 determined that the data in the core device has not changed since the cache
 device was used, this option will allow continuing the use of the data in the
@@ -62,14 +62,14 @@ in section [**Stopping Cache Instances**](/guide_running.html#stopping-cache-ins
 change in the core data prior to enabling the cache, data would be not
 synced correctly and will be corrupted.
 
-**[-f, --force]:** Forces creation of a cache even if a file system exists on
+**[-f, -\-force]:** Forces creation of a cache even if a file system exists on
 the cache device. This is typically used for devices that have been previously
 utilized as a cache device.
 
  - *Caution:* This will delete the file system and any existing data on the
  cache device.
 
-**[-c, --cache-mode \<NAME\>]:** Sets the cache mode for a cache instance the
+**[-c, -\-cache-mode \<NAME\>]:** Sets the cache mode for a cache instance the
 first time it is started or created. The mode can be one of the following:
 
  *wt:* (default mode) Turns write-through mode on. When using this parameter,
@@ -94,7 +94,7 @@ first time it is started or created. The mode can be one of the following:
  this mode. This allows the user to associate all their desired core devices
  to be cached prior to actually enabling caching. Once the core devices are
  associated, the user would dynamically switch to their desired caching mode
- (see ‘-Q \| --set-cache-mode’ for details).
+ (see ‘-Q \| -\-set-cache-mode’ for details).
 
  *wo:* Turns write-only mode on. When using this parameter, the write-only
  feature is enabled which allows the acceleration of write
@@ -103,18 +103,18 @@ first time it is started or created. The mode can be one of the following:
  - *Caution:* A failure of the cache device may lead to the loss of data that
  has not yet been flushed to the core device.
 
-**[-x, --cache-line-size \<SIZE\>]:** Set cache line size {4 (default), 8, 16, 32,
+**[-x, -\-cache-line-size \<SIZE\>]:** Set cache line size {4 (default), 8, 16, 32,
 64}. The cache line size can only be set when starting the cache and cannot be
 changed after cache is started.
 
-\-T \| --stop-cache
+\-T \| -\-stop-cache
 -------------------
 
-**Usage:** casadm --stop-cache --cache-id \<ID\> [option...]
+**Usage:** casadm -\-stop-cache -\-cache-id \<ID\> [option...]
 
 **Example:**
 
->   \# casadm --stop-cache --cache-id 1  
+>   \# casadm -\-stop-cache -\-cache-id 1  
 
 or  
 >   \# casadm -T -i 1
@@ -123,36 +123,36 @@ or
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional parameters:**
 
-**[-n, --no-data-flush]:** Do not flush dirty data on exit (UNSAFE). This
+**[-n, -\-no-data-flush]:** Do not flush dirty data on exit (UNSAFE). This
 parameter will not allow the flushing of dirty data from the cache device to the
 core device upon the stopping of the cache. This will significantly reduce the
 time needed to stop the cache to allow for activities such as a fast reboot. The
-core device should not be used until the cache is started again with the --load
+core device should not be used until the cache is started again with the -\-load
 parameter. Then the Open CAS Linux device can be used as normal.
 
 -   *Caution:* Data on the core device will not be complete or in sync with the
    cache device upon stopping the device. If the core device is used without
    starting Open CAS Linux cache it will lead to data corruption or data loss.
 
--  The user may interrupt the blocking --stop-cache operation by pressing
+-  The user may interrupt the blocking -\-stop-cache operation by pressing
     CTRL-C. When dirty data exists, interrupting the operation prior to the
     cache being fully stopped will result in the cache continuing to run. If the
     desire is to stop the cache without flushing the dirty data, use the
-    --no-data-flush command.
+    -\-no-data-flush command.
 
-\-Q \| --set-cache-mode
+\-Q \| -\-set-cache-mode
 -----------------------
 
-**Usage:** casadm --set-cache-mode --cache-mode \<NAME\> --cache-id \<ID\>
+**Usage:** casadm -\-set-cache-mode -\-cache-mode \<NAME\> -\-cache-id \<ID\>
 --flush-cache \<yes/no\>
 
 **Example:**
 
->   \# casadm --set-cache-mode --cache-mode wb --cache-id 1 --flush-cache yes  
+>   \# casadm -\-set-cache-mode -\-cache-mode wb -\-cache-id 1 -\-flush-cache yes  
 
    or  
 >   \# casadm -Q -c wb -i 1 -f yes
@@ -162,7 +162,7 @@ is running.
 
 **Required Parameters:**
 
-**[-c, --cache-mode \<NAME\>]:**
+**[-c, -\-cache-mode \<NAME\>]:**
 
 -   **wt -** switch from the current cache mode to write-through mode.
 
@@ -177,9 +177,9 @@ is running.
     +  Dynamically switching to pass-through mode is useful in preventing cache
     pollution when the system is undergoing maintenance operations, for example.
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
 
-**[-f, --flush-cache]:** (required only when switching from write-back mode)
+**[-f, -\-flush-cache]:** (required only when switching from write-back mode)
 
 *Caution:* You should carefully consider the following choices.
 
@@ -199,15 +199,15 @@ is running.
    transition to the new state will take longer than choosing the *yes* option.
    Current cache state and flush % can be checked using the casadm -L command.
 
-\-A \| --add-core
+\-A \| -\-add-core
 -----------------
 
-**Usage:** casadm --add-core --cache-id \<ID\> --core-device \<DEVICE\>
+**Usage:** casadm -\-add-core -\-cache-id \<ID\> -\-core-device \<DEVICE\>
 [option...]
 
 **Example:**
 
->   \# casadm --add-core --cache-id 1 --core-device /dev/sdb  
+>   \# casadm -\-add-core -\-cache-id 1 -\-core-device /dev/sdb  
 
 or  
 >   \# casadm -A -i 1 -d /dev/sdb
@@ -219,24 +219,24 @@ cache device.
 
 **Required Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-**[-d, --core-device \<DEVICE\>]:** Location of the HDD storage/core device.  
+**[-d, -\-core-device \<DEVICE\>]:** Location of the HDD storage/core device.  
 You must use the complete device path in the /dev directory, for example
 /dev/sdb.
 
 **Optional Parameters:**
 
-**[-j, --core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.
+**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.
 
-\-R \| --remove-core
+\-R \| -\-remove-core
 --------------------
 
-**Usage:** casadm --remove-core --cache-id \<ID\> --core-id \<ID\> [option...]
+**Usage:** casadm -\-remove-core -\-cache-id \<ID\> -\-core-id \<ID\> [option...]
 
 **Example:**
 
->   \# casadm --remove-core --cache-id 1 --core-id 1  
+>   \# casadm -\-remove-core -\-cache-id 1 -\-core-id 1  
 
 or  
 >   \# casadm -R -i 1 -j 1
@@ -246,16 +246,16 @@ disable caching of a device.
 
 **Required Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
 
-**[-j, --core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.  
+**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.  
 You can identify the assigned value for a particular core device using the
 casadm -L command.
 
 -  *Caution:* Before using casadm -R, stop all IO to the mapped core device,
    ensure it is not in use, and unmount it.
 
--   You can interrupt the blocking --remove-core operation by pressing CTRL-C.
+-   You can interrupt the blocking -\-remove-core operation by pressing CTRL-C.
     When dirty data exists, interrupting the operation prior to the core being
     fully removed will result in the core continuing to be cached.
 
@@ -267,19 +267,19 @@ casadm -L command.
 
 **Optional parameters:**
 
-**[-f, --force]:** Do not flush dirty data while removing the core device.
+**[-f, -\-force]:** Do not flush dirty data while removing the core device.
 
 \--remove-detached
 ------------------
 
-**Usage:** casadm --remove-detached --device \<DEV_NAME\>
+**Usage:** casadm -\-remove-detached -\-device \<DEV_NAME\>
 
 **Example:**
 
->   \# casadm --remove-detached --device /dev/sda  
+>   \# casadm -\-remove-detached -\-device /dev/sda  
 
 or  
->   \# casadm --remove-detached -d /dev/sda
+>   \# casadm -\-remove-detached -d /dev/sda
 
 **Description:** Removes a device from the core pool. A device is in the core
 pool when it’s listed in *opencas.conf* as a core in a configured cache
@@ -288,18 +288,18 @@ NVMe drive). This command does not currently have a short form.
 
 **Required Parameters:**
 
-**-d \| --device \<DEV_NAME\>**
+**-d \| -\-device \<DEV_NAME\>**
 
 Where DEV_NAME is a device name from the core pool
 
-\-L \| --list-caches
+\-L \| -\-list-caches
 --------------------
 
-**Usage:** casadm --list-caches
+**Usage:** casadm -\-list-caches
 
 **Example:**
 
->   \# casadm --list-caches  
+>   \# casadm -\-list-caches  
 
 or  
 >   \# casadm -L
@@ -336,14 +336,14 @@ Also displays the associated core devices with the following details:
 >
 > \+core 2 /dev/sdc1 Active - /dev/cas1-2
 
-\-P \| --stats
+\-P \| -\-stats
 --------------
 
-**Usage:** casadm --stats --cache-id \<ID\> [option...]
+**Usage:** casadm -\-stats -\-cache-id \<ID\> [option...]
 
 **Example:**
 
->   \# casadm --stats --cache-id 1  
+>   \# casadm -\-stats -\-cache-id 1  
 
 or  
 >   \# casadm -P -i 1
@@ -353,21 +353,21 @@ instance. The section [**Viewing Cache Statistics**](/guide_monitoring.html#view
 
 **Required Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional Parameters:**
 
-**[-j, --core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. Display
+**[-j, -\-core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. Display
 statistics for a specific core device.
 
-**[-d, --io-class-id \<ID\>]**: Unique identifier for io class \<0 to 23\>.
+**[-d, -\-io-class-id \<ID\>]**: Unique identifier for io class \<0 to 23\>.
 Display statistics for a specific IO class.
 
--  \<ID\> is optional. When the --io-class-id parameter is specified without
+-  \<ID\> is optional. When the -\-io-class-id parameter is specified without
     specifying an \<ID\>, statistics will be displayed for each individual IO
     class.
 
-**[-f, --filter \<filter-spec\>]**: Comma separated list of filters (e.g.,
+**[-f, -\-filter \<filter-spec\>]**: Comma separated list of filters (e.g.,
 --filter conf, req). Filter statistics output to only the requested statistics.
 
 -   *all:* (default mode) Displays all available cache statistics.
@@ -383,7 +383,7 @@ Display statistics for a specific IO class.
 
 -   *err:* Displays IO error statistics.
 
-**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
+**[-o, -\-output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -471,15 +471,15 @@ Status                    Incomplete
 +====================+=======+=====+==========+
 
 
-\-Z \| --reset-counters
+\-Z \| -\-reset-counters
 -----------------------
 
-**Usage:** casadm --reset-counters --cache-id \<CACHE_ID\> [--core-id
+**Usage:** casadm -\-reset-counters -\-cache-id \<CACHE_ID\> [--core-id
 \<CORE_ID\>]
 
 **Example:**
 
->   \# casadm --reset-counters --cache-id 1  
+>   \# casadm -\-reset-counters -\-cache-id 1  
 
 or  
 >   \# casadm -Z -i 1
@@ -489,22 +489,22 @@ pairs.
 
 **Required Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional Parameters:**
 
-**[-j, --core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>. If a
+**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>. If a
 core(s) is not specified, statistic counters are reset for all cores in a
 specified cache instance.
 
-\-F \| --flush-cache
+\-F \| -\-flush-cache
 --------------------
 
-**Usage:** casadm --flush-cache --cache-id \<ID\>
+**Usage:** casadm -\-flush-cache -\-cache-id \<ID\>
 
 **Example:**
 
->   \# casadm --flush-cache --cache-id 1  
+>   \# casadm -\-flush-cache -\-cache-id 1  
 
 or  
 >   \# casadm -F -i 1
@@ -514,22 +514,22 @@ associated core devices.
 
 **Required Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
--  You can interrupt the blocking --flush-cache operation by pressing CTRL-C.
+-  You can interrupt the blocking -\-flush-cache operation by pressing CTRL-C.
     When dirty data exists, interrupting the operation prior to the cache being
     fully flushed will result in some dirty data remaining in the cache. The
     dirty data will be flushed opportunistically as normal. IO to the device
     will continue with reduced performance during cache flushing.
 
-\-E \| --flush-core
+\-E \| -\-flush-core
 -------------------
 
-**Usage:** casadm --flush-core --cache-id \<ID\> --core-id \<ID\>
+**Usage:** casadm -\-flush-core -\-cache-id \<ID\> -\-core-id \<ID\>
 
 **Example:**
 
->   \# casadm --flush-core --cache-id 1 --core-id 2  
+>   \# casadm -\-flush-core -\-cache-id 1 -\-core-id 2  
 
 or  
 >   \# casadm -E -i 1 -j 2
@@ -539,29 +539,29 @@ specified associated core device.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-**[-j, --core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.
+**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.
 
--  You can interrupt the blocking --flush-core operation by pressing CTRL-C.
+-  You can interrupt the blocking -\-flush-core operation by pressing CTRL-C.
     When dirty data exists, interrupting the operation prior to the cache being
     fully flushed will result in some dirty data remaining in the cache. The
     dirty data will be flushed opportunistically as normal. IO to the device
     will continue with reduced performance during cache flushing.
 
-\-H \| --help
+\-H \| -\-help
 -------------
 
-**Usage**: casadm --help or casadm --\<command\> --help
+**Usage**: casadm -\-help or casadm -\-\<command\> -\-help
 
 **Examples:**
 
->   \# casadm --help  
+>   \# casadm -\-help  
 
 or  
 >   \# casadm -H  
 
->   \# casadm --start-cache --help  
+>   \# casadm -\-start-cache -\-help  
 
 or  
 >   \# casadm -S -H
@@ -569,14 +569,14 @@ or
 **Description:** Displays a list of casadm commands along with a brief
 description. Use this command to also get more information on specific commands.
 
-\-V \| --version
+\-V \| -\-version
 ----------------
 
-**Usage:** casadm --version
+**Usage:** casadm -\-version
 
 **Example:**
 
->   \# casadm --version  
+>   \# casadm -\-version  
 
 or  
 >   \# casadm -V
@@ -586,7 +586,7 @@ version numbers.
 
 **Optional parameters:**
 
-**[-o, --output-format \<format\>]**: Sets desired output format of the IO class
+**[-o, -\-output-format \<format\>]**: Sets desired output format of the IO class
 configuration.
 
 -   *table:* (default mode) Displays a table of the IO class configuration.
@@ -595,17 +595,17 @@ configuration.
     output can be piped to a file and easily parsed or opened in a spreadsheet
     editor.
 
-\-C \| --io-class
+\-C \| -\-io-class
 -----------------
 
-###  -C \| --load-config
+###  -C \| -\-load-config
 
-**Usage:** casadm --io-class --load-config --cache-id \<ID\> --file
+**Usage:** casadm -\-io-class -\-load-config -\-cache-id \<ID\> -\-file
 \<file_path\>
 
 **Example:**
 
->   \# casadm --io-class --load-config --cache-id 1 --file
+>   \# casadm -\-io-class -\-load-config -\-cache-id 1 -\-file
 >   ioclass-config.csv  
 
  or  
@@ -615,17 +615,17 @@ configuration.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **[-f,--file]:** Specifies the IO class configuration csv file to load.
 
-###  -L \| --list
+###  -L \| -\-list
 
-**Usage:** casadm --io-class --list --cache-id \<ID\> [option...]
+**Usage:** casadm -\-io-class -\-list -\-cache-id \<ID\> [option...]
 
 **Example:**
 
->   \# casadm --io-class --list --cache-id 1  
+>   \# casadm -\-io-class -\-list -\-cache-id 1  
 
 or  
 >   \# casadm -C -L -i 1
@@ -635,11 +635,11 @@ specified cache ID.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional parameters:**
 
-**[-o, --output-format \<format\>]**: Sets desired output format of the IO class
+**[-o, -\-output-format \<format\>]**: Sets desired output format of the IO class
 configuration.
 
 -   *table:* (default mode) Displays a table of the IO class configuration.
@@ -648,14 +648,14 @@ configuration.
     output can be piped to a file and easily parsed or opened in a spreadsheet
     editor.
 
-\-N \| --nvme
+\-N \| -\-nvme
 -------------
 
-**Usage:** casadm --nvme --format \<MODE\> --device \<DEVICE\> [option...]
+**Usage:** casadm -\-nvme -\-format \<MODE\> -\-device \<DEVICE\> [option...]
 
 **Example:**
 
->   \# casadm --nvme --format atomic --device /dev/nvme0n1  
+>   \# casadm -\-nvme -\-format atomic -\-device /dev/nvme0n1  
 
 or  
 >   \# casadm -N -F atomic -d /dev/nvme0n1
@@ -665,21 +665,21 @@ of Intel(R) SSDs.
 
 **Required parameters:**
 
-**[-F, --format, \<atomic \| normal\>]:** Sets the formatting to “atomic” to use
+**[-F, -\-format, \<atomic \| normal\>]:** Sets the formatting to “atomic” to use
 for atomic writes, or normal which does not use this feature. After formatting,
 a reboot is required.
 
-**[-d, --device \<DEVICE\>] :** Caching device to be used. This is an NVMe block
+**[-d, -\-device \<DEVICE\>] :** Caching device to be used. This is an NVMe block
 device listed in the */dev* directory. \<device\> needs to be the complete path
 describing the caching device to be used, for example /dev/sdg. Formatting of
 non-NVMe devices is not supported.
 
 **Optional parameters:**
 
-**[-f, --force]**: Forces the SSD format to proceed, for example if the device has
+**[-f, -\-force]**: Forces the SSD format to proceed, for example if the device has
 an existing file system, outdated Open CAS Linux metadata, or partition table.
 
-\-X \| --set-param
+\-X \| -\-set-param
 ------------------
 
 **Description:**  Used in conjunction with caching parameters or namespaces to
@@ -688,13 +688,13 @@ future releases. See applicable configuration details below.
 
 ###  seq-cutoff
 
-**Usage:** casadm --set-param --name seq-cutoff --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-set-param -\-name seq-cutoff -\-cache-id \<CACHE_ID\>
 [--core-id \<CORE_ID\>] [--policy \<POLICY\>] [--threshold \<THRESHOLD\>]
 
 **Example:**
 
->   \# casadm --set-param --name seq-cutoff --cache-id 1 --core-id 1 --policy
->   always --threshold 4096  
+>   \# casadm -\-set-param -\-name seq-cutoff -\-cache-id 1 -\-core-id 1 -\-policy
+>   always -\-threshold 4096  
 
 or  
 >   \# casadm -X -n seq-cutoff -i 1 -j 1 -p always -t 4096
@@ -706,9 +706,9 @@ reads or writes.
 
 **NOTE:** -p and -t parameters aren't both required. At least one is required.
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-**[-p, --policy \<POLICY\>]:** Sequential cutoff policy to be implemented.
+**[-p, -\-policy \<POLICY\>]:** Sequential cutoff policy to be implemented.
 
 *Seq-cutoff policies:*
 
@@ -721,26 +721,22 @@ reads or writes.
 -   *never* - sequential cutoff is disabled and will not be triggered;
     sequential data is handled using current cache policy.
 
-**[-t, --threshold \<THRESHOLD\>]:** a value from range 1-4194181 (inclusive).
+**[-t, -\-threshold \<THRESHOLD\>]:** a value from range 1-4194181 (inclusive).
 Threshold is expressed in KiB.
 
 **Optional parameters:**
 
-**[-j, --core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. If not
+**[-j, -\-core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. If not
 specified, core parameter is set to all cores in a given cache.
 
 ###  cleaning
 
-**NOTE:** Because the --name cleaning options provide improved functionality
-over the -D/--flush-parameters command, -D/--flush-parameters is now obsolete
-and will be removed in a future release.
-
-**Usage:** casadm --set-param --name cleaning --cache-id \<CACHE_ID\> --policy
+**Usage:** casadm -\-set-param -\-name cleaning -\-cache-id \<CACHE_ID\> -\-policy
 \<POLICY\>
 
 **Example:**
 
->   \# casadm --set-param --name cleaning --cache-id 1 --policy acp  
+>   \# casadm -\-set-param -\-name cleaning -\-cache-id 1 -\-policy acp  
 
 or  
 >   \# casadm -X -n cleaning -i 1 -p acp
@@ -751,9 +747,9 @@ data.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-**[-p, --policy \<POLICY\>]:** Flushing policy to be used.
+**[-p, -\-policy \<POLICY\>]:** Flushing policy to be used.
 
 *Cleaning policies:*
 
@@ -771,13 +767,13 @@ data.
 
 ###  cleaning-acp
 
-**Usage:** casadm --set-param --name cleaning-acp --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-set-param -\-name cleaning-acp -\-cache-id \<CACHE_ID\>
 [--wake-up \<NUMBER\>] [--flush-max-buffers \<NUMBER\>]
 
 **Example:**
 
->   \# casadm --set-param --name cleaning-acp --cache-id 1 --wake-up 20
->   --flush-max-buffers 50  
+>   \# casadm -\-set-param -\-name cleaning-acp -\-cache-id 1 -\-wake-up 20
+>   -\-flush-max-buffers 50  
 
  or  
 >   \# casadm -X -n cleaning-acp -i 1 -w 20 -b 50
@@ -789,22 +785,22 @@ flushing policy to be used for the applicable cache instance.
 
 **NOTE:** -w and -b parameters aren't both required. At least one is required.
 
-**[-w, --wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
+**[-w, -\-wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
 in milliseconds. MIN: 0, MAX: 10000 (inclusive), DEFAULT: 10.
 
-**[-b, --flush-max-buffers \<NUM\>]:** Number of dirty cache blocks to be flushed
+**[-b, -\-flush-max-buffers \<NUM\>]:** Number of dirty cache blocks to be flushed
 in one cleaning cycle. MIN: 1, MAX: 10000 (inclusive), DEFAULT: 128.
 
 ###  cleaning-alru
 
-**Usage:** casadm --set-param --name cleaning-alru --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-set-param -\-name cleaning-alru -\-cache-id \<CACHE_ID\>
 [--wake-up \<NUMBER\>] [--staleness-time \<NUMBER\>] [--flush-max-buffers
 \<NUMBER\>] [--activity-threshold \<NUMBER\>]
 
 **Example:**
 
->   \# casadm --set-param --name cleaning-alru --cache-id 1 --wake-up 30
->   --staleness-time 120 --flush-max-buffers 50 --activity-threshold 5000  
+>   \# casadm -\-set-param -\-name cleaning-alru -\-cache-id 1 -\-wake-up 30
+>   -\-staleness-time 120 -\-flush-max-buffers 50 -\-activity-threshold 5000  
 
 or  
 >   \# casadm -X -n cleaning-alru -i 1 -w 30 -s 120 -b 50 -t 5000
@@ -817,53 +813,85 @@ alru flushing policy to be used for the applicable cache instance.
 **NOTE:** -w, -s, -b, and -t parameters aren't all required. At least one is
 required.
 
-**[-w, --wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
+**[-w, -\-wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
 in seconds. MIN: 1, MAX: 3600, DEFAULT: 20.
 
-**[-s, --staleness-time \<NUM\>]:** Time that has to pass from the last write
+**[-s, -\-staleness-time \<NUM\>]:** Time that has to pass from the last write
 operation before a dirty cache block can be scheduled to be flushed in seconds.
 MIN: 1, MAX: 3600, DEFAULT: 120.
 
-**[-b, --flush-max-buffers \<NUM\>]:** Number of dirty cache blocks to be flushed
+**[-b, -\-flush-max-buffers \<NUM\>]:** Number of dirty cache blocks to be flushed
 in one cleaning cycle. MIN: 1, MAX: 10000, DEFAULT: 100.
 
-**[-t, --activity-threshold \<NUM\>]:** Cache idle time before flushing thread can
+**[-t, -\-activity-threshold \<NUM\>]:** Cache idle time before flushing thread can
 start in milliseconds. MIN: 500, MAX: 1000000, DEFAULT: 10000.
 
-\-G \| --get-param
+###  promotion  
+
+**Usage:** casadm -\-set-param -\-name promotion -\-cache-id \<CACHE_ID\> -\-policy <POLICY>
+
+**Example:**  
+
+>   \# casadm -\-set-param -\-name promotion -\-cache-id 1 -\-policy always
+
+or  
+>   \# casadm -X -n promotion -i 1 -p always
+
+
+**Description:** This parameter specifies the desired promotion policy of core lines  
+
+**Required Parameters:**  
+
+**[-p, -\-policy \<POLICY\>]:** The policy desired for promotion of core lines  
+
+*Promotion policies:*
+
+-   *always* - Core lines are attemped to be promoted each time they are accessed.
+
+-   *nhit* - Core lines are attemped to be promoted after the n-th access.
+             This n-th access threshold can be set using one of these commands:
+
+       casadm –\-set-param -\-name promotion-nhit -\-cache-id \<CACHE_ID\> [-o, -\-trigger] \<PERCENTAGE\>  
+       **Description:** Percent of cache to be occupied before cache inserts will be filtered by the policy.  
+
+       casadm –\-set-param –\-name promotion-nhit -\-cache-id \<CACHE_ID\>  [-t, -\-threshold] \<NUMBER\>  
+      **Description:** Number of core line accesses required for it to be inserted into cache. Valid values are from range <2-1000>.
+
+
+\-G \| -\-get-param
 ------------------
 
 **Description:**  This command will retrieve a variety of cache/core parameters
-which are set via --set-param. See applicable configuration details below.
+which are set via -\-set-param. See applicable configuration details below.
 
 ###  seq-cutoff
 
-**Usage:** casadm --get-param --name seq-cutoff --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-get-param -\-name seq-cutoff -\-cache-id \<CACHE_ID\>
 --core-id \<CORE_ID\> [--output-format \<FORMAT\>]
 
 **Example:**
 
->   \# casadm --get-param --name seq-cutoff --cache-id 1 --core-id 1
->   --output-format csv  
+>   \# casadm -\-get-param -\-name seq-cutoff -\-cache-id 1 -\-core-id 1
+>   -\-output-format csv  
 
 or  
 >   \# casadm -G -n seq-cutoff -i 1 -j 1 -o csv
 
 **Description:**  Allows the ability to obtain current values of seq-cutoff
-cache/core parameters which are set with --set-param. Parameters that are
+cache/core parameters which are set with -\-set-param. Parameters that are
 returned: Sequential Cutoff Threshold and Sequential Cutoff Policy.
 
 **Required Parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional Parameters:**
 
-**[-j, --core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. Display
+**[-j, -\-core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. Display
 statistics for a specific core device. If not specified, core parameter is set
 to all cores in a given cache.
 
-**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
+**[-o, -\-output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -872,27 +900,27 @@ to all cores in a given cache.
 
 ###  cleaning
 
-**Usage:** casadm --get-param --name cleaning --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-get-param -\-name cleaning -\-cache-id \<CACHE_ID\>
 [--output-format \<FORMAT\>]
 
 **Example:**
 
->   \# casadm --get-param --name cleaning --cache-id 1 --output-format csv  
+>   \# casadm -\-get-param -\-name cleaning -\-cache-id 1 -\-output-format csv  
 
 or  
 >   \# casadm -G -n cleaning -i 1 -o csv
 
 **Description:** Allows the ability to obtain current values of cleaning
-cache/core parameters which are set with --set-param. Parameters that are
+cache/core parameters which are set with -\-set-param. Parameters that are
 returned: Cleaning Policy Type.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional Parameters:**
 
-**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
+**[-o, -\-output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -901,27 +929,27 @@ returned: Cleaning Policy Type.
 
 ###  cleaning-acp
 
-**Usage:** casadm --get-param --name cleaning-acp --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-get-param -\-name cleaning-acp -\-cache-id \<CACHE_ID\>
 [--output-format \<FORMAT\>]
 
 **Example:**
 
->   \# casadm --get-param --name cleaning-acp --cache-id 1 --output-format csv
+>   \# casadm -\-get-param -\-name cleaning-acp -\-cache-id 1 -\-output-format csv
 
 or  
 >   \# casadm -G -n cleaning-acp -i 1 -o csv
 
 **Description:** Allows the ability to obtain current values of acp cache/core
-parameters which are set with --set-param. Parameters that are returned: Wake Up
+parameters which are set with -\-set-param. Parameters that are returned: Wake Up
 Time and Flush Max Buffers.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional Parameters:**
 
-**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
+**[-o, -\-output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
@@ -930,29 +958,63 @@ Time and Flush Max Buffers.
 
 ###  cleaning-alru
 
-**Usage:** casadm --get-param --name cleaning-alru --cache-id \<CACHE_ID\>
+**Usage:** casadm -\-get-param -\-name cleaning-alru -\-cache-id \<CACHE_ID\>
 [--output-format \<FORMAT\>]
 
 **Example:**
 
->   \# casadm --get-param --name cleaning-alru --cache-id 1 --output-format csv  
+>   \# casadm -\-get-param -\-name cleaning-alru -\-cache-id 1 -\-output-format csv  
 
 or  
 >   \# casadm -G -n cleaning-alru -i 1 -o csv
 
 **Description:** Allows the ability to obtain current values of alru cache/core
-parameters which are set with --set-param. Parameters that are returned: Wake Up
+parameters which are set with -\-set-param. Parameters that are returned: Wake Up
 Time, Flush Max Buffers, Stale Buffer Time, and Activity Threshold.
 
 **Required parameters:**
 
-**[-i, --cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **Optional Parameters:**
 
-**[-o, --output-format \<format\>]**: Sets desired output format for statistics.
+**[-o, -\-output-format \<format\>]**: Sets desired output format for statistics.
 
 -   *table:* (default mode) Displays a table of the statistics information.
 
 -   *csv:* Outputs a comma separated list of statistics information. This output
     can be piped to a file and easily parsed or opened in a spreadsheet editor.
+
+### promotion
+**Usage:** casadm –\-get-param –\-name promotion –\-cache-id \<CACHE_ID\>
+
+**Example:**
+
+>   \# casadm -\-get-param -\-name promotion -\-cache-id 1 -\-output-format csv  
+
+or
+>   \# casadm –G –n promotion –i 1
+
+**Description:** Retrieves the promotion policy
+
+**Required parameters:**  
+
+**[-i, -\-cache-id \<ID\>]**: Unique identifier for cache \<1 to 16384\>.
+
+
+The additional command below can be used to obtain the nhit promotion values for the *nhit* policy
+
+**Usage:** casadm –\-get-param –\-name promotion-nhit –\-cache-id \<CACHE_ID\>
+
+**Example:**
+
+>   \# casadm -\-get-param -\-name promotion-nhit -\-cache-id 1 -\-output-format csv  
+
+or
+>   \# casadm –G –n promotion-nhit –i 1
+
+**Description:** Retrieves the nhit promotion policy values
+
+**Required parameters:**
+
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.

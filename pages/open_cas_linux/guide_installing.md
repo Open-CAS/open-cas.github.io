@@ -33,7 +33,7 @@ should be un-mounted and any auto-mount procedures disabled. When using a
 partition of a device as cache space, make sure the partition is aligned to the
 device’s physical sector size for best performance.
 
-For best performance, it is recommended to use the *noop* IO scheduler on the
+For best performance, it is recommended to use the *noop* (or *None* for NVMe devices) IO scheduler on the
 cache device (SSD). Initially, the cas virtual block device that is created
 when caching is enabled will inherit the IO scheduler of the primary storage
 device. If desired, the user can change the IO schedulers of the virtual block

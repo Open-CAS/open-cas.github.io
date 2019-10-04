@@ -11,3 +11,10 @@ Open CAS Linux initial release
 v19.06
 =======
 Added Write-Only mode
+
+v19.09
+======
+Added new IO classification rules  
+Updated calculations for CAS statistics  
+Enhanced block-layer API to allow multi-queue  
+Added a core line promotion policy
