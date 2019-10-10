@@ -79,7 +79,7 @@ entries:
       output: web
 
     - title: Product Specifications and System Requirements
-      url: /guide_product_specs_requirements.html
+      url: /guide_system_requirements.html
       output: web
 
     - title: Installing CAS
