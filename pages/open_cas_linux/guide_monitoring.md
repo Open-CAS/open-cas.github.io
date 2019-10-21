@@ -40,6 +40,28 @@ You can use these statistics to learn about your data usage. For example,
 looking at the sequential versus random read statistics reveals how your data is
 used.
 
+Additionally, the output provides a section detailing a summary of the cache instance as well as configuration information.
+This section is at the beginning of the output and it includes :  
+
+**Configuration Information**
+
+| **Configuration**         | **Description**                                                            |
+|---------------------------|----------------------------------------------------------------------------|
+| Cache ID                  | Number representing the ID of the cache instance                           |
+| Cache Size                | The physical cache size in KiB blocks and/or GiB blocks                    |
+| Cache Device              | The name of the cache device                                               |
+| Core Devices              | The number of backend storage core devices attached to the cache instance  |
+| Inactive Core Devices     | Number of core devices which are currently inactive                        |
+| Write Policy              | The write policy of this cache instance (write-back, write-through, etc.). See [**Configuration Details**](/guide_tool_details.html#-q----set-cache-mode) and [**Configuring CAS**](/guide_configuring.html#manual-configuration-for-write-through-mode) for additional information  |
+| Eviction Policy           | The eviction policy of this cache instance (LRU)                           |
+| Cleaning Policy           | The cleaning policy of this cache instance (ALRU, ACP, or NOP). See [**Configuration Details**](/guide_tool_details.html#cleaning) for additional information  |
+| Cache Line Size           | The block size of a cache line. This parameter can be set during the creation of the cache instance but cannot be modified afterwards|
+| Metadata Memory Footprint | The amount of physical memory cache metadata is occupying                  |
+| Dirty For                 | The length of time in seconds that the cache has held dirty data           |
+| Metadata Mode             | The current operational mode for metadata. Under regular operation this should state *normal*                                  |
+| Status                    | The current status of the cache instance (Running, Flushing, etc.). Under regular operation this should state *Running*        |  
+
+
 The following tables list the statistics (counters) that Open CAS Linux records:
 
 **Usage Statistics**
