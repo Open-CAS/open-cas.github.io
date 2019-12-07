@@ -21,7 +21,7 @@ Table of Contents
 
 [Introduction ](/guide_introduction.html)
 
-[Product Specifications and System Requirements](/guide_product_specs_requirements.html)
+[System Requirements](/guide_system_requirements.html)
 
 [Installing CAS](/guide_installing.html)
 

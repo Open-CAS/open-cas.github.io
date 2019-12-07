@@ -24,7 +24,7 @@ Configuring the Flash Device
 
 Before configuring Open CAS Linux, you must have a flash device installed. The flash
 device can be any solid state drive (SSD) or any PCIe\* flash drive supported by
-the Linux operating system (see [Product Specifications and System Requirements](/guide_product_specs_requirements.html) for details).
+the Linux operating system (see [System Requirements](/guide_system_requirements.html) for details).
 
 Follow the instructions in the installation guide included with the flash
 device, and make note of the device’s serial number or WWN so you can identify

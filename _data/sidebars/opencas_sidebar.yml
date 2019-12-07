@@ -78,7 +78,7 @@ entries:
       url: /guide_introduction.html
       output: web
 
-    - title: Product Specifications and System Requirements
+    - title: System Requirements
       url: /guide_system_requirements.html
       output: web
 
