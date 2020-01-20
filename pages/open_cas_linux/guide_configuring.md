@@ -142,6 +142,9 @@ Field details:
     -   *promotion_policy* allows the user to specify the promotion policy
         to be used for this cache, either always or nhit.
 
+    -   *cache_line_size* allows the user to specify the cache line size to be
+	used for this cache in kibibytes, either 4, 8, 16, 32, or 64.
+
         **NOTE:** During an upgrade, *opencas.conf* files with earlier formats
         will automatically be converted to the new format.
 
