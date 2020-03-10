@@ -61,7 +61,7 @@ privileges or login as “root” in order to proceed.
 
 2. Change current directory to project folder and update submodules
 > cd open-cas-linux   
-> git submodule update --init
+> git submodule update -\-init
 
 3. Configure Open CAS Linux
 > ./configure

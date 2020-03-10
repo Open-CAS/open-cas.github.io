@@ -1,17 +1,22 @@
 ---
 title: OCF Release Notes
-last_updated: April 26, 2019
+last_updated: 25. Feb 2020
 permalink: ocf_release_notes.html
 ---
 
-v18.12
+v20.01
 ======
-Initial OCF release for [SPDK](https://spdk.io/) integration.
+Metadata Locking Optimizations  
+LRU noise reduction promotion policy enhancements
+
+v19.06
+=======
+Added Write-Only mode for Open CAS Linux
 
 v19.03.01
 ======
 Added Support for multiple cores and write-back for SPDK
 
-v19.06
-=======
-Added Write-Only mode for Open CAS Linux
+v18.12
+======
+Initial OCF release for [SPDK](https://spdk.io/) integration.
