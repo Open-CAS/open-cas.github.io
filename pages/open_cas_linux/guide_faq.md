@@ -178,6 +178,12 @@ IO devices.
 
 >   \# iostat -xmt 1
 
+**Why does the CAS statistic counter for "Reads from Cache" increase when only write operations are being issued from the host application?**
+
+The *Reads from Cache* counter from the CAS statistic output ( See [*Monitoring CAS*](/guide_monitoring.html) ) can increase when only doing writes from the host in several cases.
+For example, during the flushing of dirty data to the backing store in write-back or write-only mode.
+Similarly, during eviction when the cache is full in write-back or write-only mode and there is in incoming write which requires to read dirty data from the cache and flush it to backing store in order to make space for the incoming write. Another example is if there are any misaligned I/O that requires read-modify-write of a block that is in the cache.
+
 **Should nr_request be modified for further tuning?**
 
 The *nr_requests* controls how many requests may be allocated in the block layer
