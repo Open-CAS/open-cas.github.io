@@ -160,7 +160,7 @@ Ensure Open CAS Linux devices are listed as acceptable block device types in
 >>   \# Advanced settings.  
 >>   \# List of pairs of additional acceptable block device types found  
 >>   \# in /proc/devices with maximum (non-zero) number of partitions.  
->>   *types = [ "cas_disk", 16 ]*
+>>   *types = [ "cas", 16 ]*
 
 After the LVM is configured and an Open CAS Linux device has been created (see
 [**Configuring CAS**](/guide_configuring.html) for further details) a physical
