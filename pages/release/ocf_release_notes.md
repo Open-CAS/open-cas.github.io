@@ -1,8 +1,12 @@
 ---
 title: OCF Release Notes
-last_updated: 25. Feb 2020
+last_updated: April 8 2020
 permalink: ocf_release_notes.html
 ---
+
+v20.03
+======
+Allow setting 0 as idle time in ALRU cleaning policy
 
 v20.01
 ======
