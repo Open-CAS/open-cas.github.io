@@ -814,7 +814,7 @@ alru flushing policy to be used for the applicable cache instance.
 required.
 
 **[-w, -\-wake-up \<NUM\>]:** Period of time between awakenings of flushing thread
-in seconds. MIN: 1, MAX: 3600, DEFAULT: 20.
+in seconds. MIN: 0, MAX: 3600, DEFAULT: 20.
 
 **[-s, -\-staleness-time \<NUM\>]:** Time that has to pass from the last write
 operation before a dirty cache block can be scheduled to be flushed in seconds.
@@ -824,7 +824,7 @@ MIN: 1, MAX: 3600, DEFAULT: 120.
 in one cleaning cycle. MIN: 1, MAX: 10000, DEFAULT: 100.
 
 **[-t, -\-activity-threshold \<NUM\>]:** Cache idle time before flushing thread can
-start in milliseconds. MIN: 500, MAX: 1000000, DEFAULT: 10000.
+start in milliseconds. MIN: 0, MAX: 1000000, DEFAULT: 10000.
 
 ###  promotion  
 
