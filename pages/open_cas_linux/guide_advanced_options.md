@@ -1,6 +1,6 @@
 ---
 title: Open CAS Linux - Admin Guide
-last_updated: April 29, 2019
+last_updated: April 8, 2020
 toc: true
 permalink: guide_advanced_options.html
 ---
@@ -354,3 +354,14 @@ If you are not seeing the correct values in the sysfs files, it is most likely
 because you have not unloaded the Open CAS Linux module prior to running modprobe.
 The modprobe command does not return any errors when you try to run it against a
 module that is already loaded.
+
+
+*Writeback Throttling*  
+One can disable WB throttling for a block device via sysfs, similarly to how IO scheduler is changed:
+
+> echo 0 > /sys/block/<device>/queue/wbt_lat_usec
+
+It is recommended to apply this setting to all core/cache devices on all systems with WB throttling functionality and kernel version below 4.19. This feature was introduced in kernel 4.10, however it is possible that distributions would port it to older kernels. Thus the best approach is to disable WB throttling on susceptible kernels whenever the sysfs file exists.
+
+If CAS core/cache device is not dedicated for CAS exclusive use (e.g. partitioned drive used as CAS cache and journal) then disabling WB throttling might affect quality of service for the I/O concurrent to CAS. In this case user needs to either find a compromise or move to a kernel 4.19 or newer.
+
