@@ -72,11 +72,36 @@ If the *opencas.conf* file is not yet configured, and Open CAS Linux devices wer
 previously manually started/added, a system reboot will require another manual
 restart of the cache and addition of the cores to the cache device.
 
-1. Start Open CAS Linux using the following command syntax:
+Start Open CAS Linux using the following command syntax:
 
 >   \# casadm -S -i \<cache_id\> -d \<cache_device\> -c \<cache_mode\>
 
 >   \# casadm -A -i \<cache_id\> -d \<core_device\>
+
+NOTE: If after installing CAS, your system boots into emergency mode due to the
+**"Failed to start opencas initialization service."** error, you need to force SELinux
+relabelling in permissive mode on your filesystem.
+The easiest and quickest way to do this is to add those kernel parameters to your
+grub entry at boot time:
+
+>   autorelabel=1 enforcing=0
+
+1. When the grub loads during boot, press *e* on the entry you want to boot.
+2. Then navigate to the *kernel/linux* line and add those parameters at the end.
+3. After that press *Ctrl+x* to boot.
+
+This will set those changes only for the current boot, so you don't need
+to change them back again.
+
+Alternatively you can change SELinux mode in */etc/selinux/config*:
+
+>   SELINUX=permissive
+
+then force relabelling by creating an empty *.autorelabel* file in the / directory:
+
+>   touch /.autorelabel
+
+and reboot your system.
 
 Stopping Cache Instances
 ------------------------
