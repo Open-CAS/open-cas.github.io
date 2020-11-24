@@ -35,6 +35,8 @@ Table of Contents
 
 [Monitoring CAS](/guide_monitoring.html)
 
+[Upgrading CAS](/guide_upgrading.html)
+
 [Configuration Tool Details](/guide_tool_details.html)
 
 [Terminology](/guide_terminology.html)

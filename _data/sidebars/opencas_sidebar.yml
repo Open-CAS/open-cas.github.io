@@ -106,6 +106,10 @@ entries:
       url: /guide_monitoring.html
       output: web
 
+    - title: Upgrading CAS
+      url: /guide_upgrading.html
+      output: web
+
     - title: Configuration Tool Details
       url: /guide_tool_details.html
       output: web
