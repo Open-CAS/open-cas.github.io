@@ -28,7 +28,7 @@ below summarizes the configurable fields in this IO classification file.
 
 | **Field**         | **Description**                                                                                                                                                                                                                                       |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| IO class id       | Unique ID for the IO class. Values in this field are fixed and should not be modified. (eg. ID for Metadata must always be 1)                                                                                                                         |
+| IO class id       | Unique ID for the IO class. (NOTE: The ID for unclassified must always be 0)                                                                                                                                                                            |
 | IO class name     | The name of the IO class. The name can be a known class name such as *metadata* or *unclassified* or *direct* . It can also consist of a user-defined rule. A rule consists of conditions separated by logical operators and/or arithmetic operators. |
 | Eviction priority | Sets the priority number for the IO class. Priority range is 0-255 with zero having the highest priority. The IO classes with the lowest priority will be evicted first.                                                                              |
 | Allocation        | Boolean value that allows the user to decide whether data of this IO class will be cached or not. 0=do not cache, 1=cache.                                                                                                                            |
@@ -62,16 +62,18 @@ arithmetic operators. The available operators and names are specified below.
 | unclassified      | The IO cannot be classified by any other class ID.                                                                                      |
 | metadata          | The IO contains filesystem metadata.                                                                                                    |
 | direct            | The IO is flagged to be performed directly on the device without buffering. This may be set by the application using the O_DIRECT flag. |
+| core_id           | The IO belongs to a particular core. For example to classify the IO to a core with id 1: core_id:eq:1                                      |
 | file_size         | The IO belongs to a file with a specific size in bytes. For example if the file size is less or equal to 4096 bytes: file_size:le:4096  |
 | directory         | The IO belongs to a specific directory path. For example: directory:/data/datab                                                         |
 | io_class          | The IO can be classified by a previously defined io_class ID. For example, to reference IO class with ID 3: io_class:3                  |
 | extension         | The IO belongs to a file with a specific extension. For example: extension:txt                                                          |
-|	lba               | The IO belongs to a specific range of lba’s on core device.  For example: lba:ge:2000&lba:le:5000                                       |
-|	pid               | The IO was triggered by a process with particular pid. For example: pid:eq:7890                                                         |
-|	process_name      | The IO was triggered by a process with particular name. For example: process_name:fio                                                   |
-|	file_offset       | The IO belongs to an offset within a file. For example: file_offset:gt:2000 &file_offset:lt:5000                                        |
-|	request_size      | The IO belongs to a request with particular size. For example: request_size:ge:8192&request_size:le:16384&done                          |
-|	wlth              | The IO uses application/user-space write hints. For example: wlth:eq:0                                                                  |
+| file_name_prefix  | The IO belongs to a file with a specific name prefix. For example, all files with name starting with foo: file_name_prefix:foo        |
+| lba               | The IO belongs to a specific range of lba’s on core device.  For example: lba:ge:2000&lba:le:5000                                       |
+| pid               | The IO was triggered by a process with particular pid. For example: pid:eq:7890                                                         |
+| process_name      | The IO was triggered by a process with particular name. For example: process_name:fio                                                   |
+| file_offset       | The IO belongs to an offset within a file. For example: file_offset:gt:2000 &file_offset:lt:5000                                        |
+| request_size      | The IO belongs to a request with particular size. For example: request_size:ge:8192&request_size:le:16384&done                          |
+| wlth              | The IO uses application/user-space write hints. For example: wlth:eq:0                                                                  |
 
 
 The table below shows the structure of the IO classification file. This table
