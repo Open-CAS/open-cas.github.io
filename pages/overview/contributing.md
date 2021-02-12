@@ -1,6 +1,6 @@
 ---
 title: Contributing
-last_updated: May 28, 2019
+last_updated: Feb 12, 2021
 permalink: contributing.html
 ---
 
@@ -77,7 +77,7 @@ Date:   Thu Jan 17 22:06:10 2019 -0700
     Signed-off-by: John Doe <john.doe@example_org.com>
 ~~~
 
-Code review is performed using **Reviewable**. 2 LGTMs (Looks Good To Me) are
+Code review is performed using the Github's default review tool. 2 approves are
 required for the pull request to be merged into main branch.
 
 ### Typical flow for introducing changes
