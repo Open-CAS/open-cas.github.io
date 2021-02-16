@@ -9,5 +9,6 @@ var searchData=
   ['ocf_5feviction_5ft',['ocf_eviction_t',['../ocf__def_8h.html#a66a28f98fe781f2aaf60255908ad76b5',1,'ocf_def.h']]],
   ['ocf_5flogger_5flvl_5ft',['ocf_logger_lvl_t',['../ocf__logger_8h.html#a7d7c70b32f34e38790b91aee95388147',1,'ocf_logger.h']]],
   ['ocf_5fmetadata_5flayout_5ft',['ocf_metadata_layout_t',['../ocf__def_8h.html#a7c00e318405e7f4716f14c418af01664',1,'ocf_def.h']]],
+  ['ocf_5fpromotion_5ft',['ocf_promotion_t',['../ocf__def_8h.html#a388aa239360f13702bd8d353ec034d4b',1,'ocf_def.h']]],
   ['ocf_5fseq_5fcutoff_5fpolicy',['ocf_seq_cutoff_policy',['../ocf__def_8h.html#a3884eaf0f305189055f29ad566e68fdd',1,'ocf_def.h']]]
 ];
