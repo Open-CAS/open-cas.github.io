@@ -231,48 +231,6 @@ The following command is an example:
 
 >   \# mount -o discard /dev/cas1-1 /mnt
 
-Atomic Writes
--------------
-
-Some Intel(R) Data Center SSDs have an Extended LBA feature called Variable Sector
-Size (VSS). Open CAS Linux takes advantage of this feature to write user data and
-cache metadata in one write request, as opposed to two, reducing the number of
-writes to cache devices, thereby enhancing performance and increasing drive
-endurance.
-
-Atomic Writes are supported on Intel NVMe drives which support VSS. Current
-examples are:
-
--  P4800x Intel(R) Optane(TM) SSD
-
--  P3700/P3600/P3500/P3520 NVMe drives.
-
-The performance improvements are especially useful in write-back mode, which
-requires two writes (one for user data and the second for metadata updates).
-During a recovery procedure, Open CAS Linux makes use of this metadata to recover
-user data (for example, in case of power-failures).
-
-To take advantage of this feature, the Intel SSD must be properly formatted
-prior to using with Open CAS Linux.  
-The command syntax is:
-
->   \# casadm -N -F \<MODE\> -d \<DEVICE\> [option. . .]
-
-   Or
-
->   \# casadm --nvme --format \<MODE\> --device \<DEVICE\> [option. . .]
-
-   For example:
-
->   \# casadm -N -F atomic -d /dev/nvme0n1
-
-**NOTE:** To use this feature, the Intel(R) SSD used for caching must be dedicated
-to Open CAS Linux only. In other words, the SSD cannot be partitioned to be used for
-other purposes such as Ceph journals, etc.
-
-**NOTE:** Reboot the server after formatting the NVMe\* devices and before any
-further changes are made to the system.
-
 Kernel Module Parameters
 ------------------------
 

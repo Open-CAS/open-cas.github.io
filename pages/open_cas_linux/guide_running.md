@@ -155,12 +155,7 @@ After an unplanned shutdown, there are two options for restarting caching. The
 first option is to start the cache in load mode (-l option), which will utilize
 the dirty data currently in cache for faster recovery, and no flushing of cache
 will be done. This process is performed automatically in accordance with system
-Udev rules. When using atomic writes, the load option will utilize all the
-current data (clean/dirty) in the cache. The clean cache data means that the
-data in cache is in sync with the backend storage, such as hard disk drives.
-Dirty cache data refers to data that has not yet been written to the backend
-storage. Therefore Atomic writes provide better performance after recovery
-because they have more data in the cache.
+Udev rules.
 
 The second option is to reinitialize the cache with new metadata, which will
 clear the cache, resulting in the loss of all dirty data that is currently in
