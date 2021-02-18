@@ -6,10 +6,8 @@ topnav:
     - title: Start Here
       url: /index.html
     - title: GitHub
-      external_url: https://github.com/open-cas/ocf
-    - title: Documentation
+      external_url: https://github.com/open-cas/open-cas-linux/
+    - title: OCF Doxygen
       external_url: /doxygen/ocf/index.html
     - title: News
       url: /news
-    - title: Trello
-      url: /trello.html
