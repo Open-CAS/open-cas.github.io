@@ -648,37 +648,6 @@ configuration.
     output can be piped to a file and easily parsed or opened in a spreadsheet
     editor.
 
-\-N \| -\-nvme
--------------
-
-**Usage:** casadm -\-nvme -\-format \<MODE\> -\-device \<DEVICE\> [option...]
-
-**Example:**
-
->   \# casadm -\-nvme -\-format atomic -\-device /dev/nvme0n1  
-
-or  
->   \# casadm -N -F atomic -d /dev/nvme0n1
-
-**Description:** Formats the SSD to take advantage of Atomic Writes capability
-of Intel(R) SSDs.
-
-**Required parameters:**
-
-**[-F, -\-format, \<atomic \| normal\>]:** Sets the formatting to “atomic” to use
-for atomic writes, or normal which does not use this feature. After formatting,
-a reboot is required.
-
-**[-d, -\-device \<DEVICE\>] :** Caching device to be used. This is an NVMe block
-device listed in the */dev* directory. \<device\> needs to be the complete path
-describing the caching device to be used, for example /dev/sdg. Formatting of
-non-NVMe devices is not supported.
-
-**Optional parameters:**
-
-**[-f, -\-force]**: Forces the SSD format to proceed, for example if the device has
-an existing file system, outdated Open CAS Linux metadata, or partition table.
-
 \-X \| -\-set-param
 ------------------
 
