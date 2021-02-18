@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['obj',['obj',['../structocf__io.html#aa6dde9bc92dde7e97fdedbe12d4abe3c',1,'ocf_io']]],
-  ['occupancy',['occupancy',['../structocf__cache__info.html#a474e24a51bd4045ace1ce4e08a198620',1,'ocf_cache_info']]],
-  ['occupancy_5fclines',['occupancy_clines',['../structocf__stats__io__class.html#a0d581835ed1d1fb5300de44c1fa41e4b',1,'ocf_stats_io_class']]],
-  ['open',['open',['../structocf__data__obj__ops.html#a49ad8aa1f28f479d35030af6b6aea52a',1,'ocf_data_obj_ops']]],
-  ['ops',['ops',['../structocf__data__obj__properties.html#a511011cf05825c5c49d05c94cf1b1e3b',1,'ocf_data_obj_properties::ops()'],['../structocf__io.html#aa09e34c3f796bea0a0704e08e32cd6b4',1,'ocf_io::ops()']]]
+  ['name',['name',['../structocf__io__class__info.html#a77c2582358a064ce3165c56e66de6993',1,'ocf_io_class_info::name()'],['../structocf__mngt__core__config.html#a9ad0028947afb7e7bf737e4c99b2a873',1,'ocf_mngt_core_config::name()'],['../structocf__mngt__cache__config.html#a39285868ac136800efccf777e852f407',1,'ocf_mngt_cache_config::name()'],['../structocf__mngt__io__class__config.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_mngt_io_class_config::name()'],['../structocf__event__cache__desc.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_event_cache_desc::name()'],['../structocf__event__core__desc.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_event_core_desc::name()'],['../structocf__volume__properties.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_volume_properties::name()']]]
 ];
