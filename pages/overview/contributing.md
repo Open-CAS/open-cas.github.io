@@ -1,6 +1,6 @@
 ---
 title: Contributing
-last_updated: May 28, 2019
+last_updated: Feb 17, 2021
 permalink: contributing.html
 ---
 
@@ -77,7 +77,7 @@ Date:   Thu Jan 17 22:06:10 2019 -0700
     Signed-off-by: John Doe <john.doe@example_org.com>
 ~~~
 
-Code review is performed using **Reviewable**. 2 LGTMs (Looks Good To Me) are
+Code review is performed using the Github's default review tool. 2 approves are
 required for the pull request to be merged into main branch.
 
 ### Typical flow for introducing changes
@@ -118,6 +118,44 @@ pull request on the github.
 ~~~{.sh}
 git push my_changes origin
 ~~~
+
+## Naming conventions in the documentation
+**The product name**
+* Open CAS Linux
+
+**The write policies**
+* Write-Through
+* Write-Back
+* Write-Around
+* Pass-Through
+* Write-Only
+
+**The cleaning policies abbreviations**
+* ALRU
+* ACP
+* NOP
+
+**The sequential cutoff policies**
+* never
+* full
+* always
+
+**The promotion policies**
+* always
+* nhit
+
+**The devices**
+* cache
+* cache device
+* exported object == cache volume
+* core device == backend device
+
+**Miscellaneous**
+* IO class
+* sequential cutoff
+* promotion policy
+* cache line
+* IO request
 
 ## Maintainers
 Maintainers primary responsibility is to provide technical guidance on
