@@ -549,6 +549,35 @@ specified associated core device.
     dirty data will be flushed opportunistically as normal. IO to the device
     will continue with reduced performance during cache flushing.
 
+\--zero-metadata
+------------------
+
+**Usage:** casadm -\-zero-metadata -\-device \<DEV_NAME\> [option]
+
+**Example:**
+
+>   \# casadm -\-zero-metadata -\-device /dev/disk/by-id/wwn-0x50014ee0042769ef  
+
+or  
+>   \# casadm -\-zero-metadata -d /dev/disk/by-id/wwn-0x50014ee0042769ef
+
+**Description:** Clears metadata from the caching device.
+This command does not currently have a short form.
+
+**Required Parameters:**
+
+**-d \| -\-device \<DEV_NAME\>**
+
+Where DEV_NAME is a device name from the core pool
+
+**Optional parameters:**
+
+**[-f, -\-force]:** Forces clearing metadata from a cache device even if
+a potential dirty data system exists on the cache device. This is typically
+used for devices that have been previously utilized as a cache device.
+
+ - *Caution:* This will delete and any existing metadata on the cache device.
+
 \-H \| -\-help
 -------------
 
