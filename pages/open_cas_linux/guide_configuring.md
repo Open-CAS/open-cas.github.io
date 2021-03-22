@@ -121,11 +121,9 @@ Field details:
 -   *\<Core ID\>* is a numeric value between 0 and 4095 (valid core instance
     numbers)
 
--   Cache and core devices must point to existing HDD and SSD devices,
-    preferably referenced by the by-id name (ls -l /dev/disk/by-id). Core
-    devices should reference the WWN identifier, while Cache devices should use
-    model and Serial Number. Alternatively, devices may be referenced by device
-    name (eg. /dev/sdb) such as when running casadm commands.
+-   Cache and core devices must point to existing HDD and SSD devices, referenced
+    by the by-id name (ls -l /dev/disk/by-id). Core devices should reference
+    the WWN identifier, while Cache devices should use model and Serial Number.
 
 -   Mode determines the cache mode, either write-through, write-back,
     write-around, write-only, or pass-through.
@@ -196,9 +194,8 @@ The following is assumed for the subsequent instructions:
    raw block device. See system requirements for specific file system
    types and limitations for Open CAS Linux. Ensure that the device is not mounted.
 
--   If necessary, perform an *ls -l* or *ll* on the */dev/disk/by-uuid* or
-    */dev/disk/by-id* directory to ensure the correct devices are being
-    configured.
+-   Perform an *ls -l* or *ll* on the */dev/disk/by-id* directory
+    to obtain correct paths to devices that are being configured.
 
 -   Core device (HDD) logical block size must be 512 bytes or larger.
 
@@ -230,13 +227,14 @@ read intensive operations.
 
 -  Start a new cache with an ID of “1”:
 
->   \# casadm -S -i 1 -d /dev/sdc
+>   \# casadm -S -i 1 -d /dev/disk/by-id/nvme-INTEL_SSD
 
 -   You may notice a brief delay after entering the casadm -S command.
    Typically, this is less than 60 seconds, but can be longer.
 
 -   If the cache device is formatted or a file system already exists, you will
-   need to use the “-f” force flag (for example, casadm -S -d /dev/sdc -f).
+   need to use the “-f” force flag (for example,
+   casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD -f).
 
 -  All information on the cache device will be deleted if the -f option is
     used. Please ensure all data has been backed up to another device (see
@@ -244,7 +242,7 @@ read intensive operations.
 
 -  Pair the core device to this new cache:
 
->   \# casadm -A -i 1 -d /dev/sdb
+>   \# casadm -A -i 1 -d /dev/disk/by-id/wwn-0x50014ee00429bf94
 
 -   The *add-core* command creates a new device in the */dev* directory with the
    following name format:
@@ -266,7 +264,7 @@ fails before the data is written to the core device.
 Write-back mode is enabled when starting a new cache device with the option “-c
 wb”:
 
->   \# casadm -S -i 1 -d /dev/sdc -c wb
+>   \# casadm -S -i 1 -d /dev/disk/by-id/nvme-INTEL_SSD -c wb
 
 Pairing of a core device is similar to the previous step for Manual
 Configuration for Write-through Mode section.
@@ -285,7 +283,7 @@ cases where data is written and not often subsequently re-read.
 Write-around mode is enabled when starting a new cache device with the option
 “*-c wa”*:
 
->   \# casadm -S -i 1 -d /dev/sdc -c wa
+>   \# casadm -S -i 1 -d /dev/disk/by-id/nvme-INTEL_SSD -c wa
 
 Pairing of a core device is similar to the Manual Configuration for
 Write-through Mode section.
@@ -301,7 +299,7 @@ associated, the user would dynamically switch to their desired caching mode.
 Pass-through mode is enabled when starting a new cache device with the option
 “*-c pt”*:
 
->   \# casadm -S -i 1 -d /dev/sdc -c pt
+>   \# casadm -S -i 1 -d /dev/disk/by-id/nvme-INTEL_SSD -c pt
 
 Pairing of a core device is similar to the Manual Configuration for
 Write-through Mode section.
@@ -322,7 +320,7 @@ fails before the data is written to the core device.
 Write-only mode is enabled when starting a new cache device with the option
 “*-c wo”*:
 
->   \# casadm -S -i 1 -d /dev/sdc -c wo
+>   \# casadm -S -i 1 -d /dev/disk/by-id/nvme-INTEL_SSD -c wo
 
 Pairing of a core device is similar to the Manual Configuration for
 Write-through Mode section.

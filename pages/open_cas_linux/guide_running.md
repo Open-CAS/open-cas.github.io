@@ -39,8 +39,8 @@ or partitions. Execute the following:
 
 >   \# casctl init --force
 
- This command yields the same results as: casadm -S -d /dev/sdX --force for a
- single cache instance.
+ This command yields the same results as:
+ casadm -S -d /dev/disk/by-id/wwn-some_ssd_disk --force for a single cache instance.
 
 Startup of Cache instances
 ---------------------------
@@ -171,7 +171,7 @@ To manually start Open CAS Linux with recovery enabled, enter the following comm
 All previously attached cores will be reattached to the cache after this
 command.
 
->   \# casadm -S -d /dev/sdc -l
+>   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD -l
 
 For more details, see ‘-S \| --start-cache’.
 
@@ -181,8 +181,8 @@ To clear or empty the cache device (invalidate the entire cache), manually start
 the cache including the -f parameter (and omitting the -l parameter), as shown
 below:
 
->   \# casadm -S -d /dev/sdc -f  
->   \# casadm -A -i 1 -d /dev/sdb
+>   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD -f  
+>   \# casadm -A -i 1 -d /dev/disk/by-id/wwn-0x50014ee004276c68
 
 This reinitializes the cache instead of loading the old state and results in
 zero cache occupancy.

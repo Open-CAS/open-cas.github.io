@@ -25,11 +25,11 @@ command:
 
 **Example:**
 
->   \# casadm -\-start-cache -\-cache-device /dev/sdc
+>   \# casadm -\-start-cache -\-cache-device /dev/disk/by-id/nvme-INTEL_SSD
 
   or
 
->   \# casadm -S -d /dev/sdc
+>   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD
 
 **Description:** Prepares a block device to be used as device for caching other
 block devices. Typically the cache devices are SSDs or other NVM block devices
@@ -42,9 +42,9 @@ invalid).
 **Required Parameters:**
 
 **[-d, -\-cache-device \<DEVICE\>] :** Caching device to be used. This is an SSD or
-any NVM block device or RAM disk shown in the */dev* directory. \<device\> needs
+any NVM block device or RAM disk shown in the */dev/disk/by-id* directory. \<device\> needs
 to be the complete path describing the caching device to be used, for example
-/dev/sdc.
+/dev/disk/by-id/nvme-INTEL_SSD.
 
 **Optional Parameters:**
 
@@ -207,10 +207,10 @@ is running.
 
 **Example:**
 
->   \# casadm -\-add-core -\-cache-id 1 -\-core-device /dev/sdb  
+>   \# casadm -\-add-core -\-cache-id 1 -\-core-device /dev/disk/by-id/wwn-0x50014ee004276c68  
 
 or  
->   \# casadm -A -i 1 -d /dev/sdb
+>   \# casadm -A -i 1 -d /dev/disk/by-id/wwn-0x50014ee004276c68
 
 **Description:** Adds/maps a core device (either the full device or a partition)
 to the framework associated with a specified cache ID. This command can be
@@ -222,8 +222,8 @@ cache device.
 **[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **[-d, -\-core-device \<DEVICE\>]:** Location of the HDD storage/core device.  
-You must use the complete device path in the /dev directory, for example
-/dev/sdb.
+You must use the complete device path in the */dev/disk/by-id directory*, for example
+/dev/disk/by-id/wwn-0x50014ee004276c68.
 
 **Optional Parameters:**
 
@@ -276,10 +276,10 @@ casadm -L command.
 
 **Example:**
 
->   \# casadm -\-remove-detached -\-device /dev/sda  
+>   \# casadm -\-remove-detached -\-device /dev/disk/by-id/wwn-0x50014ee0042769ef  
 
 or  
->   \# casadm -\-remove-detached -d /dev/sda
+>   \# casadm -\-remove-detached -d /dev/disk/by-id/wwn-0x50014ee0042769ef
 
 **Description:** Removes a device from the core pool. A device is in the core
 pool when it’s listed in *opencas.conf* as a core in a configured cache
