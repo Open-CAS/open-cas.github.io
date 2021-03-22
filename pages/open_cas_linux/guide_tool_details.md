@@ -292,6 +292,37 @@ NVMe drive). This command does not currently have a short form.
 
 Where DEV_NAME is a device name from the core pool
 
+\--remove-inactive
+------------------
+
+**Usage:** casadm -\-remove-inactive -\-device \<DEV_NAME\>
+
+**Example:**
+
+>   \# casadm -\-remove-detached -\-cache-id 1 -\-core-id 1  
+
+or  
+>   \# casadm -\-remove-detached -i 1 -j 1
+
+**Description:** Deletes the cache/inactive core device mapping, which is one
+way to disable caching of an inactive device.
+
+**Required Parameters:**
+
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
+
+**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.  
+You can identify the assigned value for a particular core device using the
+casadm -L command.
+
+-  *Caution:* Before using casadm --remove-inactive, stop all IO to the mapped
+    core device, ensure it is not in use, and unmount it.
+
+-  Although legal core ID range starts with 0, Open CAS Linux engine would
+    resort to assigning core ID value of 0 only if all other core IDs within
+    cache instance are used. In other words the order of core assignment is
+    as follows: 1, 2, 3, ..., 4094, 4095, 0.
+
 \-L \| -\-list-caches
 --------------------
 
