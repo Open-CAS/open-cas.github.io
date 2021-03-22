@@ -16,8 +16,8 @@ Initial configuration of Cache instances
 
 Once Open CAS Linux is installed, but no cache instances are yet configured and
 running, the user can easily configure and start cache instances. Refer to the
-guidance in [**Configuring CAS**](/guide_configuring.html) for configuring the file *utils/opencas.conf*, then
-follow these steps:
+guidance in [**Configuring CAS**](/guide_configuring.html) for configuring the
+file */etc/opencas/opencas.conf*, then follow these steps:
 
 1. Edit and configure caches and cores as desired via the
 *opencas.conf* file.

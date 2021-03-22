@@ -8,7 +8,7 @@ permalink: guide_configuring.html
 Configuring Open CAS Linux
 ======================
 
-Open CAS Linux Configuration File - *utils/opencas.conf*
+Open CAS Linux Configuration File - */etc/opencas/opencas.conf*
 -------------------------------------------------------------
 
 Once Open CAS Linux has been installed, the next stop for the Open CAS Linux administrator
@@ -80,7 +80,7 @@ file:
   >> 1 7 /dev/disk/by-id/wwn-0x50014ee004276c68
 
 Further details are available in the complete default
-*utils/opencas.conf* file, as follows:
+*/etc/opencas/opencas.conf* file, as follows:
 
 >> version=19.03.00  
 >> \# Version tag has to be first line in this file   
