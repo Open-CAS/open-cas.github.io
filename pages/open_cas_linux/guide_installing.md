@@ -78,3 +78,29 @@ privileges or login as “root” in order to proceed.
 
 6. Verify casadm shows the inserted kernel module versions
 > casadm -V
+
+
+Creating RPM/DEB packages
+-------------------------
+
+You can generate RPM/DEB packages from Open CAS Linux sources and install them,
+instead of compiling the code and installing files manually. That is also an easy
+way to manage kernel modules updates from one kernel version to another.
+To generate packages, simply run:
+`make rpm` or `make deb`
+(package generating script will inform you of any missing dependencies or other problems)
+
+Your packages will be placed in _packages/_ directory. There will be two main ones
+(with utils and modules) and also debug symbols. You can ignore and delete all those
+containing _debug_ or _dbg_ in the file name.
+
+Install _open-cas-linux_ and _open-cas-linux-modules_ by running:
+`dnf install ./packages/open-cas-linux*.rpm`
+or
+`apt install ./packages/open-cas-linux*.deb`
+
+> To install common dependencies for building RPM packages:
+> `dnf install rpm-build`
+>
+> To install common dependencies for building DEB packages:
+> `apt install debhelper devscripts dkms`
