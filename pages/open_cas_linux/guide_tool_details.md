@@ -25,11 +25,11 @@ command:
 
 **Example:**
 
->   \# casadm -\-start-cache -\-cache-device /dev/sdc
+>   \# casadm -\-start-cache -\-cache-device /dev/disk/by-id/nvme-INTEL_SSD
 
   or
 
->   \# casadm -S -d /dev/sdc
+>   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD
 
 **Description:** Prepares a block device to be used as device for caching other
 block devices. Typically the cache devices are SSDs or other NVM block devices
@@ -42,9 +42,9 @@ invalid).
 **Required Parameters:**
 
 **[-d, -\-cache-device \<DEVICE\>] :** Caching device to be used. This is an SSD or
-any NVM block device or RAM disk shown in the */dev* directory. \<device\> needs
+any NVM block device or RAM disk shown in the */dev/disk/by-id* directory. \<device\> needs
 to be the complete path describing the caching device to be used, for example
-/dev/sdc.
+/dev/disk/by-id/nvme-INTEL_SSD.
 
 **Optional Parameters:**
 
@@ -207,10 +207,10 @@ is running.
 
 **Example:**
 
->   \# casadm -\-add-core -\-cache-id 1 -\-core-device /dev/sdb  
+>   \# casadm -\-add-core -\-cache-id 1 -\-core-device /dev/disk/by-id/wwn-0x50014ee004276c68  
 
 or  
->   \# casadm -A -i 1 -d /dev/sdb
+>   \# casadm -A -i 1 -d /dev/disk/by-id/wwn-0x50014ee004276c68
 
 **Description:** Adds/maps a core device (either the full device or a partition)
 to the framework associated with a specified cache ID. This command can be
@@ -222,8 +222,8 @@ cache device.
 **[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
 **[-d, -\-core-device \<DEVICE\>]:** Location of the HDD storage/core device.  
-You must use the complete device path in the /dev directory, for example
-/dev/sdb.
+You must use the complete device path in the */dev/disk/by-id directory*, for example
+/dev/disk/by-id/wwn-0x50014ee004276c68.
 
 **Optional Parameters:**
 
@@ -276,10 +276,10 @@ casadm -L command.
 
 **Example:**
 
->   \# casadm -\-remove-detached -\-device /dev/sda  
+>   \# casadm -\-remove-detached -\-device /dev/disk/by-id/wwn-0x50014ee0042769ef  
 
 or  
->   \# casadm -\-remove-detached -d /dev/sda
+>   \# casadm -\-remove-detached -d /dev/disk/by-id/wwn-0x50014ee0042769ef
 
 **Description:** Removes a device from the core pool. A device is in the core
 pool when it’s listed in *opencas.conf* as a core in a configured cache
@@ -291,6 +291,37 @@ NVMe drive). This command does not currently have a short form.
 **-d \| -\-device \<DEV_NAME\>**
 
 Where DEV_NAME is a device name from the core pool
+
+\--remove-inactive
+------------------
+
+**Usage:** casadm -\-remove-inactive -\-device \<DEV_NAME\>
+
+**Example:**
+
+>   \# casadm -\-remove-detached -\-cache-id 1 -\-core-id 1  
+
+or  
+>   \# casadm -\-remove-detached -i 1 -j 1
+
+**Description:** Deletes the cache/inactive core device mapping, which is one
+way to disable caching of an inactive device.
+
+**Required Parameters:**
+
+**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>
+
+**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.  
+You can identify the assigned value for a particular core device using the
+casadm -L command.
+
+-  *Caution:* Before using casadm --remove-inactive, stop all IO to the mapped
+    core device, ensure it is not in use, and unmount it.
+
+-  Although legal core ID range starts with 0, Open CAS Linux engine would
+    resort to assigning core ID value of 0 only if all other core IDs within
+    cache instance are used. In other words the order of core assignment is
+    as follows: 1, 2, 3, ..., 4094, 4095, 0.
 
 \-L \| -\-list-caches
 --------------------
@@ -548,6 +579,35 @@ specified associated core device.
     fully flushed will result in some dirty data remaining in the cache. The
     dirty data will be flushed opportunistically as normal. IO to the device
     will continue with reduced performance during cache flushing.
+
+\--zero-metadata
+------------------
+
+**Usage:** casadm -\-zero-metadata -\-device \<DEV_NAME\> [option]
+
+**Example:**
+
+>   \# casadm -\-zero-metadata -\-device /dev/disk/by-id/wwn-0x50014ee0042769ef  
+
+or  
+>   \# casadm -\-zero-metadata -d /dev/disk/by-id/wwn-0x50014ee0042769ef
+
+**Description:** Clears metadata from the caching device.
+This command does not currently have a short form.
+
+**Required Parameters:**
+
+**-d \| -\-device \<DEV_NAME\>**
+
+Where DEV_NAME is a device name from the core pool
+
+**Optional parameters:**
+
+**[-f, -\-force]:** Forces clearing metadata from a cache device even if
+a potential dirty data system exists on the cache device. This is typically
+used for devices that have been previously utilized as a cache device.
+
+ - *Caution:* This will delete and any existing metadata on the cache device.
 
 \-H \| -\-help
 -------------

@@ -155,7 +155,7 @@ Typical log sample of successful cache initialization:
 >> Done saving cache state!  
 >> Cache 1 successfully added  
 >> IO Scheduler of cas1-1 is cfq  
->> Core "/dev/sdc" successfully added
+>> Core "/dev/disk/by-id/wwn-0x50014ee004276c68" successfully added
 
 Typical log sample of successful cache removal:
 >> Removing Cache 1  

@@ -20,7 +20,7 @@ You can add multiple core devices to a single cache device. An example
 >>
 >> \#\# Cache ID Cache device Cache mode Extra fields (optional)
 >>
->> 1 /dev/nvme0n1p5 wb ioclass_file=/etc/opencas/ioclass-config.csv
+>> 1 /dev/disk/by-id/nvme-INTEL_SUPER_FAST_DISK-part5 wb ioclass_file=/etc/opencas/ioclass-config.csv
 >>
 >> \#\# Core devices configuration
 >>
@@ -28,13 +28,13 @@ You can add multiple core devices to a single cache device. An example
 >>
 >> \#\# Cache ID Core ID Core device
 >>
->> 1 1 /dev/sda
+>> 1 1 /dev/disk/by-id/wwn-0x123456789abcdef0
 >>
->> 1 2 /dev/sdb
+>> 1 2 /dev/disk/by-id/wwn-0x888844445ab100d1
 >>
->> 1 3 /dev/sdc
+>> 1 3 /dev/disk/by-id/wwn-0xd00de123456789ab
 >>
->> 1 4 /dev/sdd
+>> 1 4 /dev/disk/by-id/wwn-0x213745689abcdef5
 
 This example shows 4 core devices paired with a single NVMe drive partition.
 
@@ -42,10 +42,10 @@ For each core device added, a cache-core pair will be created with the following
 naming format:
 
 -   */dev/cas1-1* will be created associated with *\<cache_id\> =1*, first
-   core device.   (For example: */dev/sda*)
+   core device.   (For example: */dev/disk/by-id/wwn-0x123456789abcdef0*)
 
 -   */dev/cas1-2* will be created associated with *\<cache_id\>=1*, second core device.  
-   (For example: */dev/sdb*)
+   (For example: */dev/disk/by-id/wwn-0x888844445ab100d1*)
 
 Display cache listing via `casadm -L`:
 
@@ -90,15 +90,19 @@ To set up a RAMdisk-based cache level, do the following:
 
 -  Create the SSD cache instance, where */dev/sdc* is your SSD cache device:
 
->   \# casadm -S -d /dev/sdc
+>   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD
 
 -  Add a core device (*/dev/sdb*) mapping to the SSD cache instance:
 
->   \# casadm -A -i 1 -d /dev/sdb
+>   \# casadm -A -i 1 -d /dev/disk/by-id/wwn-0x50014ee0aed22393
+
+-  Create by-id link to RAMdisk */dev/ram1*:
+
+>   \# ln -s /dev/ram1 /dev/disk/by-id/ram-disk-part1
 
 -  Create the RAMdisk cache instance:
 
->   \# casadm -S -d /dev/ram1 -i 2
+>   \# casadm -S -d /dev/disk/by-id/ram-disk-part1 -i 2
 
 -  Add the tiered core device (*/dev/cas1-1*) mapping to the RAMdrive
     cache instance:
