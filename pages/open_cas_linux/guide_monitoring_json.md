@@ -1,50 +1,93 @@
 ---
-title: Open CAS Linux - Admin Guide
+title: Open CAS-Linux - Admin Guide
 last_updated: October 15, 2021
 toc: true
+geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
 permalink: guide_monitoring_json.html
 ---
 
-Monitoring Open CAS Linux - JSON API
+Monitoring Open-CAS Linux - JSON API
 =====================
 
-Json API overview
----------------------
+# Overview
 
-Json API provides two basic functionalities for inspecting CAS: retrieving CAS statistics and listing CAS devices. All requests, responses and errors are in json format.
+The JSON API provides basic functionalities for inspecting CAS (retrieving CAS statistics on various levels, listing CAS devices and providing cache, core or IO class details). All requests, responses and errors are in JSON format.
 
-**Statistics**
+**JSON request**
 
-Statistics can be requested on different levels cache, core or io class. It is dependant on passing optional arguments in request as core id or io class.
+Requests consist of a header with the name of a command and parameters with additional request details, such as: cache id, core id or IO class id. Different parameters are required for various commands.
 
-**List CAS devices**
+**JSON responses**
 
-Lists all cache instances and their core devices.
+Responses consist of all requested components or in case of trouble an error also encoded in JSON format.
 
-**Json request**
+# Statistics
 
-Request consist of header with name of command and additional request detials as cache info, core info and io class info. Info includes parameters passed to CAS monitoring tool from which depends statistics level. Cache id is obligatory while core id and io class are optional parameters.
+Statistics can be requested on different levels: cache, core or IO class. There are four specific commands with different parameters responsible for inspecting those statistics.
 
-**Example request:**
+**Statistics requests:**
+
+-   core with specific IO class statistics
+
+-   Cache statistics
+
+-   Core statistics
+
+-   IO class statistics
+
+# Example statistics requests
+
+**A request for statistics for a specified cache**
+
 ```json
 {
-  "header": {
-    "command": "stats",
-    "subcommands": ["cache info", "core info", "io class info"]
-  },
-  "info": {
+  "command": "opencas.cache.stats.get",
+  "params": {
     "cache id": 1,
-    "core id": 0,
-    "io class": 0
   }
 }
 ```
 
-**Json responses**
+**A request for statistics for a specified core**
 
-Responses consists of all requested components or in case of trouble error response also encoded to json format.
+```json
+{
+  "command": "opencas.cache.core.stats.get",
+  "params": {
+    "cache id": 1,
+    "core id": 1,
+  }
+}
+```
 
-**Example statistics response structure:**
+**A request for statistics for a specified IO class on a specified cache**
+
+```json
+{
+  "command": "opencas.cache.ioclass.stats.get",
+  "params": {
+    "cache id": 1,
+    "io class": 0 
+  }
+}
+```
+
+**A request for statistics for a specified IO class on a specified core**
+
+```json
+{
+  "command": "opencas.cache.core.ioclass.stats.get",
+  "params": {
+    "cache id": 1,
+    "core id": 1,
+    "io class": 0 
+  }
+}
+```
+
+# Example statistics response
+
+**statistics response structure:**
 
 Statistics details
 -   Usage statistics
@@ -57,263 +100,187 @@ Statistics details
 
 -   Error statistics
 
-Optional details
-
--    Cache info
-
--    Core info
-    
--    IO class info
-
-**Example statistics response:**
-
 ```json
 {
-  "Cache info": {
-    "Cache id": 1,
-    "Cache device": "/dev/disk/by-id/nvme-nvme.8086-50484b53373438323030335433373541474e-494e54454c20535344504544314b3337354741-00000001-part4",
-    "Core(s) id(s)": [
-      1,
-      2
-    ],
-    "Cache details": {
-      "Attached": true,
-      "Status": "stopping",
-      "Size [cache lines]": 5183520,
-      "Inactive cores": {
-        "Occupancy": {
-          "Page": 0,
-          "Fraction": 0
-        },
-        "Clean": {
-          "Page": 0,
-          "Fraction": 0
-        },
-        "Dirty": {
-          "Page": 0,
-          "Fraction": 0
-        }
-      },
-      "Occupancy [cache lines]": 518,
-      "Dirty [cache lines]": 0,
-      "Dirty for [s]": 0,
-      "Initially dirty [cache lines]": 0,
-      "Cache mode": "wt",
-      "Pass-Trough fallback statistics": {
-        "IO errors count": 0,
-        "Status": false
-      },
-      "Cleaning policy": "alru",
-      "Promotion policy": "always",
-      "Cache line size [KiB]": 4096,
-      "Flushed blocks": 0,
-      "Core count": 2,
-      "Metadata footprint [B]": 262553896,
-      "Metadata end offset [4 KiB blocks]": 59296
+  "Cache id": 1,
+  "Core id": 1,
+  "IO class": 0,
+  "Usage": {
+    "Occupancy": {
+      "Page": 259,
+      "Fraction": 0
+    },
+    "Free": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Clean": {
+      "Page": 259,
+      "Fraction": 10000
+    },
+    "Dirty": {
+      "Page": 0,
+      "Fraction": 0
     }
   },
-  "Core info": {
-    "Core id": 1,
-    "Core path": "/dev/disk/by-id/nvme-nvme.8086-50484b45373331353030304c37353042474e-494e54454c20535344504532314b3735304741-00000001-part3",
-    "Core details": {
-      "Core size [line size]": 5242816,
-      "Core size [B]": 21474574336,
-      "Flushed blocks": 0,
-      "Dirty blocks": 0,
-      "Dirty for [s]": 0,
-      "Sequential cutoff threshold [B]": 1048576,
-      "Sequential cutoff policy [B]": "full"
+  "Requests": {
+    "Read hits": {
+      "Page": 0,
+      "Fraction": 0
     },
-    "State": "active"
-  },
-  "IO class": {
-    "Class id": 0,
-    "Info": {
-      "Name": "unclassified",
-      "Cache mode": "max",
-      "Priority": 255,
-      "Current size [cache line]": 518,
-      "Min size [%]": 0,
-      "Max size [%]": 100,
-      "Cleaning policy": "alru"
+    "Read partial misses": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Read full misses": {
+      "Page": 43,
+      "Fraction": 10000
+    },
+    "Read total": {
+      "Page": 43,
+      "Fraction": 10000
+    },
+    "Write hits": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Write partial misses": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Write full misses": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Write total": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Pass-Trough reads": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Pass-Trough writes": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Serviced requests": {
+      "Page": 43,
+      "Fraction": 10000
+    },
+    "Total requests": {
+      "Page": 43,
+      "Fraction": 10000
     }
   },
-  "Statistics": {
-    "Cache id": 1,
-    "Core id": 1,
-    "IO class": 0,
-    "Usage": {
-      "Occupancy": {
-        "Page": 259,
-        "Fraction": 0
-      },
-      "Free": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Clean": {
-        "Page": 259,
-        "Fraction": 10000
-      },
-      "Dirty": {
-        "Page": 0,
-        "Fraction": 0
-      }
+  "Blocks": {
+    "Reads from core(s)": {
+      "Page": 259,
+      "Fraction": 10000
     },
-    "Requests": {
-      "Read hits": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Read partial misses": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Read full misses": {
-        "Page": 43,
-        "Fraction": 10000
-      },
-      "Read total": {
-        "Page": 43,
-        "Fraction": 10000
-      },
-      "Write hits": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Write partial misses": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Write full misses": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Write total": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Pass-Trough reads": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Pass-Trough writes": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Serviced requests": {
-        "Page": 43,
-        "Fraction": 10000
-      },
-      "Total requests": {
-        "Page": 43,
-        "Fraction": 10000
-      }
+    "Writes from core(s)": {
+      "Page": 0,
+      "Fraction": 0
     },
-    "Blocks": {
-      "Reads from core(s)": {
-        "Page": 259,
-        "Fraction": 10000
-      },
-      "Writes from core(s)": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Total from/to core(s)": {
-        "Page": 259,
-        "Fraction": 10000
-      },
-      "Reads from cache(s)": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Writes from cache(s)": {
-        "Page": 259,
-        "Fraction": 10000
-      },
-      "Total from/to cache(s)": {
-        "Page": 259,
-        "Fraction": 10000
-      },
-      "Reads from exported object(s)": {
-        "Page": 259,
-        "Fraction": 10000
-      },
-      "Writes from exported object(s)": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Total from/to exported object(s)": {
-        "Page": 259,
-        "Fraction": 10000
-      }
+    "Total from/to core(s)": {
+      "Page": 259,
+      "Fraction": 10000
     },
-    "Errors": {
-      "Core read errors": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Core write errors": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Core total errors": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Cache read errors": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Cache write errors": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Cache total errors": {
-        "Page": 0,
-        "Fraction": 0
-      },
-      "Total errors": {
-        "Page": 0,
-        "Fraction": 0
-      }
+    "Reads from cache(s)": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Writes from cache(s)": {
+      "Page": 259,
+      "Fraction": 10000
+    },
+    "Total from/to cache(s)": {
+      "Page": 259,
+      "Fraction": 10000
+    },
+    "Reads from exported object(s)": {
+      "Page": 259,
+      "Fraction": 10000
+    },
+    "Writes from exported object(s)": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Total from/to exported object(s)": {
+      "Page": 259,
+      "Fraction": 10000
+    }
+  },
+  "Errors": {
+    "Core read errors": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Core write errors": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Core total errors": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Cache read errors": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Cache write errors": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Cache total errors": {
+      "Page": 0,
+      "Fraction": 0
+    },
+    "Total errors": {
+      "Page": 0,
+      "Fraction": 0
     }
   }
 }
-
 ```
 
-**List caches**
+# List caches
 
-Inspect CAS devices with casadm list caches mentioned in [**Monitoring CAS**](/guide_monitoring.html).
+Listing CAS devices with casadm, mentioned in [**Monitoring CAS**](/guide_monitoring.html).
 
 ```console
-[root@localhost json]# casadm -L
+# casadm --list-caches
 \type    id   disk             status    write policy   device
 cache   1    /dev/nvme3n1p4   Running   wt             -
-├core   1    /dev/nvme0n1p3   Active    -              /dev/cas1-1
-└core   2    /dev/nvme0n1p4   Active    -              /dev/cas1-2
+ core   1    /dev/nvme0n1p3   Active    -              /dev/cas1-1
+ core   2    /dev/nvme0n1p4   Active    -              /dev/cas1-2
 ```
 
-Inspect the same CAS devices with json API
+# Example list caches request
 
-**Example statistics response structure:**
+```json
+{
+  "command": "opencas.cache_list.get",
+  "params": {
+  }
+}
+```
 
-Statistics details
--   Cache instance
+# Example list caches response
 
-    -   Core devices
+**Example List caches response structure:**
 
-
-
-**Example list caches response:**
-
+-   for each cache instance:
+    -   Cache details
+    -   for each core attached to a cache:
+        -   Core details
+  
 ```json
 [
   {
     "Cache": {
       "Cache id": 1,
-      "Cache device": "/dev/disk/by-id/nvme-nvme.8086-50484b53373438323030335433373541474e-494e54454c20535344504544314b3337354741-00000001-part4",
+      "Cache device": "/dev/disk/by-id/nvme-nvme.8086-part4",
       "Core(s) id(s)": [
         1,
         2
@@ -347,7 +314,7 @@ Statistics details
         },
         "Cleaning policy": "alru",
         "Promotion policy": "always",
-        "Cache line size [KiB]": 4096,
+        "Cache line size [B]": 4096,
         "Flushed blocks": 0,
         "Core count": 2,
         "Metadata footprint [B]": 262553896,
@@ -357,7 +324,7 @@ Statistics details
     "Cores": [
       {
         "Core id": 1,
-        "Core path": "/dev/disk/by-id/nvme-nvme.8086-50484b45373331353030304c37353042474e-494e54454c20535344504532314b3735304741-00000001-part3",
+        "Core path": "/dev/disk/by-id/nvme-nvme.8086-part3",
         "Core details": {
           "Core size [line size]": 5242816,
           "Core size [B]": 21474574336,
@@ -371,7 +338,7 @@ Statistics details
       },
       {
         "Core id": 2,
-        "Core path": "/dev/disk/by-id/nvme-nvme.8086-50484b45373331353030304c37353042474e-494e54454c20535344504532314b3735304741-00000001-part4",
+        "Core path": "/dev/disk/by-id/nvme-nvme.8086-part4",
         "Core details": {
           "Core size [line size]": 5242816,
           "Core size [B]": 21474574336,
@@ -386,20 +353,131 @@ Statistics details
     ]
   }
 ]
-
 ```
-
-**Example error response:**
+# Example cache info request
 
 ```json
 {
-  "error log": {
-    "cas_ctrl object access failed": "open /dev/cas_ctrl: permission denied",
-    "failed to retrive statistics": "open /dev/cas_ctrl: permission denied"
+  "command": "opencas.cache.info.get",
+  "params": {
+    "cache id": 1,
   }
 }
 ```
 
-**Summary**
+# Example cache info response
 
-Json Api is good start and building block to RESTful API which can provide good integration CAS with other tools. For now it plays role of command line tool providing request and responses in json format.
+```json
+{
+  "Cache id": 1,
+  "Cache device": "/dev/disk/by-id/nvme-nvme.8086-part4",
+  "Core(s) id(s)": [
+    1,
+    2
+  ],
+  "Cache details": {
+    "Attached": true,
+    "Status": "stopping",
+    "Size [cache lines]": 5183520,
+    "Inactive cores": {
+      "Occupancy": {
+        "Page": 0,
+        "Fraction": 0
+      },
+      "Clean": {
+        "Page": 0,
+        "Fraction": 0
+      },
+      "Dirty": {
+        "Page": 0,
+        "Fraction": 0
+      }
+    },
+    "Occupancy [cache lines]": 518,
+    "Dirty [cache lines]": 0,
+    "Dirty for [s]": 0,
+    "Initially dirty [cache lines]": 0,
+    "Cache mode": "wt",
+    "Pass-Trough fallback statistics": {
+      "IO errors count": 0,
+      "Status": false
+    },
+    "Cleaning policy": "alru",
+    "Promotion policy": "always",
+    "Cache line size [KiB]": 4096,
+    "Flushed blocks": 0,
+    "Core count": 2,
+    "Metadata footprint [B]": 262553896,
+    "Metadata end offset [4 KiB blocks]": 59296
+  }
+}
+```
+
+# Example core info request
+
+```json
+{
+  "command": "opencas.core.info.get",
+  "params": {
+    "cache id": 1,
+    "core id": 1,
+  }
+}
+```
+
+# Example core info response
+
+```json
+{
+    "Core id": 1,
+    "Core path": "/dev/disk/by-id/nvme-nvme.8086-part3",
+    "Core details": {
+      "Core size [line size]": 5242816,
+      "Core size [B]": 21474574336,
+      "Flushed blocks": 0,
+      "Dirty blocks": 0,
+      "Dirty for [s]": 0,
+      "Sequential cutoff threshold [B]": 1048576,
+      "Sequential cutoff policy [B]": "full"
+    },
+    "State": "active"
+  }
+```
+
+# Example IO class info request
+
+```json
+{
+  "command": "opencas.ioclass.info.get",
+  "params": {
+    "cache id": 1,
+    "io class": 0 
+  }
+}
+```
+
+# Example io class info response
+
+```json
+{
+  "Class id": 0,
+  "Info": {
+    "Name": "unclassified",
+    "Cache mode": "max",
+    "Priority": 255,
+    "Current size [cache lines]": 518,
+    "Min size [%]": 0,
+    "Max size [%]": 100,
+    "Cleaning policy": "alru"
+  }
+}
+```
+
+# Example error response
+
+```json
+{
+  "cas_ctrl object access failed": "open /dev/cas_ctrl: permission denied",
+  "failed to retrieve statistics": "open /dev/cas_ctrl: permission denied"
+}
+```
