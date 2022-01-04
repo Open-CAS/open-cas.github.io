@@ -719,6 +719,7 @@ future releases. See applicable configuration details below.
 
 **Usage:** casadm -\-set-param -\-name seq-cutoff -\-cache-id \<CACHE_ID\>
 [--core-id \<CORE_ID\>] [--policy \<POLICY\>] [--threshold \<THRESHOLD\>]
+[--promotion-count \<NUMBER\>]
 
 **Example:**
 
@@ -757,6 +758,20 @@ Threshold is expressed in KiB.
 
 **[-j, -\-core-id \<ID\>]**: Unique identifier for core \<0 to 4095\>. If not
 specified, core parameter is set to all cores in a given cache.
+
+**[-\-promotion-count \<NUMBER\>]**: Specify number of IO operations required for the
+tracking information of a sequential stream to be moved from a per-CPU data structures
+to the global data structures.
+This process of moving tracking information to global context is called stream promotion.
+Once a stream is promoted, CAS will continue recognize its continuation even after
+application gets migrated to another CPU. If a stream is migrated to another CPU before
+it gets promoted, it will not be recognized as a continuation and it will be treated as
+a new stream instead. The lower the promotion threshold, the more synchronization between
+processors occurs, potentially affecting IO performance. On the other hand, the higher the
+promotion threshold, the more likely it is for CAS to lose track of sequential stream due
+to its origin application being moved to another CPU. Recommendation is to set this
+parameter to value low enough so that an I/O stream is expected to send this many I/O
+requests before being rescheduled to another CPU.
 
 ###  cleaning
 
