@@ -38,9 +38,9 @@ contact you to to collaborate on resolving the issue. For more information on
 how Intel works to resolve security issues, see: *Vulnerability Handling
 Guidelines*
 
-PGP Key: https://www.intel.com/content/www/us/en/security-center/pgp-public-key.html
+PGP Key: [https://www.intel.com/content/www/us/en/security-center/pgp-public-key.html](https://www.intel.com/content/www/us/en/security-center/pgp-public-key.html)
 
-Vulnerability Handling Guidelines: https://www.intel.com/content/www/us/en/security-center/vulnerability-handling-guidelines.html
+Vulnerability Handling Guidelines: [https://www.intel.com/content/www/us/en/security-center/vulnerability-handling-guidelines.html](https://www.intel.com/content/www/us/en/security-center/vulnerability-handling-guidelines.html)
 
 ### Feature request
 To submit feature request please provide information on the usage scenario,
