@@ -6,7 +6,7 @@ permalink: contributing.html
 
 ## License
 Open CAS is distributed on **BSD-3-Clause** license. Please navigate
-[here](https://spdx.org/licenses) for full license text.
+[here](https://spdx.org/licenses/BSD-3-Clause.html) for full license text.
 
 ## Issue tracking
 Issues and potential feature requests are tracked using **Github Issues**
