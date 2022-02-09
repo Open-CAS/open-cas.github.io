@@ -143,6 +143,15 @@ Field details:
     -   *cache_line_size* allows the user to specify the cache line size to be
         used for this cache in kibibytes, either 4, 8, 16, 32, or 64.
 
+    -   *target_failover_state* allows the user to specify the state in which 
+        the cache will be loaded - active (default) or standby for failover cache
+        instance
+
+    -   *lazy_startup* if set to true it allows to skip waiting for given device
+        on system boot. WARNING: It should be used with care. Setting lazy_startup
+        on cores while using WB cache might cause data corruption if Open CAS
+        loses the race for device with application using given core.
+
         **NOTE:** During an upgrade, *opencas.conf* files with earlier formats
         will automatically be converted to the new format.
 
