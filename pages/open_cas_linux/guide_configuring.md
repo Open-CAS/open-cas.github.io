@@ -416,8 +416,7 @@ Mount an Open CAS Linux exported device:
     the exported device (e.g. *cas1-1*) instead.
 
 3.  To take advantage of the new TRIM functionality, the file system must be
-    mounted with additional options. Please see the Trim Support section for
-    further details.
+    mounted with additional options. Please see the [Trim Support](/guide_advanced_options.html#trim-support) section for further details.
 
 4.  It may be necessary to change ownership and/or permissions for the mount
     point directory to grant applications access to the cache. Modify as

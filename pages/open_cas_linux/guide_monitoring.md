@@ -19,7 +19,7 @@ or
 
 >   \# casadm -P -i \<ID\>
 
-See the ‘-P \| -\-stats’ section for details.
+See the [**Configuration Details**](/guide_tool_details.html#-p----stats) for additional information.
 
 The output of this command contains five tables that describe the activities in
 the caching system:
@@ -95,8 +95,8 @@ a core is detached from cache)**
 | Write partial misses | Number of writes that spanned both data that was in the cache and data that was not in the cache                                                                                                                                 |
 | Write full misses    | Number of writes that were cache misses                                                                                                                                                                                          |
 | Write total          | Total number of writes                                                                                                                                                                                                           |
-| Pass-through reads   | Number of read requests sent directly to the core device (not cached by Open CAS Linux). This statistic is incremented when the request is handled while the cache is in pass-through mode (see -Q \| -\-set-cache-mode for details).  |
-| Pass-through writes  | Number of write requests sent directly to the core device (not cached by Open CAS Linux). This statistic is incremented when the request is handled while the cache is in pass-through mode (see -Q \| -\-set-cache-mode for details). |
+| Pass-through reads   | Number of read requests sent directly to the core device (not cached by Open CAS Linux). This statistic is incremented when the request is handled while the cache is in pass-through mode (see [**Configuration Details**](/guide_tool_details.html#-q----set-cache-mode) for additional information).  |
+| Pass-through writes  | Number of write requests sent directly to the core device (not cached by Open CAS Linux). This statistic is incremented when the request is handled while the cache is in pass-through mode (see [**Configuration Details**](/guide_tool_details.html#-q----set-cache-mode) for additional information). |
 | Serviced requests    | Total number of IO requests serviced (that did not bypass the cache)                                                                                                                                                             |
 | Total requests       | Total number of IO requests (both serviced and bypassed requests)                                                                                                                                                                |
 
