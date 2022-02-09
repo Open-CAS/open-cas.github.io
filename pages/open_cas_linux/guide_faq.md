@@ -22,7 +22,7 @@ Open CAS Linux uses a portion of system memory for metadata, which tells us
 where data resides. The amount of memory needed is
 proportional to the size of the cache space. This is true for any caching
 software solution. However with Open CAS Linux this memory footprint can be decreased
-using a larger cache line size set by the parameter *--cache-line-size* which may be useful in high density servers with many large HDDs.
+using a larger cache line size set by the parameter *-\-cache-line-size* which may be useful in high density servers with many large HDDs.
 
 **Does Open CAS Linux work with non-Intel® SSDs?**
 
@@ -135,7 +135,7 @@ Cache Acceleration Software (CAS)?**
 
 No. The OS does not send notification to Open CAS Linux of the disconnection of the
 device, so the software will not know of this event until IO to the device is
-attempted. The device will still be listed in the --list-caches and --stats
+attempted. The device will still be listed in the -\-list-caches and -\-stats
 output, and no warning will be logged, until IO to the device is attempted.
 Check /var/log/messages and dmesg for standard Linux device IO errors.
 
