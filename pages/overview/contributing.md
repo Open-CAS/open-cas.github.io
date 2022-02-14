@@ -1,12 +1,12 @@
 ---
 title: Contributing
-last_updated: Feb 17, 2021
+last_updated: Feb 7, 2022
 permalink: contributing.html
 ---
 
 ## License
 Open CAS is distributed on **BSD-3-Clause** license. Please navigate
-[here](https://spdx.org/licenses) for full license text.
+[here](https://spdx.org/licenses/BSD-3-Clause.html) for full license text.
 
 ## Issue tracking
 Issues and potential feature requests are tracked using **Github Issues**
@@ -38,9 +38,9 @@ contact you to to collaborate on resolving the issue. For more information on
 how Intel works to resolve security issues, see: *Vulnerability Handling
 Guidelines*
 
-PGP Key: https://www.intel.com/content/www/us/en/security-center/pgp-public-key.html
+PGP Key: [https://www.intel.com/content/www/us/en/security-center/pgp-public-key.html](https://www.intel.com/content/www/us/en/security-center/pgp-public-key.html)
 
-Vulnerability Handling Guidelines: https://www.intel.com/content/www/us/en/security-center/vulnerability-handling-guidelines.html
+Vulnerability Handling Guidelines: [https://www.intel.com/content/www/us/en/security-center/vulnerability-handling-guidelines.html](https://www.intel.com/content/www/us/en/security-center/vulnerability-handling-guidelines.html)
 
 ### Feature request
 To submit feature request please provide information on the usage scenario,
@@ -82,13 +82,35 @@ required for the pull request to be merged into main branch.
 
 ### Typical flow for introducing changes
 
-Usually development starts with cloning and checking out recent 'master'
-branch, where you will start introducing your changes.
-To create a new local branch named 'my_changes', based off 'origin/master'
+In Open CAS we use fork->PR development process, where every developer
+creates his own fork of upstream repository, and then pushes branches
+to that fork in order to create Pull Requests to the upstream repository.
+
+It's helpful to have two remotes added in local repository to have an easy
+access to both fork and upstream repositories. Example remotes configuration
+on local repository may look like this:
+
+~~~{.sh}
+$ git remote -v
+origin		git@github.com:example-user/open-cas-linux.git (fetch)
+origin		git@github.com:example-user/open-cas-linux.git (push)
+upstream	git@github.com:Open-CAS/open-cas-linux.git (fetch)
+upstream	git@github.com:Open-CAS/open-cas-linux.git (push)
+~~~
+
+Usually development starts with checking out current 'master' branch
+of the upstream reposityry, where you will start introducing your changes.
+
+~~~{.sh}
+$ git fetch upstream
+$ git checkout upstream/master
+~~~
+
+To create a new local branch named 'my_changes', based on 'upstream/master'
 branch run following command.
 
 ~~~{.sh}
-git checkout -b my_changes origin/master
+$ git checkout -b my_changes origin/master
 ~~~
 
 Introduce changes to desired files and commit changes to the local repository.
@@ -106,18 +128,21 @@ description is to adhere to following rules:
 
 ~~~{.sh}
 # Stage files for commit
-git add example_file.txt
+$ git add example_file.txt
 
 # Commit files locally
-git commit --signoff
+$ git commit --signoff
 ~~~
 
 Finally push branch containing changes to the remote repository and open new
 pull request on the github.
 
 ~~~{.sh}
-git push my_changes origin
+$ git push origin my_changes
 ~~~
+
+Detailed description of how you can create PR from branch on the fork
+repository can be found [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
 
 ## Naming conventions in the documentation
 **The product name**
