@@ -152,9 +152,6 @@ Field details:
         on cores while using WB cache might cause data corruption if Open CAS
         loses the race for device with application using given core.
 
-        **NOTE:** During an upgrade, *opencas.conf* files with earlier formats
-        will automatically be converted to the new format.
-
 The Open CAS Linux Configuration Utility - casadm
 ---------------------------------------------
 
