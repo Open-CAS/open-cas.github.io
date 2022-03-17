@@ -121,15 +121,3 @@ entries:
     - title: Frequently Asked Questions
       url: /guide_faq.html
       output: web
-
-  - title: Release Notes
-    output: web
-    folderitems:
-
-    - title: OCF
-      url: /ocf_release_notes.html
-      output: web
-
-    - title: Open CAS Linux
-      url: /open_cas_linux_release_notes.html
-      output: web
