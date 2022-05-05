@@ -5,6 +5,8 @@ topnav:
   items:
     - title: Start Here
       url: /index.html
+    - title: Downloads
+      url: /downloads.html
     - title: GitHub
       external_url: https://github.com/open-cas/open-cas-linux/
     - title: OCF Doxygen
