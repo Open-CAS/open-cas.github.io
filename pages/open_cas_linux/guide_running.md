@@ -32,15 +32,15 @@ status.
 
 3. If the cache device contains data, partitions, or a file system from
 prior use, it will not normally initialize. If you receive a message during
-initialization about an existing file system, it may need the --force option
-to initialize. Be aware that the --force option will destroy any data or
+initialization about an existing file system, it may need the -\-force option
+to initialize. Be aware that the -\-force option will destroy any data or
 formatting on the device. Caches will be started regardless of existing data
 or partitions. Execute the following:
 
->   \# casctl init --force
+>   \# casctl init -\-force
 
  This command yields the same results as:
- casadm -S -d /dev/disk/by-id/wwn-some_ssd_disk --force for a single cache instance.
+ casadm -S -d /dev/disk/by-id/wwn-some_ssd_disk -\-force for a single cache instance.
 
 Startup of Cache instances
 ---------------------------
@@ -119,7 +119,7 @@ In order to stop all cache instances which are configured via the
 If the operating Open CAS Linux mode is write-back mode and dirty data may exist
 within the caching environment, Open CAS Linux must be stopped using:
 
->   \# casctl stop --flush
+>   \# casctl stop -\-flush
 
 The most common reason for corrupt data or other data irregularities within an
 Open CAS Linux environment is improper accounting for dirty data as part of a system
@@ -138,7 +138,7 @@ Disabling Open CAS Linux
 In order to disable Open CAS Linux on one or more devices, the user should perform
 either of the following operations:
 
-1.  Stop caching via casctl stop (--flush as appropriate). Remove or comment
+1.  Stop caching via casctl stop (-\-flush as appropriate). Remove or comment
     devices from the *opencas.conf* file.  
 
 2.  Stop caching or remove cores using casadm -T or casadm -R commands. Remove
@@ -173,7 +173,7 @@ command.
 
 >   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD -l
 
-For more details, see ‘-S \| --start-cache’.
+For more details, see ‘-S \| -\-start-cache’.
 
 ### Reinitializing the Cache
 

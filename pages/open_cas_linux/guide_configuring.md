@@ -339,13 +339,13 @@ restarting Open CAS Linux. For example, you can switch from WT mode to PT mode t
 stop caching during maintenance or for testing purposes.
 
 To switch from WB to any other mode, you must specify whether dirty data should
-be flushed now or later using the --flush-cache option. Depending on the
---flush-cache option used, switching from WB to other caching modes may require
+be flushed now or later using the -\-flush-cache option. Depending on the
+-\-flush-cache option used, switching from WB to other caching modes may require
 time to complete before caching mode is changed.
 
 The following example places Open CAS Linux into PT mode for cache id 1.
 
->   \# casadm --set-cache-mode --cache-mode pt --cache-id 1
+>   \# casadm -\-set-cache-mode -\-cache-mode pt -\-cache-id 1
 
   or
 
@@ -422,8 +422,7 @@ Mount an Open CAS Linux exported device:
     the exported device (e.g. *cas1-1*) instead.
 
 3.  To take advantage of the new TRIM functionality, the file system must be
-    mounted with additional options. Please see the Trim Support section for
-    further details.
+    mounted with additional options. Please see the [Trim Support](/guide_advanced_options.html#trim-support) section for further details.
 
 4.  It may be necessary to change ownership and/or permissions for the mount
     point directory to grant applications access to the cache. Modify as

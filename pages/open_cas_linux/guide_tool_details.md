@@ -35,7 +35,7 @@ command:
 block devices. Typically the cache devices are SSDs or other NVM block devices
 or RAM disks. The process starts a framework for device mappings pertaining to a
 specific cache ID. The cache can be loaded with an old state when using the *-l*
-or *--load* parameter (previous cache metadata will not be marked as invalid) or
+or *-\-load* parameter (previous cache metadata will not be marked as invalid) or
 with a new state as the default (previous cache metadata will be marked as
 invalid).
 
@@ -148,7 +148,7 @@ parameter. Then the Open CAS Linux device can be used as normal.
 -----------------------
 
 **Usage:** casadm -\-set-cache-mode -\-cache-mode \<NAME\> -\-cache-id \<ID\>
---flush-cache \<yes/no\>
+-\-flush-cache \<yes/no\>
 
 **Example:**
 
@@ -269,7 +269,7 @@ casadm -L command.
 
 **[-f, -\-force]:** Do not flush dirty data while removing the core device.
 
-\--remove-detached
+\-\-remove-detached
 ------------------
 
 **Usage:** casadm -\-remove-detached -\-device \<DEV_NAME\>
@@ -292,7 +292,7 @@ NVMe drive). This command does not currently have a short form.
 
 Where DEV_NAME is a device name from the core pool
 
-\--remove-inactive
+\-\-remove-inactive
 ------------------
 
 **Usage:** casadm -\-remove-inactive -\-device \<DEV_NAME\>
@@ -315,7 +315,7 @@ way to disable caching of an inactive device.
 You can identify the assigned value for a particular core device using the
 casadm -L command.
 
--  *Caution:* Before using casadm --remove-inactive, stop all IO to the mapped
+-  *Caution:* Before using casadm -\-remove-inactive, stop all IO to the mapped
     core device, ensure it is not in use, and unmount it.
 
 -  Although legal core ID range starts with 0, Open CAS Linux engine would
@@ -399,7 +399,7 @@ Display statistics for a specific IO class.
     class.
 
 **[-f, -\-filter \<filter-spec\>]**: Comma separated list of filters (e.g.,
---filter conf, req). Filter statistics output to only the requested statistics.
+-\-filter conf, req). Filter statistics output to only the requested statistics.
 
 -   *all:* (default mode) Displays all available cache statistics.
 
@@ -505,7 +505,7 @@ Status                    Incomplete
 \-Z \| -\-reset-counters
 -----------------------
 
-**Usage:** casadm -\-reset-counters -\-cache-id \<CACHE_ID\> [--core-id
+**Usage:** casadm -\-reset-counters -\-cache-id \<CACHE_ID\> [-\-core-id
 \<CORE_ID\>]
 
 **Example:**
@@ -580,7 +580,7 @@ specified associated core device.
     dirty data will be flushed opportunistically as normal. IO to the device
     will continue with reduced performance during cache flushing.
 
-\--zero-metadata
+\-\-zero-metadata
 ------------------
 
 **Usage:** casadm -\-zero-metadata -\-device \<DEV_NAME\> [option]
@@ -677,7 +677,7 @@ configuration.
 
 **[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
 
-**[-f,--file]:** Specifies the IO class configuration csv file to load.
+**[-f,-\-file]:** Specifies the IO class configuration csv file to load.
 
 ###  -L \| -\-list
 
@@ -718,8 +718,8 @@ future releases. See applicable configuration details below.
 ###  seq-cutoff
 
 **Usage:** casadm -\-set-param -\-name seq-cutoff -\-cache-id \<CACHE_ID\>
-[--core-id \<CORE_ID\>] [--policy \<POLICY\>] [--threshold \<THRESHOLD\>]
-[--promotion-count \<NUMBER\>]
+[-\-core-id \<CORE_ID\>] [-\-policy \<POLICY\>] [-\-threshold \<THRESHOLD\>]
+[-\-promotion-count \<NUMBER\>]
 
 **Example:**
 
@@ -812,7 +812,7 @@ data.
 ###  cleaning-acp
 
 **Usage:** casadm -\-set-param -\-name cleaning-acp -\-cache-id \<CACHE_ID\>
-[--wake-up \<NUMBER\>] [--flush-max-buffers \<NUMBER\>]
+[-\-wake-up \<NUMBER\>] [-\-flush-max-buffers \<NUMBER\>]
 
 **Example:**
 
@@ -838,8 +838,8 @@ in one cleaning cycle. MIN: 1, MAX: 10000 (inclusive), DEFAULT: 128.
 ###  cleaning-alru
 
 **Usage:** casadm -\-set-param -\-name cleaning-alru -\-cache-id \<CACHE_ID\>
-[--wake-up \<NUMBER\>] [--staleness-time \<NUMBER\>] [--flush-max-buffers
-\<NUMBER\>] [--activity-threshold \<NUMBER\>]
+[-\-wake-up \<NUMBER\>] [-\-staleness-time \<NUMBER\>] [-\-flush-max-buffers
+\<NUMBER\>] [-\-activity-threshold \<NUMBER\>]
 
 **Example:**
 
@@ -911,7 +911,7 @@ which are set via -\-set-param. See applicable configuration details below.
 ###  seq-cutoff
 
 **Usage:** casadm -\-get-param -\-name seq-cutoff -\-cache-id \<CACHE_ID\>
---core-id \<CORE_ID\> [--output-format \<FORMAT\>]
+-\-core-id \<CORE_ID\> [-\-output-format \<FORMAT\>]
 
 **Example:**
 
@@ -945,7 +945,7 @@ to all cores in a given cache.
 ###  cleaning
 
 **Usage:** casadm -\-get-param -\-name cleaning -\-cache-id \<CACHE_ID\>
-[--output-format \<FORMAT\>]
+[-\-output-format \<FORMAT\>]
 
 **Example:**
 
@@ -974,7 +974,7 @@ returned: Cleaning Policy Type.
 ###  cleaning-acp
 
 **Usage:** casadm -\-get-param -\-name cleaning-acp -\-cache-id \<CACHE_ID\>
-[--output-format \<FORMAT\>]
+[-\-output-format \<FORMAT\>]
 
 **Example:**
 
@@ -1003,7 +1003,7 @@ Time and Flush Max Buffers.
 ###  cleaning-alru
 
 **Usage:** casadm -\-get-param -\-name cleaning-alru -\-cache-id \<CACHE_ID\>
-[--output-format \<FORMAT\>]
+[-\-output-format \<FORMAT\>]
 
 **Example:**
 
