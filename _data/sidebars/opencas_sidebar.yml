@@ -53,6 +53,14 @@ entries:
       url: /cache_line.html
       output: web
 
+  - title: Design Documentation
+    output: web
+    folderitems:
+
+    - title: Metadata contents
+      url: /metadata_contents.html
+      output: web
+
   - title: Getting Started
     output: web
     folderitems:
