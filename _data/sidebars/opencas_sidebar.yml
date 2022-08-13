@@ -53,12 +53,24 @@ entries:
       url: /cache_line.html
       output: web
 
+    - title: Cleaning
+      url: /cleaning.html
+      output: web
+
   - title: Design Documentation
     output: web
     folderitems:
 
     - title: Metadata contents
       url: /metadata_contents.html
+      output: web
+
+    - title: Cache modes implementation - I/O engines
+      url: /ocf_io_engines.html
+      output: web
+
+    - title: Cleaner
+      url: /cleaner.html
       output: web
 
   - title: Getting Started
