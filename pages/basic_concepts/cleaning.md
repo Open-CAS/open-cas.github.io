@@ -20,6 +20,6 @@ would flush the dirty sectors so an up-to-date version of data can be read
 from the core in a subsequent step.
 * ad-hoc cleaning in case of eviction failure, where cache is 100% dirty and 
 cache lines cannot be evicted or replaced
-* user requested flush (casadm -F/-E commands)
+* user requested flush (casadm -F command)
 * other management operations, e.g. cache stop, core removal
 
