@@ -531,7 +531,7 @@ specified cache instance.
 \-F \| -\-flush-cache
 --------------------
 
-**Usage:** casadm -\-flush-cache -\-cache-id \<ID\>
+**Usage:** casadm -\-flush-cache -\-cache-id \<CACHE_ID\> [-\-core-id \<CORE_ID\>]
 
 **Example:**
 
@@ -540,41 +540,22 @@ specified cache instance.
 or  
 >   \# casadm -F -i 1
 
+or
+>   \# casadm -F -i 1 -j 1
+
 **Description:** Flushes all dirty data from the cache device to all the
 associated core devices.
 
 **Required Parameters:**
 
-**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
+**[-i, -\-cache-id \<CACHE_ID\>]:** Unique identifier for cache \<1 to 16384\>.
+
+**Optional Parameters**
+
+**[-j, -\-core-id \<CORE_ID\>]:** Unique identifier for core \<0 to 4095\>. If is provided,
+flushes all dirty data from specified cache device to the specified associated core device.
 
 -  You can interrupt the blocking -\-flush-cache operation by pressing CTRL-C.
-    When dirty data exists, interrupting the operation prior to the cache being
-    fully flushed will result in some dirty data remaining in the cache. The
-    dirty data will be flushed opportunistically as normal. IO to the device
-    will continue with reduced performance during cache flushing.
-
-\-E \| -\-flush-core
--------------------
-
-**Usage:** casadm -\-flush-core -\-cache-id \<ID\> -\-core-id \<ID\>
-
-**Example:**
-
->   \# casadm -\-flush-core -\-cache-id 1 -\-core-id 2  
-
-or  
->   \# casadm -E -i 1 -j 2
-
-**Description:** Flushes all dirty data from the specified cache device to the
-specified associated core device.
-
-**Required parameters:**
-
-**[-i, -\-cache-id \<ID\>]:** Unique identifier for cache \<1 to 16384\>.
-
-**[-j, -\-core-id \<ID\>]:** Unique identifier for core \<0 to 4095\>.
-
--  You can interrupt the blocking -\-flush-core operation by pressing CTRL-C.
     When dirty data exists, interrupting the operation prior to the cache being
     fully flushed will result in some dirty data remaining in the cache. The
     dirty data will be flushed opportunistically as normal. IO to the device
