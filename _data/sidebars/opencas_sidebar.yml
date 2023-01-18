@@ -73,6 +73,10 @@ entries:
       url: /cleaner.html
       output: web
 
+    - title: Sequential Cutoff
+      url: /seq_cutoff.html
+      output: web
+
   - title: Getting Started
     output: web
     folderitems:
