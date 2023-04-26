@@ -25,11 +25,11 @@ command:
 
 **Example:**
 
->   \# casadm -\-start-cache -\-cache-device /dev/disk/by-id/nvme-INTEL_SSD
+>   \# casadm -\-start-cache -\-cache-device /dev/disk/by-id/nvme-SSD
 
   or
 
->   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD
+>   \# casadm -S -d /dev/disk/by-id/nvme-SSD
 
 **Description:** Prepares a block device to be used as device for caching other
 block devices. Typically the cache devices are SSDs or other NVM block devices
@@ -44,7 +44,7 @@ invalid).
 **[-d, -\-cache-device \<DEVICE\>] :** Caching device to be used. This is an SSD or
 any NVM block device or RAM disk shown in the */dev/disk/by-id* directory. \<device\> needs
 to be the complete path describing the caching device to be used, for example
-/dev/disk/by-id/nvme-INTEL_SSD.
+/dev/disk/by-id/nvme-SSD.
 
 **Optional Parameters:**
 

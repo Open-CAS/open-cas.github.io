@@ -171,7 +171,7 @@ To manually start Open CAS Linux with recovery enabled, enter the following comm
 All previously attached cores will be reattached to the cache after this
 command.
 
->   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD -l
+>   \# casadm -S -d /dev/disk/by-id/nvme-SSD -l
 
 For more details, see ‘-S \| -\-start-cache’.
 
@@ -181,7 +181,7 @@ To clear or empty the cache device (invalidate the entire cache), manually start
 the cache including the -f parameter (and omitting the -l parameter), as shown
 below:
 
->   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD -f  
+>   \# casadm -S -d /dev/disk/by-id/nvme-SSD -f  
 >   \# casadm -A -i 1 -d /dev/disk/by-id/wwn-0x50014ee004276c68
 
 This reinitializes the cache instead of loading the old state and results in

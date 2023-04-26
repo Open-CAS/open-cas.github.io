@@ -21,21 +21,16 @@ TLC SSD, Optane drives, RAM memory, or any combination of above including
 all kinds of multilevel configurations.
 
 ## Who already uses OCF?
-Open CAS Framework is heart of two established caching products:
-- Intel &reg; Cache Acceleration Software for Linux
-- Intel &reg; Cache Acceleration Software for QEMU
+Open CAS Framework is heart of block caching in two established projects:
+- [Open CAS Linux](https://github.com/Open-CAS/open-cas-linux)
+- [Storage Performance Development Kit](https://spdk.io/)
 
-We are also default caching solution for
-[Storage Performance Development Kit](https://spdk.io/) (starting from
-version 19.01).
 
 ## Who contributes to OCF?
-Our open source community is still forming and we are very positive about
-that. OCF is mostly developed and maintained by Intel. We are the team who
-developed OCF (as a part of Cache Acceleration Software) for many years.
-Now we are very extited about undergoing transition to truely open source
-project. We are open for contributions of any kind. If you feel like helping
-us make OCF better, take a look at [Contributing](contributing.html) page.
+OCF is community maintained project. It was originally developed by Intel.
+The core community comprises people who developed OCF for many years.
+We are open for contributions of any kind. If you feel like helping us
+make OCF better, take a look at [Contributing](contributing.html) page.
 
 ## How do I get it?
 We are fully open source. Visit our [GitHub](https://github.com/Open-CAS/ocf) page.
