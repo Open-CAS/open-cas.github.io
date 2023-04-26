@@ -24,12 +24,6 @@ proportional to the size of the cache space. This is true for any caching
 software solution. However with Open CAS Linux this memory footprint can be decreased
 using a larger cache line size set by the parameter *-\-cache-line-size* which may be useful in high density servers with many large HDDs.
 
-**Does Open CAS Linux work with non-Intel® SSDs?**
-
-Yes, however we validate only on Intel(R) SSDs. In addition Open CAS Linux utilizes the
-features of Intel(R) SSDs to provide improved performance and functionality that may
-not be available with other products.
-
 **How do I test performance?**
 
 In addition to the statistics provided (see Monitoring Open CAS Linux for details),

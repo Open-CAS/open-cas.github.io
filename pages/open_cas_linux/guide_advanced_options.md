@@ -20,7 +20,7 @@ You can add multiple core devices to a single cache device. An example
 >>
 >> \#\# Cache ID Cache device Cache mode Extra fields (optional)
 >>
->> 1 /dev/disk/by-id/nvme-INTEL_SUPER_FAST_DISK-part5 wb ioclass_file=/etc/opencas/ioclass-config.csv
+>> 1 /dev/disk/by-id/nvme-SUPER_FAST_DISK-part5 wb ioclass_file=/etc/opencas/ioclass-config.csv
 >>
 >> \#\# Core devices configuration
 >>
@@ -65,7 +65,7 @@ Multi-Level Caching
 
 Open CAS Linux supports multi-level caching. For example, this enables the user to
 cache warm data from slow HDD media to faster SSD media, and then cache hot data
-from the SSD to an even faster media such as a RAMdisk or Intel(R) Optane(TM) SSDs. In this case, a fixed
+from the SSD to an even faster media such as a RAMdisk. In this case, a fixed
 portion of DRAM will be allocated for buffering, and the SSD will remain as a
 fully inclusive cache so DRAM cache data will always be available on the SSD.
 
@@ -90,7 +90,7 @@ To set up a RAMdisk-based cache level, do the following:
 
 -  Create the SSD cache instance, where */dev/sdc* is your SSD cache device:
 
->   \# casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD
+>   \# casadm -S -d /dev/disk/by-id/nvme-SSD
 
 -  Add a core device (*/dev/sdb*) mapping to the SSD cache instance:
 
@@ -221,8 +221,8 @@ Trim Support
 The trim command (known as TRIM in the ATA command set, and UNMAP in the SCSI
 command set) allows an operating system to inform an SSD which blocks of data
 are no longer considered in use and can be wiped internally. TRIM is enabled by
-default and supported by Open CAS Linux for Intel SSDs. When a user or application
-deletes data, Open CAS Linux will free the cache lines associated with that data when
+default and supported by Open CAS Linux. When a user or application deletes
+data, Open CAS Linux will free the cache lines associated with that data when
 TRIM is used. This avoids the time required to flush that data to the backend
 storage such as hard drives.
 

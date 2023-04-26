@@ -30,7 +30,7 @@ The Open CAS Linux project is hosted in this [**GitHub repository**](https://git
    > ```casadm -V```
 
 6. CAS should now be ready to start. For example, to use block device /dev/nvme0n1 as a caching device:
- > ```casadm -S -d /dev/disk/by-id/nvme-INTEL_SSD```
+ > ```casadm -S -d /dev/disk/by-id/nvme-SSD```
 
 7. The output should return the cache instance number, use it to add a backend device.
 For example, to use block device /dev/sda1 as a backend device to cache instance 1:
