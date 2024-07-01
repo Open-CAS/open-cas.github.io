@@ -110,6 +110,10 @@ entries:
       url: /guide_configuring.html
       output: web
 
+    - title: CAS startup procedure
+      url: /guide_boot.html
+      output: web
+
     - title: Running CAS
       url: /guide_running.html
       output: web
