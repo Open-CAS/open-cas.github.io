@@ -57,6 +57,10 @@ entries:
       url: /cleaning.html
       output: web
 
+    - title: Promotion policy
+      url: /promotion.html
+      output: web
+
   - title: Design Documentation
     output: web
     folderitems:
