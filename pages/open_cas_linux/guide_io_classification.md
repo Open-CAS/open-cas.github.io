@@ -171,18 +171,19 @@ to the changed directory contents.
 ### Combined IO Classification Rules
 
 The IO classification example below shows a combination of file size and
-directory based caching. Class ID 4 demonstrates that ID’s may be combined to
-form a new classification rule:
+directory based caching. IO class 2 demonstrates that IDs may be combined to
+form a new classification rule.  
+Also note that IO class 1 has allocation set to 0.5 - meaning that although IO class 1
+has the highest priority it can occcupy at most 50% of the cache, leaving the rest
+for other IO classes.  
 
 >>   IO class id,IO class name,Eviction priority,Allocation
 >>
 >>   0,unclassified,22,1  
->>   1,metadata,1,1  
->>   2,direct,1,1  
->>   3,file_size:gt:40960,1,1  
->>   4,io_class:3&file_size:lt:81920&done,1,1  
->>   6,directory:/mnt/drv1/dir,1,1  
->>   7,directory:/mnt/drv1/dir/subdir/\|directory:/mnt/drv1/dir/subdir2/,1,1  
+>>   1,file_size:gt:40960,2,0.5  
+>>   2,io_class:1&file_size:lt:81920&done,3,1  
+>>   3,directory:/mnt/drv1/dir,5,1  
+>>   4,directory:/mnt/drv1/dir/subdir/\|directory:/mnt/drv1/dir/subdir2/,4,1  
 
 IO class name length limit is 1024 characters. If exceeded, IO class
 configuration will fail. The valid IO class id range is 0-32. Please note that
