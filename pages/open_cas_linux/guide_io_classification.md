@@ -1,6 +1,6 @@
 ---
 title: Open CAS Linux - Admin Guide
-last_updated: March, 2025
+last_updated: June, 2025
 toc: true
 permalink: guide_io_classification.html
 ---
@@ -28,7 +28,7 @@ below summarizes the configurable fields in this IO classification file.
 
 | **Field**         | **Description**                                                                                                                                                                                                                                       |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| IO class id       | Unique ID for the IO class. (NOTE: The ID for unclassified must always be 0)                                                                                                                                                                            |
+| IO class id       | Unique ID for the IO class. (NOTE: The ID for *unclassified* must always be 0)                                                                                                                                                                            |
 | IO class name     | The name of the IO class. The name can be a known class name such as *metadata* or *unclassified* or *direct* . It can also consist of a user-defined rule. A rule consists of conditions separated by logical operators and/or arithmetic operators. |
 | Eviction priority | Sets the priority number for the IO class. Priority range is 0-255 with zero having the highest priority. The IO classes with the lowest priority will be evicted first.                                                                              |
 | Allocation        | Boolean value that allows the user to decide whether data of this IO class will be cached or not. 0=do not cache, 1=cache.                                                                                                                            |
@@ -78,7 +78,7 @@ arithmetic operators. The available operators and names are specified below.
 
 
 The table below shows the structure of the IO classification file. This table
-shows IO class 0 is unclassified and has a high eviction priority of 22 to
+shows IO class 0 is unclassified and has a high eviction priority of 0 to
 ensure unclassified data is evicted last. The allocation of 1 specifies this
 data type is cachable.
 
@@ -86,13 +86,13 @@ data type is cachable.
 
 | **IO Class** | **IO Class Name** | **Eviction Priority** | **Allocation** |
 |--------------|-------------------|-----------------------|----------------|
-| 0            | unclassified      | 22                    | 1              |
+| 0            | unclassified      | 0                     | 1              |
 
 The IO classification file entries are comma-separated and should follow this
 format:
 
 >>   **IO class id,IO class name,Eviction priority,Allocation**   
->>   0,unclassified,22,1
+>>   0,unclassified,0,1
 
 Open CAS Linux iterates over all the IO classes specified in the classification file
 and if an I/O request satisfies the given rule, the I/O will be assigned to this
