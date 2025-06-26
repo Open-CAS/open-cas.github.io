@@ -13,10 +13,10 @@ IO Class Configuration
 
 Open CAS Linux provides the ability to control data caching with classification
 granularity. Open CAS Linux can analyze every IO on the fly to determine whether the
-requested block is filesystem metadata or data and, if it is data, the size of
-the destination file. Using this information the administrator can determine the
-best IO class configuration settings for the typical workload and can set which
-IO classes to cache and not to cache, and set a priority level for each IO
+requested block is filesystem metadata or data and - if it is data - its properties 
+(e.g. the size of the destination file). Using this information the administrator
+can determine the best IO class configuration settings for the typical workload,
+set cache occupancy limits for IO classes, and set a priority level for each IO
 class. As a result, when it becomes necessary to evict a cache line, the
 software will evict cache lines of the lowest priority first (a major
 improvement compared to traditional LRU eviction).
@@ -26,12 +26,12 @@ below summarizes the configurable fields in this IO classification file.
 
 **IO Class Configuration File Fields**
 
-| **Field**         | **Description**                                                                                                                                                                                                                                       |
-|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| IO class id       | Unique ID for the IO class. (NOTE: The ID for *unclassified* must always be 0)                                                                                                                                                                        |
-| IO class name     | The name of the IO class. The name can be a known class name such as *metadata* or *unclassified* or *direct* . It can also consist of a user-defined rule. A rule consists of conditions separated by logical operators and/or arithmetic operators. |
+| **Field**         | **Description**                                                                                                                                                                                                                                        |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| IO class id       | Unique ID for the IO class. (NOTE: The ID for *unclassified* must always be 0)                                                                                                                                                                         |
+| IO class name     | The name of the IO class. The name can be a known class name such as *metadata* or *unclassified* or *direct* . It can also consist of a user-defined rule. A rule consists of conditions separated by logical operators and/or arithmetic operators.  |
 | Eviction priority | Sets the priority number for the IO class. Priority range is 0-255 with zero having the highest priority. The IO classes with the lowest priority will be evicted first. Special case: **pinned IO class** - if the eviction priority is left empty in the configuration file then the IO class will be *pinned* and will not be evicted by any other IO class. |
-| Allocation        | Boolean value that allows the user to decide whether data of this IO class will be cached or not. 0=do not cache, 1=cache.                                                                                                                            |
+| Allocation        | Decimal value that allows the user to configure what part of the cache a certain IO class can occupy at most. Allocation range is 0.00-1.00. 0=do not cache, 0.66=IO class can occupy at most 66% of the cache, 1=IO class can occupy the whole cache. |
 
 IO class names can consist of user-specified rules to satisfy. Multiple
 conditions can be combined using logical operators and can be fine-tuned using
@@ -80,13 +80,13 @@ arithmetic operators. The available operators and names are specified below.
 The table below shows the structure of the IO classification file. This table
 shows IO class 0 is unclassified and has a high eviction priority of 0 to
 ensure unclassified data is evicted last. The allocation of 1 specifies this
-data type is cachable.
+data type is cachable and can occupy the whole cache.
 
 **IO Class Configuration File Structure**
 
 | **IO Class** | **IO Class Name** | **Eviction Priority** | **Allocation** |
 |--------------|-------------------|-----------------------|----------------|
-| 0            | unclassified      | 0                     | 1              |
+| 0            | unclassified      | 0                     | 1.00           |
 
 The IO classification file entries are comma-separated and should follow this
 format:
@@ -152,7 +152,7 @@ The IO classification example below shows a directory caching entry:
 >>
 >>   0,unclassified,22,0  
 >>   1,directory:/data/dataa\|directory:/data/datab,1,1  
->>   2,metadata,3,1
+>>   2,metadata,3,0.2
 
 In the above example, to specify the directories to be cached, IO Class 1 shows
 an IO Class Name of:
@@ -160,8 +160,8 @@ an IO Class Name of:
 >>   directory:/data/dataa\|directory:/data/datab
 
 This example specifies that all data in the /data/dataa or /data/datab
-directories will be cached; unclassified data will not be cached; metadata will
-be cached (due to allocation 1 or 0).
+directories will be cached; unclassified data will not be cached (allocation=0);
+metadata will be cached, but will not take more than 20% of the cache (allocation=0.2).
 
 If a directory referenced in classification rule "directory" condition is
 modified (created / removed / moved), it might take a few seconds until the CAS
