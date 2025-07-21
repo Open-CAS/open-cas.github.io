@@ -6,7 +6,7 @@ permalink: ocf_intro.html
 ---
 
 ## What is OCF?
-Open CAS Framwework (OCF) is high performance block storage caching
+Open CAS Framework (OCF) is high performance block storage caching
 meta-library written in C. It's entirely platform and system independent,
 accessing system API through user provided environment wrappers layer.
 OCF tightly integrates with the rest of software stack, providing flawless,
