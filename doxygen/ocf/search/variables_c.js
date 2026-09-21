@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['name',['name',['../structocf__io__class__info.html#a77c2582358a064ce3165c56e66de6993',1,'ocf_io_class_info::name()'],['../structocf__mngt__core__config.html#a9ad0028947afb7e7bf737e4c99b2a873',1,'ocf_mngt_core_config::name()'],['../structocf__mngt__cache__config.html#a39285868ac136800efccf777e852f407',1,'ocf_mngt_cache_config::name()'],['../structocf__mngt__io__class__config.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_mngt_io_class_config::name()'],['../structocf__event__cache__desc.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_event_cache_desc::name()'],['../structocf__event__core__desc.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_event_core_desc::name()'],['../structocf__volume__properties.html#a8f8f80d37794cde9472343e4487ba3eb',1,'ocf_volume_properties::name()']]]
-];

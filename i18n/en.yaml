@@ -1,0 +1,7 @@
+# Overrides Hextra's i18n defaults. Without this the footer reads
+# "© 2026 Hextra Project." — the theme's placeholder, not a licence
+# requirement (Hextra is MIT with no attribution clause).
+#
+# i18n files are not templates, so the year cannot be computed here.
+# Omitting it keeps the notice from going stale.
+copyright: "© Open CAS. All rights reserved."

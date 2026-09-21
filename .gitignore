@@ -1,6 +1,4 @@
-_site/
-.sass-cache/
-.jekyll-metadata
-_pdf
-.DS_Store
-.idea
+public/
+resources/
+.hugo_build.lock
+.idea/
