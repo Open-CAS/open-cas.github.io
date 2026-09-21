@@ -1,0 +1,95 @@
+baseURL = "https://open-cas.com/"
+locale = "en-us"
+title = "Open CAS"
+theme = "hextra"
+
+# "Last updated" comes from the git commit date, so it can't drift the way
+# the hand-maintained last_updated frontmatter did.
+enableGitInfo = true
+enableRobotsTXT = true
+
+# No blog or tagged content, so skip the empty taxonomy pages.
+disableKinds = ["taxonomy", "term"]
+
+# Everything except the home page uses Hextra's docs layout, which is what
+# keeps the left sidebar on the page. The generic single/list layouts pass
+# disableSidebar=true, so without this the sidebar vanishes on leaf pages.
+[[cascade]]
+  type = "docs"
+  [cascade.target]
+    kind = "{page,section}"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true          # several concept pages use raw <img> tags
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[menu]
+  [[menu.main]]
+    name = "Concepts"
+    pageRef = "/concepts"
+    weight = 1
+  [[menu.main]]
+    name = "Open CAS Linux"
+    pageRef = "/open-cas-linux"
+    weight = 2
+  [[menu.main]]
+    name = "OCF"
+    pageRef = "/ocf"
+    weight = 3
+  [[menu.main]]
+    name = "SPDK"
+    pageRef = "/spdk"
+    weight = 4
+  [[menu.main]]
+    name = "Downloads"
+    pageRef = "/downloads"
+    weight = 5
+  [[menu.main]]
+    name = "Search"
+    weight = 6
+    [menu.main.params]
+      type = "search"
+  [[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/Open-CAS"
+    weight = 7
+    [menu.main.params]
+      icon = "github"
+
+[params]
+  description = "Open CAS — open source block storage caching: Open CAS Framework (OCF), Open CAS Linux and the SPDK block device adapter."
+
+  dateFormat = "January 2, 2006"
+  displayUpdatedDate = true
+
+  [params.navbar]
+    displayTitle = true
+    displayLogo = false
+
+  [params.theme]
+    default = "system"
+    displayToggle = true
+
+  [params.footer]
+    enable = true
+    displayCopyright = true
+    displayPoweredBy = false
+
+  [params.search]
+    enable = true
+    type = "flexsearch"
+    [params.search.flexsearch]
+      index = "content"
+
+  [params.editURL]
+    enable = true
+    base = "https://github.com/Open-CAS/open-cas.github.io/edit/master/content"
+
+  [params.highlight.copy]
+    enable = true
+    display = "hover"
