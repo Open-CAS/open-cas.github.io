@@ -161,7 +161,10 @@ repository can be found [here](https://docs.github.com/en/pull-requests/collabor
 * IO request
 
 ## Maintainers
-Maintainers primary responsibility is to provide technical guidance on
-contributions, perform code review and oversight of project direction.
-The primary contact:
-* [Robert Bałdyga](mailto:baldyga.r@gmail.com)
+
+Open CAS is maintained by [Unvertical](https://unvertical.com/).
+
+The lead maintainer is [Robert Baldyga](https://github.com/robertbaldyga).
+
+You can get in touch with the maintainers by submitting a GitHub issue on one of our repositories.
+Alternatively you can write at [robert.baldyga@open-cas.com](mailto:robert.baldyga@open-cas.com).
