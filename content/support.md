@@ -26,8 +26,8 @@ production.
 
 ## Getting in touch
 
-Use the [contact form at unvertical.com](https://unvertical.com/#contact) with a
-short description of your setup and what you need, and we will get back to you.
+Please [contact](https://unvertical.com/contact/) us with a short description of
+your setup and what you need, and we will get back to you.
 
 ## Community support
 
